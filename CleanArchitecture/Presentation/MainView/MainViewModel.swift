@@ -60,7 +60,6 @@ final class MainViewModel: MainViewModelProtocol {
     }
 
     func showHistoryQuerieslist() {
-     //   actions?.closeListViewConroller() не обязательно 
         actions?.showHisoryList()
     }
     func closeQueriesSuggestions() {

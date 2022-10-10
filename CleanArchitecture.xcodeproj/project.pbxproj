@@ -18,8 +18,8 @@
 		F794C33E28ED8A2D003E49A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33D28ED8A2D003E49A3 /* AppCoordinator.swift */; };
 		F794C34028ED8A42003E49A3 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33F28ED8A42003E49A3 /* AppDIContainer.swift */; };
 		F794C34328EDC268003E49A3 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34228EDC268003E49A3 /* Observable.swift */; };
-		F794C34628EEB263003E49A3 /* QueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34528EEB263003E49A3 /* QueryViewController.swift */; };
-		F794C34828EEB27E003E49A3 /* QueryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34728EEB27E003E49A3 /* QueryViewModel.swift */; };
+		F794C34628EEB263003E49A3 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34528EEB263003E49A3 /* HistoryViewController.swift */; };
+		F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34728EEB27E003E49A3 /* HistoryViewModel.swift */; };
 		F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34A28EEB938003E49A3 /* ListViewController.swift */; };
 		F794C34D28EEB94D003E49A3 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34C28EEB94D003E49A3 /* ListViewModel.swift */; };
 		F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */; };
@@ -63,8 +63,8 @@
 		F794C33D28ED8A2D003E49A3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		F794C33F28ED8A42003E49A3 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		F794C34228EDC268003E49A3 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		F794C34528EEB263003E49A3 /* QueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryViewController.swift; sourceTree = "<group>"; };
-		F794C34728EEB27E003E49A3 /* QueryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryViewModel.swift; sourceTree = "<group>"; };
+		F794C34528EEB263003E49A3 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		F794C34728EEB27E003E49A3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F794C34A28EEB938003E49A3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		F794C34C28EEB94D003E49A3 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReposioryProtocol.swift; sourceTree = "<group>"; };
@@ -148,9 +148,9 @@
 		F794C34428EEB216003E49A3 /* HistoryQueriesContainerView */ = {
 			isa = PBXGroup;
 			children = (
-				F794C34528EEB263003E49A3 /* QueryViewController.swift */,
+				F794C34728EEB27E003E49A3 /* HistoryViewModel.swift */,
+				F794C34528EEB263003E49A3 /* HistoryViewController.swift */,
 				F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */,
-				F794C34728EEB27E003E49A3 /* QueryViewModel.swift */,
 			);
 			path = HistoryQueriesContainerView;
 			sourceTree = "<group>";
@@ -444,7 +444,7 @@
 				F794C32A28ED6689003E49A3 /* SceneDIContainer.swift in Sources */,
 				F794C37128EEDC1E003E49A3 /* ResponseStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* Coordinator.swift in Sources */,
-				F794C34828EEB27E003E49A3 /* QueryViewModel.swift in Sources */,
+				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
@@ -460,7 +460,7 @@
 				F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */,
 				F794C35F28EECC2F003E49A3 /* Endpoins.swift in Sources */,
 				F7FAE2EE28EC7FD5008F811D /* SearchUseCase.swift in Sources */,
-				F794C34628EEB263003E49A3 /* QueryViewController.swift in Sources */,
+				F794C34628EEB263003E49A3 /* HistoryViewController.swift in Sources */,
 				F7FAE2EC28EC7FBC008F811D /* FetchHistoryUseCase.swift in Sources */,
 				F7FAE2E828EC7983008F811D /* APIRequest.swift in Sources */,
 				F794C36628EECE25003E49A3 /* DataResponseDTO + Mapping.swift in Sources */,

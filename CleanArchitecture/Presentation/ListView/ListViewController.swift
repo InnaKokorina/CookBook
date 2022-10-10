@@ -10,11 +10,11 @@ import UIKit
 class ListViewController: UITableViewController  {
     var viewModel: ListViewModel!
     
-    static func create(with viewModel: ListViewModel) -> ListViewController {
-        let view = ListViewController()
-        view.viewModel = viewModel
-        return view
-    }
+//    static func create(with viewModel: ListViewModel) -> ListViewController {
+//        let view = ListViewController()
+//        view.viewModel = viewModel
+//        return view
+//    }
     // MARK: - lifecycle
     
     override func viewDidLoad() {
@@ -37,12 +37,16 @@ class ListViewController: UITableViewController  {
     // MARK: - TableView Delegate, DataSource
 extension ListViewController {
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        200
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        cell.configure()
         return cell
     }
     

@@ -56,16 +56,13 @@ class MainViewController: UIViewController {
         searchBar.text = query
     }
     private func updateQueriesSuggestions() {
-        guard searchBar.isFirstResponder else {
-            viewModel.closeQueriesSuggestions()
-            return
-        }
         viewModel.showHistoryQuerieslist()
     }
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         print(searchText)
         viewModel.showResultsList(query: searchText)
+        viewModel.closeQueriesSuggestions()
     }
     private func showError(_ error: String) {
     //   print(error)
@@ -103,11 +100,10 @@ class MainViewController: UIViewController {
 // MARK: - UISearchBarDelegate
 extension MainViewController: UISearchBarDelegate {
     
-   public func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-       updateQueriesSuggestions()
-       return true
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        updateQueriesSuggestions()
     }
-
+    
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         updateResultsList()
     }

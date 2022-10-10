@@ -23,9 +23,10 @@ final class ListRepository: ListReposioryProtocol {
         let task = RepositoryTask()
         
         // fetch data from DB
-        cache.getResponse(for: requestDTO) { result in
+     //   cache.getResponse(for: requestDTO) { result in
             // fetch from Nettwork
             let endpoint = ApiRequest.getData(with: requestDTO)
+            print(endpoint)
             task.networkTask = self.dataTransferService.request(with: endpoint) {[weak self] result in
                 
                 switch result {
@@ -37,7 +38,7 @@ final class ListRepository: ListReposioryProtocol {
                     completion(.failure(error))
                 }
             }
-        }
+      //  }
         return task
     }
 }

@@ -8,16 +8,41 @@
 import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    static var cellId = "HisoryTableViewCell"
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setConstraints()
+        selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
+    private func setupViews() {
+        contentView.addSubview(titleLabel)
+    }
+    
+    func configure() {
+        titleLabel.text = "История"
+    }
+    
+    private func setConstraints() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            contentView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 0),
+            contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+        ])
+    }
 }

@@ -71,7 +71,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
     
     func makeHistoryViewController() -> UIViewController {
-        return QueryViewController()
+        return HisoryViewController()
     }
     
     
