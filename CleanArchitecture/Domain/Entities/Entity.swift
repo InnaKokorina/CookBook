@@ -8,14 +8,14 @@
 import Foundation
 
 struct Recipe: Equatable {
-    let id: String
+    let id: Int?
     let title: String?
     let posterPath: String?
 }
 
 struct RecipePage: Equatable {
-    let page: Int
-    let totalPages: Int
-    let pecipes: [Recipe]
+//    let page: Int
+//    let totalPages: Int
+    let recipes: [Recipe]
 }
 

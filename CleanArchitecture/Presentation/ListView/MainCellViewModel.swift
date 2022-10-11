@@ -8,13 +8,13 @@
 import Foundation
 
 struct MainCellViewModel { // почему тут структура с расширением, а viewModel - класс?
-    let title: String
-  //  let description: String
+    let title: String?
+    let imagePath: String?
 }
 
 extension MainCellViewModel {
     init(entity: Recipe) {
-        self.title = entity.title ?? ""
-       // self.description = entity.description ?? ""
+        self.title = entity.title
+        self.imagePath = entity.posterPath
     }
 }

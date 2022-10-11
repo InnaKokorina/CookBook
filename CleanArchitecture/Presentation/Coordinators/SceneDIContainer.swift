@@ -9,10 +9,7 @@ import Foundation
 import UIKit
 // как Assambly в MVP?
 final class SceneDIContainer: CoorinatorDependencies {
-    
-    
-    
-    
+  
     lazy var responseCache: ResponseStorageProtocol = ResponseStorage()
     lazy var historyStorage: HistoryListStorageProtocol = HistoryListStorage()
     
@@ -46,7 +43,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     
    // MARK: - make MainViewController and ViewModel
     
-    func makeMainViewModel(actions: MainViewModelActions) -> MainViewModel{
+    func makeMainViewModel(actions: MainViewModelActions) -> MainViewModel {
         return MainViewModel(searchUseCase: makeSearchUseCase(), actions: actions)
     }
  
@@ -56,13 +53,13 @@ final class SceneDIContainer: CoorinatorDependencies {
     
     // MARK: - make ListViewConrtoller and ViewModel
     
-    func makeLisViewModel() {
-        
+    func makeLisViewModel(actions: ListViewModelActions,entity: [Recipe]) -> ListViewModel {
+        return ListViewModel(actions: actions, entity: entity)
     }
     
     
-    func makeListViewConroller(actions: ListViewModelActions) -> UIViewController {
-        return ListViewController()
+    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe]) -> UIViewController {
+        return ListViewController.create(with: makeLisViewModel(actions: actions, entity: entity))
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     

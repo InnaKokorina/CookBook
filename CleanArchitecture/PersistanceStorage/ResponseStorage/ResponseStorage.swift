@@ -8,6 +8,7 @@
 import Foundation
 
 final class ResponseStorage: ResponseStorageProtocol {
+   
     let dataBaseStorage: DataBaseStorage
     
     init(dataBaseStorage: DataBaseStorage = DataBaseStorage.shared) {
@@ -15,12 +16,12 @@ final class ResponseStorage: ResponseStorageProtocol {
     }
 
     
-    func getResponse(for request: DataRequestDTO, completion: @escaping (Result<DataResponseDTO?, Error>) -> Void) {
+    func getResponse(for request: DataRequestDTO, completion: @escaping (Result<[DataResponseDTO]?, Error>) -> Void) {
         // fetch Request from DB
         DataBaseStorage.shared.fetchDBData()
     }
     
-    func save(response: DataResponseDTO, for requestDto: DataRequestDTO) {
+    func save(response: [DataResponseDTO], for requestDto: DataRequestDTO) {
         // save to DB
         DataBaseStorage.shared.saveDataToDB()
     }

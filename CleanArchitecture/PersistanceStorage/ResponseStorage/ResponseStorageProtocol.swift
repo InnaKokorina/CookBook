@@ -8,6 +8,6 @@
 import Foundation
 
 protocol ResponseStorageProtocol {
-    func getResponse(for request: DataRequestDTO, completion: @escaping (Result<DataResponseDTO?, Error>) -> Void)
-    func save(response: DataResponseDTO, for requestDto: DataRequestDTO)
+    func getResponse(for request: DataRequestDTO, completion: @escaping (Result<[DataResponseDTO]?, Error>) -> Void)
+    func save(response: [DataResponseDTO], for requestDto: DataRequestDTO)
 }

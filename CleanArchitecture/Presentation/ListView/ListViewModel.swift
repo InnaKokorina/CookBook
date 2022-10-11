@@ -26,7 +26,7 @@ protocol ListViewModelProtocol: ListViewModelInput, ListViewModelOutput { }
 final class ListViewModel: ListViewModelProtocol  {
     
     private let actions: ListViewModelActions?
-    private let entity = [Recipe]()
+    let entity: [Recipe]
     
     // MARK: - output
     var items: Observable<[MainCellViewModel]> = Observable(value: [])
@@ -38,7 +38,14 @@ final class ListViewModel: ListViewModelProtocol  {
     }
     
     // MARK: - init
-    init(actions: ListViewModelActions) {
+    init(actions: ListViewModelActions, entity: [Recipe]) {
         self.actions = actions
+        self.entity = entity
+        append(entity)
+    }
+    
+    private func append(_ recipe: [Recipe]) {
+        items.value.removeAll()
+        items.value = recipe.map(MainCellViewModel.init)
     }
 }

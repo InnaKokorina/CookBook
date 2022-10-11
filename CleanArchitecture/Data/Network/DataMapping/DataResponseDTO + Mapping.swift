@@ -10,9 +10,9 @@ import UIKit
 
 //DTO for API Request
 struct DataResponseDTO: Decodable {
-    let id: String
-    let title: String
-    let imageURL: String
+    let id: Int?
+    let title: String?
+    let imageURL: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -26,6 +26,12 @@ struct ResultResponseDTO: Decodable {
 }
 
 // MARK: - maping to Domain
+extension ResultResponseDTO {
+    func toDomain() -> RecipePage {
+        return .init (recipes: results.map { $0.toDomain()})
+    }
+}
+
 extension DataResponseDTO {
     func toDomain() -> Recipe {
         return .init(id: id, title: title, posterPath: imageURL)

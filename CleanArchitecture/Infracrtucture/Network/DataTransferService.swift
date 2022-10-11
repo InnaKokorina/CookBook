@@ -61,7 +61,8 @@ extension DefaultDataTransferService: DataTransferService {
             switch result {
             case .success(let data):
                 let result: Result<T, DataTransferError> = self.decode(data: data, decoder: endpoint.responseDecoder)
-                DispatchQueue.main.async { return completion(result) }
+                DispatchQueue.main.async {
+                    return completion(result) }
             case .failure(let error):
                 self.errorLogger.log(error: error)
                 let error = self.resolve(networkError: error)

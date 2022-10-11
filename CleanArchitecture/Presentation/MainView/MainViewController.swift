@@ -56,14 +56,15 @@ class MainViewController: UIViewController {
         searchBar.text = query
     }
     private func updateQueriesSuggestions() {
+        viewModel.closeResultsList()
         viewModel.showHistoryQuerieslist()
     }
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        print(searchText)
         viewModel.showResultsList(query: searchText)
         viewModel.closeQueriesSuggestions()
     }
+    
     private func showError(_ error: String) {
     //   print(error)
     }

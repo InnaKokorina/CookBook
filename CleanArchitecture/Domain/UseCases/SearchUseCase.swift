@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SearchUseCaseExecute {
-    func execute(request: SearchUseCaseRequestValue, completion: @escaping (Result<Recipe, Error>) -> Void) -> Cancellable?
+    func execute(request: SearchUseCaseRequestValue, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable?
 }
 
 // MARK: - searchUseCase
@@ -23,10 +23,10 @@ final class SearchUseCase: SearchUseCaseExecute {
     }
     
     // MARK: - execute from reposiories
-    func execute(request: SearchUseCaseRequestValue, completion: @escaping (Result<Recipe, Error>) -> Void) -> Cancellable? {
+    func execute(request: SearchUseCaseRequestValue, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable? {
         // fetch from repository
         return reposiories.fetchRepository(request: request.query, completion: { result in
-            
+            print(result)
             if case .success = result {
                 self.historyReposiotry.saveHistoryQuery(query: request.query) { _ in }
             }

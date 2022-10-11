@@ -11,7 +11,7 @@ import UIKit
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
     func makeHistoryViewController() -> UIViewController
-    func makeListViewConroller(actions: ListViewModelActions) -> UIViewController
+    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe]) -> UIViewController
     func makeDetailViewController(entity: Recipe) -> UIViewController
 }
 
@@ -40,12 +40,12 @@ final class Coordinator {
     }
     
     // MARK: - showListViewController()
-    func makeListViewConroller() {
+    func makeListViewConroller(entity: [Recipe]) {
         guard let container = mainViewController?.resultsListContainer,
             let mainViewController = mainViewController,
                 listViewController == nil  else { return }
         let actions = ListViewModelActions(showDetails: showDetailViewController)
-        let vc = dependencies.makeListViewConroller(actions: actions)
+        let vc = dependencies.makeListViewConroller(actions: actions, entity: entity)
         listViewController = vc
         mainViewController.add(child: vc, container: container)
         mainViewController.resultsListContainer.isHidden = false
@@ -74,8 +74,7 @@ final class Coordinator {
         mainViewController?.historyLisConainer.isHidden = true
       //  moviesListVC?.suggestionsListContainer.isHidden = true // ??
     }
-    
-    // не обязательно
+
     private func closeListViewConroller() {
         listViewController?.remove()
         listViewController = nil

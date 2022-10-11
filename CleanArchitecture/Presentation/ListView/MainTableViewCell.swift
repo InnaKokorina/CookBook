@@ -11,6 +11,7 @@ class MainTableViewCell: UITableViewCell {
     static var cellId = "TableViewCell"
     
     private var viewModel: MainCellViewModel!
+    
     private let recipeImage: UIImageView = {
             let image = UIImageView()
             image.contentMode = .scaleAspectFill
@@ -41,12 +42,10 @@ class MainTableViewCell: UITableViewCell {
         contentView.addSubview(stackView)
         stackView.axis = .horizontal
         stackView.spacing = 8
-        titleLabel.backgroundColor = .green
-        recipeImage.backgroundColor = .blue
     }
     
-    func configure() {
-        titleLabel.text = "Рецепт"
+    func configure(with viewModel: MainCellViewModel) {
+        titleLabel.text = viewModel.title ?? "" // viewModel == nil
         recipeImage.image = UIImage(named: "cart")
     }
     override func prepareForReuse() {
