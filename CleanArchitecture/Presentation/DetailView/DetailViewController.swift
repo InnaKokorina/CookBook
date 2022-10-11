@@ -26,11 +26,8 @@ class DetailViewController: UIViewController {
     // MARK: - private
     
     private func bind(to: DetailViewModel) {
-        //?
     }
     
     private func setupViews() {
-        // tableView = UITableView()
-        //setupConstraintrs()
     }
 }

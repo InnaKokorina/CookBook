@@ -40,6 +40,8 @@
 		F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */; };
 		F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */; };
 		F794C37F28EEFF39003E49A3 /* DataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */; };
+		F79EBB4728F585F500C5664B /* ImagesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */; };
+		F79EBB4928F5862F00C5664B /* ImagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EBB4828F5862F00C5664B /* ImagesRepository.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
@@ -85,6 +87,8 @@
 		F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorage.swift; sourceTree = "<group>"; };
 		F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorageProtocol.swift; sourceTree = "<group>"; };
 		F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseStorage.swift; sourceTree = "<group>"; };
+		F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F79EBB4828F5862F00C5664B /* ImagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRepository.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +183,7 @@
 			children = (
 				F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */,
 				F794C37728EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift */,
+				F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			children = (
 				F794C35628EEC536003E49A3 /* ListRepository.swift */,
 				F794C37528EEFA57003E49A3 /* HistoryListRepository.swift */,
+				F79EBB4828F5862F00C5664B /* ImagesRepository.swift */,
 				F794C36728EED73F003E49A3 /* Utils */,
 			);
 			path = Reposiories;
@@ -471,6 +477,8 @@
 				F794C34028ED8A42003E49A3 /* AppDIContainer.swift in Sources */,
 				F7FAE2EA28EC7A90008F811D /* Entity.swift in Sources */,
 				F794C36928EED75C003E49A3 /* RepositoryTask.swift in Sources */,
+				F79EBB4728F585F500C5664B /* ImagesRepositoryProtocol.swift in Sources */,
+				F79EBB4928F5862F00C5664B /* ImagesRepository.swift in Sources */,
 				F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,

@@ -17,9 +17,15 @@ final class AppDIContainer {
         return DefaultDataTransferService(with: apiDataNetwork)
     }()
     
+    lazy var imageDataTransferService: DataTransferService = {
+        let config = ApiDataNetworkConfig(baseURL: URL(string: "https://spoonacular.com")!)
+        let imagesDataNetwork = DefaultNetworkService(config: config)
+        return DefaultDataTransferService(with: imagesDataNetwork)
+    }()
+    
     // MARK: - Scenes
     func makeSceneDIContainer() -> SceneDIContainer {
-        let dependenciens = SceneDIContainer.Dependencies(dataTransferService: apiDataTransferService)
+        let dependenciens = SceneDIContainer.Dependencies(dataTransferService: apiDataTransferService, imageDataTransferService: imageDataTransferService)
         return SceneDIContainer(dependencies: dependenciens)
     }
 }

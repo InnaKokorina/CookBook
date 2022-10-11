@@ -15,6 +15,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     
     struct Dependencies {
         let dataTransferService: DataTransferService
+        let imageDataTransferService: DataTransferService
     }
     let dependencies: Dependencies
     
@@ -40,6 +41,10 @@ final class SceneDIContainer: CoorinatorDependencies {
     func makeHistoryLisReposiory() -> HistoryListReposioryProtocol {
         return HistoryListRepository(historyStorage: historyStorage)
     }
+    func makeImagesRepository() -> ImagesRepositoryPrototcol {
+        return ImagesRepository(dataTransferService: dependencies.imageDataTransferService)
+    }
+    
     
    // MARK: - make MainViewController and ViewModel
     
@@ -48,7 +53,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
  
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController {
-        return MainViewController.create(with: makeMainViewModel(actions: actions))
+        return MainViewController.create(with: makeMainViewModel(actions: actions), imagesRepository: makeImagesRepository())
     }
     
     // MARK: - make ListViewConrtoller and ViewModel
@@ -58,8 +63,8 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
     
     
-    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe]) -> UIViewController {
-        return ListViewController.create(with: makeLisViewModel(actions: actions, entity: entity))
+    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe], imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController {
+        return ListViewController.create(with: makeLisViewModel(actions: actions, entity: entity), imagesRepository: imagesRepository)
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     

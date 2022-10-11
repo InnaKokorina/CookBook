@@ -8,7 +8,7 @@
 import Foundation
 
 struct MainViewModelActions {
-    let showResultsList: (_ entity: [Recipe]) -> Void
+    let showResultsList: (_ entity: [Recipe], _ imagesRepository: ImagesRepositoryPrototcol?) -> Void
     let showHisoryList: () -> Void
     let closeHisoryList: () -> Void
     let closeListViewConroller: () -> ()
@@ -19,7 +19,6 @@ protocol MainViewModelInput {
 }
 
 protocol MainViewModelOutput {
- //   var items: Observable<[MainCellViewModel]> { get }
     var entity: [Recipe] { get }
     var query: Observable<String> { get }
     var error: Observable<String> { get }
@@ -29,7 +28,6 @@ protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
 
 // MARK: - MainViewModel
 final class MainViewModel: MainViewModelProtocol {
-
     private let actions: MainViewModelActions?
     private let searchUseCase: SearchUseCaseExecute
     
@@ -39,14 +37,14 @@ final class MainViewModel: MainViewModelProtocol {
     }
    
     // MARK: - output
- //   var items: Observable<[MainCellViewModel]> = Observable(value: [])
     var query: Observable<String> = Observable(value: "")
     var error: Observable<String> = Observable(value: "")
     var entity = [Recipe]()
     
     // MARK: - private
     private func update(request: RecipeQuery, completion: @escaping () -> ()) {
-        let loadTask = searchUseCase.execute(request: .init(query: request)) { [weak self] result in
+        
+        _ = searchUseCase.execute(request: .init(query: request)) { [weak self] result in
             switch result {
             case .success(let results):
                 self?.transferToList(results)
@@ -62,9 +60,9 @@ final class MainViewModel: MainViewModelProtocol {
     }
       
     // MARK: - input
-    func showResultsList(query: String) {
-        update(request: RecipeQuery(query: query)) {  // [weak self]
-            self.actions?.showResultsList(self.entity)
+    func showResultsList(query: String, imageRepository: ImagesRepositoryPrototcol?) {
+        update(request: RecipeQuery(query: query)) {
+            self.actions?.showResultsList(self.entity, imageRepository)
         }
     }
 

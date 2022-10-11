@@ -11,7 +11,7 @@ import UIKit
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
     func makeHistoryViewController() -> UIViewController
-    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe]) -> UIViewController
+    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe], imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController
     func makeDetailViewController(entity: Recipe) -> UIViewController
 }
 
@@ -40,12 +40,12 @@ final class Coordinator {
     }
     
     // MARK: - showListViewController()
-    func makeListViewConroller(entity: [Recipe]) {
+    func makeListViewConroller(entity: [Recipe], imagesRepository: ImagesRepositoryPrototcol?) {
         guard let container = mainViewController?.resultsListContainer,
             let mainViewController = mainViewController,
                 listViewController == nil  else { return }
         let actions = ListViewModelActions(showDetails: showDetailViewController)
-        let vc = dependencies.makeListViewConroller(actions: actions, entity: entity)
+        let vc = dependencies.makeListViewConroller(actions: actions, entity: entity, imagesRepository: imagesRepository)
         listViewController = vc
         mainViewController.add(child: vc, container: container)
         mainViewController.resultsListContainer.isHidden = false
@@ -72,7 +72,6 @@ final class Coordinator {
         historyListVC?.remove()
         historyListVC = nil
         mainViewController?.historyLisConainer.isHidden = true
-      //  moviesListVC?.suggestionsListContainer.isHidden = true // ??
     }
 
     private func closeListViewConroller() {

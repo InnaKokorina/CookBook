@@ -20,6 +20,7 @@ final class FetchHistoryUseCase: FetchHisoryUseCaseExecute {
         self.historyRepository = historyRepository
         self.completion = completion
     }
+    
     // MARK: - start fetch histories from repository
     func start() {
         historyRepository.fetchHistoryQueries(completion: completion)

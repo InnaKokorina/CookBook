@@ -8,19 +8,19 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    private var viewModel: MainViewModel!
+    
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
     let historyLisConainer = UIView()
-    
+    private var viewModel: MainViewModel!
     private var tableViewController: ListViewController?
- 
-    
+    private var imagesReposiory: ImagesRepositoryPrototcol?
+
     // MARK: - lifecycle
-    static func create(with viewModel: MainViewModel) -> MainViewController {
+    static func create(with viewModel: MainViewModel, imagesRepository: ImagesRepositoryPrototcol) -> MainViewController {
         let view = MainViewController()
         view.viewModel = viewModel
+        view.imagesReposiory = imagesRepository
         return view
     }
 
@@ -32,8 +32,9 @@ class MainViewController: UIViewController {
     
 // MARK: - private
     private func bind(to viewModel: MainViewModel) {
-        
-        viewModel.query.subscribe(on: self) { [weak self] in self?.updateSearchQuery($0) }
+        viewModel.query.subscribe(on: self) { [weak self] in
+            self?.updateSearchQuery($0)
+        }
         viewModel.error.subscribe(on: self) { [weak self] in
             self?.showError($0)
         }
@@ -44,7 +45,7 @@ class MainViewController: UIViewController {
         view.addSubview(resultsListContainer)
         view.addSubview(historyLisConainer)
         view.backgroundColor = .systemGray5
-        searchBar.placeholder = "что хотите приготовить?)"
+        searchBar.placeholder = "введите ингредиент"
         searchBar.delegate = self
         searchBar.returnKeyType = .done
         resultsListContainer.isHidden = true
@@ -61,12 +62,12 @@ class MainViewController: UIViewController {
     }
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        viewModel.showResultsList(query: searchText)
+        viewModel.showResultsList(query: searchText, imageRepository: imagesReposiory)
         viewModel.closeQueriesSuggestions()
     }
     
     private func showError(_ error: String) {
-    //   print(error)
+       print(error)
     }
     
    
@@ -95,7 +96,6 @@ class MainViewController: UIViewController {
             view.trailingAnchor.constraint(equalTo: historyLisConainer.trailingAnchor, constant: 12),
             view.bottomAnchor.constraint(equalTo: historyLisConainer.bottomAnchor, constant: 0)
         ])
-        
     }
 }
 // MARK: - UISearchBarDelegate
@@ -116,6 +116,4 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
-    
-    
 }

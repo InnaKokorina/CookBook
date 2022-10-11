@@ -9,10 +9,12 @@ import UIKit
 
 class ListViewController: UITableViewController  {
     var viewModel: ListViewModel!
+    var imagesRepository: ImagesRepositoryPrototcol?
     
-    static func create(with viewModel: ListViewModel) -> ListViewController {
+    static func create(with viewModel: ListViewModel, imagesRepository: ImagesRepositoryPrototcol?) -> ListViewController {
         let view = ListViewController()
         view.viewModel = viewModel
+        view.imagesRepository = imagesRepository
         return view
     }
     // MARK: - lifecycle
@@ -50,12 +52,8 @@ extension ListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configure(with: viewModel.items.value[indexPath.row])
+        cell.configure(with: viewModel.items.value[indexPath.row], imagesRepository: imagesRepository)
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
 }
 
