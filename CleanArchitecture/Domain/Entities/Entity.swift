@@ -14,8 +14,8 @@ struct Recipe: Equatable {
 }
 
 struct RecipePage: Equatable {
-//    let page: Int
-//    let totalPages: Int
+    let offset: Int
+    let totalResults: Int
     let recipes: [Recipe]
 }
 

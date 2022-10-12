@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-//DTO for API Request
 struct DataResponseDTO: Decodable {
     let id: Int?
     let title: String?
@@ -20,15 +19,17 @@ struct DataResponseDTO: Decodable {
         case imageURL = "image"
     }
 }
-// а нужна ли структура с результатами?
+
 struct ResultResponseDTO: Decodable {
     let results: [DataResponseDTO]
+    let offset: Int
+    let totalResults: Int
 }
 
 // MARK: - maping to Domain
 extension ResultResponseDTO {
     func toDomain() -> RecipePage {
-        return .init (recipes: results.map { $0.toDomain()})
+        return .init (offset: offset, totalResults: totalResults, recipes: results.map { $0.toDomain()})
     }
 }
 

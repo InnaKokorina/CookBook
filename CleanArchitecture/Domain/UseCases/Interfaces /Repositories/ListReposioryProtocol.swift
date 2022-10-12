@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ListReposioryProtocol {
-    func fetchRepository(request: RecipeQuery, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable
+    func fetchRepository(request: RecipeQuery, offset: Int, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable
 }

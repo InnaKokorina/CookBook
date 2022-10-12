@@ -11,7 +11,7 @@ import UIKit
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
     func makeHistoryViewController() -> UIViewController
-    func makeListViewConroller(actions: ListViewModelActions, entity: [Recipe], imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController
+    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController
     func makeDetailViewController(entity: Recipe) -> UIViewController
 }
 
@@ -22,6 +22,7 @@ final class Coordinator {
     private weak var historyListVC: UIViewController?
     private var mainViewController: MainViewController?
     private weak var listViewController: UIViewController?
+    private var actions: MainViewModelActions?
     
     init(navigationController: UINavigationController, dependencies: CoorinatorDependencies) {
         self.navigationController = navigationController
@@ -30,22 +31,24 @@ final class Coordinator {
     
     // MARK: - showMainViewController
     func showMainViewController() {
-        let actions = MainViewModelActions(showResultsList: makeListViewConroller,
+        actions = MainViewModelActions(showResultsList: makeListViewConroller,
                                            showHisoryList: makeHistoryViewController,
                                            closeHisoryList: closeHistoryViewController,
-                                           closeListViewConroller: closeListViewConroller)
+                                           closeListViewConroller: closeListViewConroller,
+                                           showDetails: showDetailViewController)
+        guard let actions = actions else { return }
         let vc = dependencies.makeMainViewController(actions: actions)
         mainViewController = vc
         navigationController?.pushViewController(vc, animated: false)
     }
     
     // MARK: - showListViewController()
-    func makeListViewConroller(entity: [Recipe], imagesRepository: ImagesRepositoryPrototcol?) {
+    func makeListViewConroller(viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) {
         guard let container = mainViewController?.resultsListContainer,
             let mainViewController = mainViewController,
-                listViewController == nil  else { return }
-        let actions = ListViewModelActions(showDetails: showDetailViewController)
-        let vc = dependencies.makeListViewConroller(actions: actions, entity: entity, imagesRepository: imagesRepository)
+                listViewController == nil,
+            let actions = actions else { return }
+        let vc = dependencies.makeListViewConroller(actions: actions, viewModel: viewModel, imagesRepository: imagesRepository)
         listViewController = vc
         mainViewController.add(child: vc, container: container)
         mainViewController.resultsListContainer.isHidden = false

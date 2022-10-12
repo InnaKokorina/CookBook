@@ -14,7 +14,7 @@ final class DataBaseStorage {
     // MARK: - fetch queries from UserDefaults
     func fetchDBData()  -> [DataRequestDTO] {
         if let savedQueries = defaults.stringArray(forKey: "query") {
-            return savedQueries.map { DataRequestDTO(query: $0)}
+            return savedQueries.map { DataRequestDTO(query: $0, offset: 0)}
         } else {
             return []
         }

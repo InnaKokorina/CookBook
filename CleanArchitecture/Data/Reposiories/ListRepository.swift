@@ -17,8 +17,8 @@ final class ListRepository: ListReposioryProtocol {
         self.cache = cache
     }
     // MARK: - fetch data from cache or Network
-    func fetchRepository(request: RecipeQuery, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable {
-                let requestDTO = DataRequestDTO(query: request.query)
+    func fetchRepository(request: RecipeQuery, offset: Int, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable {
+                let requestDTO = DataRequestDTO(query: request.query, offset: offset)
         let task = RepositoryTask()
         
         // fetch data from DB

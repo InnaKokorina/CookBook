@@ -8,10 +8,10 @@
 import UIKit
 
 class ListViewController: UITableViewController  {
-    var viewModel: ListViewModel!
+    var viewModel: MainViewModelProtocol!
     var imagesRepository: ImagesRepositoryPrototcol?
     
-    static func create(with viewModel: ListViewModel, imagesRepository: ImagesRepositoryPrototcol?) -> ListViewController {
+    static func create(with viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> ListViewController {
         let view = ListViewController()
         view.viewModel = viewModel
         view.imagesRepository = imagesRepository
@@ -31,7 +31,7 @@ class ListViewController: UITableViewController  {
         tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.cellId)
     }
     
-    private func bind(to: ListViewModel) {
+    private func bind(to: MainViewModelProtocol) {
                 viewModel.items.subscribe(on: self) { [weak self] _ in
                     self?.updateItems()
                 }
@@ -53,6 +53,9 @@ extension ListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
         cell.configure(with: viewModel.items.value[indexPath.row], imagesRepository: imagesRepository)
+        if indexPath.row == viewModel.items.value.count - 1 {
+            viewModel.didLoadNextPage()
+        }
         return cell
     }
 }
