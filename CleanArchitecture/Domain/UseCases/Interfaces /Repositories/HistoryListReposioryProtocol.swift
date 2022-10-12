@@ -9,6 +9,6 @@ import Foundation
 
 protocol HistoryListReposioryProtocol {
     func fetchHistoryQueries(completion: @escaping (Result<[RecipeQuery], Error>) -> Void)
-    func saveHistoryQuery(query: RecipeQuery, completion: @escaping (Result<RecipeQuery, Error>) -> Void)
+    func saveHistoryQuery(query: RecipeQuery)
 }
 

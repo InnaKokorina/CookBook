@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(navigationController: navigationController, appDIContainer: appDIContainer)
         appCoordinator?.start()
         window?.makeKeyAndVisible()
+        
+        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
         return true
     }
 

@@ -10,3 +10,11 @@ import Foundation
 struct DataRequestDTO: Encodable {
     let query: String
 }
+
+extension DataRequestDTO {
+    func toDomain() -> RecipeQuery {
+        return .init (query: query)
+    }
+}
+
+

@@ -14,13 +14,13 @@ final class HistoryListStorage: HistoryListStorageProtocol {
         self.dataBaseStorage = dataBaseStorage
     }
     
-    func fetchHistoryQueries(completion: @escaping (Result<[RecipeQuery], Error>) -> Void) {
-        // fetch Request from DB
-        dataBaseStorage.fetchDBData()
+    func fetchHistoryQueries(completion: @escaping (Result<[DataRequestDTO], Error>) -> Void) {
+      let data = dataBaseStorage.fetchDBData()
+        
+        completion(.success(data))
     }
     
-    func saveHistoryQuery(query: RecipeQuery, completion: @escaping (Result<RecipeQuery, Error>) -> Void) {
-        // save to DB
-        dataBaseStorage.saveDataToDB()
+    func saveHistoryQuery(query: DataRequestDTO) {
+        dataBaseStorage.saveDataToDB(newQuery: query)
     }
 }

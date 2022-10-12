@@ -8,21 +8,19 @@
 import Foundation
 
 protocol FetchHisoryUseCaseExecute {
-    func start()
+    func start(completion:  @escaping (Result<[RecipeQuery], Error>) -> Void) 
 }
 
 final class FetchHistoryUseCase: FetchHisoryUseCaseExecute {
-    
+   
     private let historyRepository: HistoryListReposioryProtocol
-    private let completion: (Result<[RecipeQuery], Error>) -> Void
     
-    init(historyRepository: HistoryListReposioryProtocol, completion: @escaping (Result<[RecipeQuery], Error>) -> Void) {
+    init(historyRepository: HistoryListReposioryProtocol) {
         self.historyRepository = historyRepository
-        self.completion = completion
     }
     
     // MARK: - start fetch histories from repository
-    func start() {
+    func start(completion:  @escaping (Result<[RecipeQuery], Error>) -> Void) {
         historyRepository.fetchHistoryQueries(completion: completion)
     }
 }

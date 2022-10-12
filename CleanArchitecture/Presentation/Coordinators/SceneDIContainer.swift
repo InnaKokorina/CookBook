@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-// как Assambly в MVP?
+
 final class SceneDIContainer: CoorinatorDependencies {
   
     lazy var responseCache: ResponseStorageProtocol = ResponseStorage()
@@ -29,8 +29,8 @@ final class SceneDIContainer: CoorinatorDependencies {
         return SearchUseCase(reposiories: makeListReposiories(), historyReposiory: makeHistoryLisReposiory())
     }
     
-    func makeFetchHisoryUseCase(completion: @escaping (Result<[RecipeQuery], Error>) -> Void) -> FetchHistoryUseCase {
-        return FetchHistoryUseCase(historyRepository: makeHistoryLisReposiory(), completion: completion)
+    private func makeFetchHisoryUseCase() -> FetchHisoryUseCaseExecute {
+        return FetchHistoryUseCase(historyRepository: makeHistoryLisReposiory())
     }
     // MARK: - make Reposiories
     
@@ -68,12 +68,12 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     
-    func makeHisoryListViewModel() {
-        
+    func makeHisoryListViewModel() -> HistoryViewModelProtocol{
+        return HistoryViewModel(fetchUseCase: makeFetchHisoryUseCase())
     }
     
     func makeHistoryViewController() -> UIViewController {
-        return HisoryViewController()
+        return HisoryViewController.create(with: makeHisoryListViewModel())
     }
     
     

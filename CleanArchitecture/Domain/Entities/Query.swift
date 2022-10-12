@@ -10,3 +10,9 @@ import Foundation
 struct RecipeQuery {
     let query: String
 }
+
+extension RecipeQuery {
+    func toDTO() -> DataRequestDTO {
+        return .init(query: query)
+    }
+}

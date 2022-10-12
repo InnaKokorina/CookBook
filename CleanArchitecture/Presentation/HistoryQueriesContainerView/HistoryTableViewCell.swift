@@ -10,6 +10,7 @@ import UIKit
 class HistoryTableViewCell: UITableViewCell {
     static var cellId = "HisoryTableViewCell"
     
+    private var viewModel: HistoryCellViewModel!
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -31,8 +32,8 @@ class HistoryTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
     }
     
-    func configure() {
-        titleLabel.text = "История"
+    func configure(with viewModel: HistoryCellViewModel) {
+        titleLabel.text = viewModel.title
     }
     
     private func setConstraints() {

@@ -17,12 +17,17 @@ final class HistoryListRepository: HistoryListReposioryProtocol {
     // MARK: - fetch/save history
     
     func fetchHistoryQueries(completion: @escaping (Result<[RecipeQuery], Error>) -> Void) {
-        return historyStorage.fetchHistoryQueries(completion: completion)
+        return historyStorage.fetchHistoryQueries { result in
+            switch result {
+            case .success(let requestDTO):
+                completion(.success(requestDTO.map {$0.toDomain()}))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
-    func saveHistoryQuery(query: RecipeQuery, completion: @escaping (Result<RecipeQuery, Error>) -> Void) {
-        return historyStorage.saveHistoryQuery(query: query, completion: completion)
-    }
-    
-    
+    func saveHistoryQuery(query: RecipeQuery) {
+        return historyStorage.saveHistoryQuery(query: query.toDTO())
+    } 
 }

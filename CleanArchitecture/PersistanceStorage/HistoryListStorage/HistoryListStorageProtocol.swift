@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HistoryListStorageProtocol {
-    func fetchHistoryQueries(completion: @escaping (Result<[RecipeQuery], Error>) -> Void)
-    func saveHistoryQuery(query: RecipeQuery, completion: @escaping (Result<RecipeQuery, Error>) -> Void)
+    func fetchHistoryQueries(completion: @escaping (Result<[DataRequestDTO], Error>) -> Void)
+    func saveHistoryQuery(query: DataRequestDTO)
 }

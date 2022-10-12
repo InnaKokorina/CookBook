@@ -26,7 +26,7 @@ final class SearchUseCase: SearchUseCaseExecute {
     func execute(request: SearchUseCaseRequestValue, completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable? {
         return reposiories.fetchRepository(request: request.query, completion: { result in
             if case .success = result {
-                self.historyReposiotry.saveHistoryQuery(query: request.query) { _ in }
+                self.historyReposiotry.saveHistoryQuery(query: request.query)
             }
             completion(result)
         })
