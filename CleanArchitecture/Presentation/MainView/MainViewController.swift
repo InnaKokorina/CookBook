@@ -57,19 +57,22 @@ class MainViewController: UIViewController {
         searchBar.text = query
     }
     private func updateQueriesSuggestions() {
-        viewModel.closeResultsList()
+        guard searchBar.isFirstResponder else {
+            viewModel.closeQueriesSuggestions()
+            return
+        }
         viewModel.showHistoryQuerieslist()
     }
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        viewModel.showResultsList(query: searchText, imageRepository: imagesReposiory)
         viewModel.closeQueriesSuggestions()
+        viewModel.showResultsList(query: searchText, imageRepository: imagesReposiory)
+       
     }
     
     private func showError(_ error: String) {
        print(error)
     }
-    
    
     private func setupconstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -108,12 +111,18 @@ extension MainViewController: UISearchBarDelegate {
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         updateResultsList()
     }
-
-    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        updateQueriesSuggestions()
-    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        if searchText.count == 0
+        {
+            viewModel.didCancelSearch()
+            updateQueriesSuggestions()
+        }
+    }
+    
 }

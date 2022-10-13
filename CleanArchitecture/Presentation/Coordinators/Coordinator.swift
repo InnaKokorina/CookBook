@@ -10,7 +10,7 @@ import UIKit
 
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
-    func makeHistoryViewController() -> UIViewController
+    func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction) -> UIViewController
     func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController
     func makeDetailViewController(entity: Recipe) -> UIViewController
 }
@@ -32,8 +32,8 @@ final class Coordinator {
     // MARK: - showMainViewController
     func showMainViewController() {
         actions = MainViewModelActions(showResultsList: makeListViewConroller,
-                                           showHisoryList: makeHistoryViewController,
-                                           closeHisoryList: closeHistoryViewController,
+                                           showHistoryList: makeHistoryViewController,
+                                           closeHistoryList: closeHistoryViewController,
                                            closeListViewConroller: closeListViewConroller,
                                            showDetails: showDetailViewController)
         guard let actions = actions else { return }
@@ -55,11 +55,11 @@ final class Coordinator {
     }
     
     // MARK: - showHistoryViewConroller
-    func makeHistoryViewController() {
+    func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void ) {
         guard let container = mainViewController?.historyLisConainer,
               let mainViewController = mainViewController,
               historyListVC == nil else { return }
-        let vc = dependencies.makeHistoryViewController()
+        let vc = dependencies.makeHistoryViewController(didSelect: didSelect, actions: HistoryViewModelAction(closeHistoryList: closeHistoryViewController))
         historyListVC = vc
         mainViewController.add(child: vc, container: container)
         mainViewController.historyLisConainer.isHidden = false

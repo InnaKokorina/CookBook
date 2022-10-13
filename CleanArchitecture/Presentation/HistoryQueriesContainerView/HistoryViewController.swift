@@ -24,7 +24,6 @@ class HisoryViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         viewModel.viewWillAppear()
     }
 // MARK: - private
@@ -55,6 +54,9 @@ extension HisoryViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // detail
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        viewModel.didSelect(query: viewModel.historyItems.value[indexPath.row])
     }
 }
 

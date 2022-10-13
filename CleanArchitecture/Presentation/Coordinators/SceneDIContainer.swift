@@ -68,12 +68,12 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     
-    func makeHisoryListViewModel() -> HistoryViewModelProtocol{
-        return HistoryViewModel(fetchUseCase: makeFetchHisoryUseCase())
+    func makeHisoryListViewModel(didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction) -> HistoryViewModelProtocol{
+        return HistoryViewModel(fetchUseCase: makeFetchHisoryUseCase(), didSelect: didSelect, actions: actions )
     }
     
-    func makeHistoryViewController() -> UIViewController {
-        return HisoryViewController.create(with: makeHisoryListViewModel())
+    func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction) -> UIViewController {
+        return HisoryViewController.create(with: makeHisoryListViewModel(didSelect: didSelect, actions: actions))
     }
     
     

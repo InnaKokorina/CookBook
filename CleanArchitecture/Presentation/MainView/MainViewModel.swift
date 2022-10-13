@@ -9,8 +9,8 @@ import Foundation
 
 struct MainViewModelActions {
     let showResultsList: (_ viewModel: MainViewModelProtocol, _ imagesRepository: ImagesRepositoryPrototcol?) -> Void
-    let showHisoryList: () -> Void
-    let closeHisoryList: () -> Void
+    let showHistoryList: (_ didSelect: @escaping (RecipeQuery) -> Void) -> Void
+    let closeHistoryList: () -> Void
     let closeListViewConroller: () -> ()
     let showDetails: (Recipe) -> Void
 }
@@ -19,6 +19,7 @@ protocol MainViewModelInput {
     func closeQueriesSuggestions()
     func didSelectItem(at index: Int)
     func didLoadNextPage()
+    func didCancelSearch()
 }
 
 protocol MainViewModelOutput {
@@ -35,14 +36,16 @@ final class MainViewModel: MainViewModelProtocol {
     
     private let actions: MainViewModelActions?
     private let searchUseCase: SearchUseCaseExecute
+    private var imageRepository: ImagesRepositoryPrototcol?
     
     var currentOffset: Int = 0
     var totalCount: Int = 1
     var hasMorePages: Bool { currentOffset < totalCount }
-    var nextOffset: Int { hasMorePages ? currentOffset + 50 : currentOffset }
+    var nextOffset: Int { hasMorePages ? currentOffset + 10 : currentOffset }
 
     private var pages: [RecipePage] = []
-    
+    private var moviesLoadTask: Cancellable? { willSet { moviesLoadTask?.cancel() } }
+        
     init(searchUseCase: SearchUseCaseExecute, actions: MainViewModelActions) {
         self.actions = actions
         self.searchUseCase = searchUseCase
@@ -55,8 +58,9 @@ final class MainViewModel: MainViewModelProtocol {
     var entity = [Recipe]()
     
     // MARK: - private
-    private func update(request: RecipeQuery, completion: @escaping () -> ()) {
-        _ = searchUseCase.execute(request: .init(query: request), offset: nextOffset) { [weak self] result in
+    private func load(request: RecipeQuery, completion: @escaping () -> ()) {
+        query.value = request.query
+        moviesLoadTask = searchUseCase.execute(request: .init(query: request), offset: nextOffset) { [weak self] result in
             switch result {
             case .success(let results):
                 self?.transferToList(results)
@@ -79,9 +83,7 @@ final class MainViewModel: MainViewModelProtocol {
         pages = pages
             .filter { $0.offset != recipePage.offset }
             + [recipePage]
-print(pages)
         items.value = pages.recipes.map(MainCellViewModel.init)
-        print(items.value.count)
     }
     private func resetPages() {
         currentOffset = 0
@@ -89,32 +91,38 @@ print(pages)
         pages.removeAll()
         items.value.removeAll()
     }
-      
+    private func update(query: RecipeQuery) {
+        resetPages()
+        load(request: query) {
+            self.actions?.showResultsList(self, self.imageRepository)
+        }
+    }
+    
     // MARK: - input
     func showResultsList(query: String, imageRepository: ImagesRepositoryPrototcol?) {
-        resetPages()
-        update(request: RecipeQuery(query: query, offset: nextOffset)) {
-            self.actions?.showResultsList(self, imageRepository)
-        }
+        guard !query.isEmpty else { return }
+        self.imageRepository = imageRepository
+        update(query: RecipeQuery(query: query, offset: nextOffset))
     }
     func closeResultsList() {
         actions?.closeListViewConroller()
     }
     func showHistoryQuerieslist() {
-        actions?.showHisoryList()
+        actions?.showHistoryList(update(query: ))
     }
     func closeQueriesSuggestions() {
-        actions?.closeHisoryList()
+        actions?.closeHistoryList()
     }
     func didSelectItem(at index: Int) {
         actions?.showDetails(entity[index])
     }
     func didLoadNextPage() {
         guard hasMorePages else { return }
-        print(nextOffset)
-        update(request: .init(query: query.value, offset: nextOffset)) {
-          // nothing
+        load(request: .init(query: query.value, offset: nextOffset)) {
         }
+    }
+    func didCancelSearch() {
+        moviesLoadTask?.cancel()
     }
 }
 // MARK: - Private

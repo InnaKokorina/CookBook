@@ -7,8 +7,13 @@
 
 import Foundation
 
+struct HistoryViewModelAction {
+    let closeHistoryList: () -> Void
+}
+
 protocol HistoryViewModelInput {
     func viewWillAppear()
+    func didSelect(query: HistoryCellViewModel)
 }
 
 protocol HistoryViewModelOutput {
@@ -22,9 +27,13 @@ final class  HistoryViewModel: HistoryViewModelProtocol {
     var historyItems: Observable<[HistoryCellViewModel]> = Observable(value: [])
     var error: Observable<String> = Observable(value: "")
     private let fetchUseCase: FetchHisoryUseCaseExecute
+    private let didSelect: (RecipeQuery) -> Void
+    private let actions: HistoryViewModelAction?
     
-    init(fetchUseCase:FetchHisoryUseCaseExecute) {
+    init(fetchUseCase:FetchHisoryUseCaseExecute, didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction?) {
         self.fetchUseCase = fetchUseCase
+        self.didSelect = didSelect
+        self.actions = actions
     }
 
     private func updateQueries() {
@@ -42,5 +51,10 @@ final class  HistoryViewModel: HistoryViewModelProtocol {
     // MARK: - input
     func viewWillAppear() {
         updateQueries()
+    }
+    
+    func didSelect(query: HistoryCellViewModel) {
+        didSelect(RecipeQuery(query: query.title ?? "" , offset: 10))
+        actions?.closeHistoryList()
     }
 }
