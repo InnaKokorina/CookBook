@@ -14,7 +14,16 @@ final class DataBaseStorage {
     // MARK: - fetch queries from UserDefaults
     func fetchDBData()  -> [DataRequestDTO] {
         if let savedQueries = defaults.stringArray(forKey: "query") {
-            return savedQueries.map { DataRequestDTO(query: $0, offset: 0)}
+            var orderedSet = [String]()
+            
+            for query in savedQueries {
+                if !orderedSet.contains(query) {
+                    orderedSet.append(query)
+                }
+            }
+            let result = orderedSet.filter { $0 != "" }.map { DataRequestDTO(query: $0, offset: 0)}
+            print(result)
+            return result
         } else {
             return []
         }
@@ -22,8 +31,9 @@ final class DataBaseStorage {
     // MARK: - save queries to UserDefaults
     func saveDataToDB(newQuery: DataRequestDTO) {
         var queries = fetchDBData()
-        queries.append(newQuery)
+        queries.insert(newQuery, at: 0)
         let queriesString = queries.map {$0.query}
+        print(queriesString)
         defaults.set(queriesString, forKey: "query")
     }
 }

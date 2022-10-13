@@ -15,7 +15,7 @@ final class HistoryListStorage: HistoryListStorageProtocol {
     }
     
     func fetchHistoryQueries(completion: @escaping (Result<[DataRequestDTO], Error>) -> Void) {
-      let data = dataBaseStorage.fetchDBData()
+        let data = dataBaseStorage.fetchDBData()
         
         completion(.success(data))
     }
