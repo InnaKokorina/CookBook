@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  CleanArchitecture
+
+  Created by Inna Kokorina on 13.10.2022.
+  
+*/
+"SearchBar.text" = "Введите ингредиент";
+
+// MARK: - networking
+"Network.ApiKey" = "apiKey";
+"Network.ApiKeyNumber" = "575e0e53ebdb4392bdec81321d2672e6";
+"Network.baseURL" = "https://api.spoonacular.com";
+"Network.imageURL" = "https://spoonacular.com";
+"Network.path" = "recipes/complexSearch?";
+"No internet" = "No internet connection";
+"Failed loading" = "Failed loading recipes";
+"Error" = "Error!";

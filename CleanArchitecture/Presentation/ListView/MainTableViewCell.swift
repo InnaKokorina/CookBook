@@ -41,13 +41,6 @@ class MainTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViews() {
-        contentView.addSubview(stackView)
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        stackView.distribution = .equalCentering
-    }
-    
     func configure(with viewModel: MainCellViewModel, imagesRepository: ImagesRepositoryPrototcol?) {
         self.viewModel = viewModel
         self.imagesRepository = imagesRepository
@@ -57,11 +50,19 @@ class MainTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         recipeImage.image = nil
+        titleLabel.text = nil
+    }
+    // MARK: - private
+    private func setupViews() {
+        contentView.addSubview(stackView)
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.distribution = .equalCentering
     }
     
     private func updatePosterImage(width: Int) {
         recipeImage.image = nil
-        guard let posterImagePath = viewModel.imagePath?.deletingPrefix("https://spoonacular.com") else { return }
+        guard let posterImagePath = viewModel.imagePath?.deletingPrefix("Network.imageURL".localized()) else { return }
 
         imageLoadTask = imagesRepository?.fetchImage(with: posterImagePath, width: width) { [weak self] result in
             guard let self = self else { return }

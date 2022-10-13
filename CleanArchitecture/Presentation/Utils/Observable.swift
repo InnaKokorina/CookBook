@@ -11,7 +11,7 @@ public final class Observable<Value> {
     
     struct Observer<Value> {
         weak var observer: AnyObject?
-        let block: (Value) -> Void // event
+        let block: (Value) -> Void
     }
     
     public var value: Value {

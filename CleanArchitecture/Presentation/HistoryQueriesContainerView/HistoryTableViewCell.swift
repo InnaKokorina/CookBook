@@ -40,7 +40,7 @@ class HistoryTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             contentView.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 0),
             contentView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),

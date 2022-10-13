@@ -10,7 +10,7 @@ import Foundation
 final class ApiRequest {
     
     static func getData(with requestDTO: DataRequestDTO) -> Endpoint<ResultResponseDTO> {
-        return Endpoint(path: "recipes/complexSearch?",
+        return Endpoint(path: "Network.path".localized(),
                         method: .get,
                         queryParametersEncodable: requestDTO)
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, Alertable {
     
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
@@ -38,6 +38,9 @@ class MainViewController: UIViewController {
         viewModel.error.subscribe(on: self) { [weak self] in
             self?.showError($0)
         }
+        viewModel.loading.subscribe(on: self) { [weak self] in
+            self?.updateLoading($0)
+        }
     }
     
     private func setupViews() {
@@ -45,7 +48,7 @@ class MainViewController: UIViewController {
         view.addSubview(resultsListContainer)
         view.addSubview(historyLisConainer)
         view.backgroundColor = .systemGray5
-        searchBar.placeholder = "введите ингредиент"
+        searchBar.placeholder = "SearchBar.text".localized()
         searchBar.delegate = self
         searchBar.returnKeyType = .done
         resultsListContainer.isHidden = true
@@ -61,17 +64,31 @@ class MainViewController: UIViewController {
             viewModel.closeQueriesSuggestions()
             return
         }
-        viewModel.showHistoryQuerieslist()
+        viewModel.resetPages()
+        viewModel.showHistoryQuerieslist(with: imagesReposiory)
     }
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        viewModel.closeQueriesSuggestions()
         viewModel.showResultsList(query: searchText, imageRepository: imagesReposiory)
-       
+        viewModel.closeQueriesSuggestions()
     }
     
     private func showError(_ error: String) {
-       print(error)
+        guard !error.isEmpty else { return }
+        showAlert(title: viewModel.errorTitle, message: error)
+    }
+    
+    private func updateLoading(_ loading: MoviesListViewModelLoading?) {
+        resultsListContainer.isHidden = true
+        LoadingView.hide()
+
+        switch loading {
+        case .fullScreen: LoadingView.show()
+        case .nextPage: resultsListContainer.isHidden = false
+        case .none:
+            resultsListContainer.isHidden = viewModel.isEmpty
+        }
+        tableViewController?.updateLoading(loading)
     }
    
     private func setupconstraints() {
@@ -109,6 +126,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        tableViewController?.imagesRepository = imagesReposiory
         updateResultsList()
     }
     
@@ -124,5 +142,4 @@ extension MainViewController: UISearchBarDelegate {
             updateQueriesSuggestions()
         }
     }
-    
 }

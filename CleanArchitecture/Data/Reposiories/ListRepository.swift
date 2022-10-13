@@ -21,9 +21,10 @@ final class ListRepository: ListReposioryProtocol {
                 let requestDTO = DataRequestDTO(query: request.query, offset: offset)
         let task = RepositoryTask()
         
-        // fetch data from DB
+        //No fetch data from DB
      //   cache.getResponse(for: requestDTO) { result in
-            // fetch from Nettwork
+            // Just fetch from Network
+        
             let endpoint = ApiRequest.getData(with: requestDTO)
             task.networkTask = self.dataTransferService.request(with: endpoint) {[weak self] result in
                 

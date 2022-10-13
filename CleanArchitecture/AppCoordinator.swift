@@ -11,7 +11,7 @@ import UIKit
 final class AppCoordinator {
     
     private let navigationController: UINavigationController
-    private let appDIContainer: AppDIContainer // хранит сцены?
+    private let appDIContainer: AppDIContainer 
     
     init(navigationController: UINavigationController, appDIContainer: AppDIContainer) {
         self.navigationController = navigationController

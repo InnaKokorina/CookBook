@@ -56,13 +56,8 @@ final class SceneDIContainer: CoorinatorDependencies {
         return MainViewController.create(with: makeMainViewModel(actions: actions), imagesRepository: makeImagesRepository())
     }
     
-    // MARK: - make ListViewConrtoller and ViewModel
-//
-//    func makeLisViewModel(actions: ListViewModelActions,entity: [Recipe]) -> ListViewModel {
-//        return ListViewModel(actions: actions, entity: entity)
-//    }
-//
-//
+    // MARK: - make ListViewConrtoller
+
     func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController {
         return ListViewController.create(with: viewModel, imagesRepository: imagesRepository)
     }

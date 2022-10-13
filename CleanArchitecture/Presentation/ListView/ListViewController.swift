@@ -11,6 +11,8 @@ class ListViewController: UITableViewController  {
     var viewModel: MainViewModelProtocol!
     var imagesRepository: ImagesRepositoryPrototcol?
     
+    var activityIndicator: UIActivityIndicatorView?
+    
     static func create(with viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> ListViewController {
         let view = ListViewController()
         view.viewModel = viewModel
@@ -24,7 +26,17 @@ class ListViewController: UITableViewController  {
         setupViews()
         bind(to: viewModel)
     }
-
+    func updateLoading(_ loading: MoviesListViewModelLoading?) {
+        switch loading {
+        case .nextPage:
+            activityIndicator?.removeFromSuperview()
+            activityIndicator = makeActivityIndicator(size: .init(width: tableView.frame.width, height: 44))
+            tableView.tableFooterView = activityIndicator
+        case .fullScreen, .none:
+            tableView.tableFooterView = nil
+        }
+    }
+        
     // MARK: - private
     
     private func setupViews() {

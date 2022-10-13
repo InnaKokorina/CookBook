@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */; };
+		F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */; };
+		F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3828F8304700C8CE47 /* LoadingView.swift */; };
+		F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77BBF3A28F838C800C8CE47 /* Localizable.strings */; };
+		F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */; };
+		F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */; };
+		F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */; };
 		F794C32828ED6107003E49A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* Coordinator.swift */; };
 		F794C32A28ED6689003E49A3 /* SceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32928ED6689003E49A3 /* SceneDIContainer.swift */; };
 		F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32B28ED6C9E003E49A3 /* MainViewController.swift */; };
@@ -22,7 +28,6 @@
 		F794C34628EEB263003E49A3 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34528EEB263003E49A3 /* HistoryViewController.swift */; };
 		F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34728EEB27E003E49A3 /* HistoryViewModel.swift */; };
 		F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34A28EEB938003E49A3 /* ListViewController.swift */; };
-		F794C34D28EEB94D003E49A3 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C34C28EEB94D003E49A3 /* ListViewModel.swift */; };
 		F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */; };
 		F794C35428EEBDFB003E49A3 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C35328EEBDFB003E49A3 /* Query.swift */; };
 		F794C35728EEC536003E49A3 /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C35628EEC536003E49A3 /* ListRepository.swift */; };
@@ -56,6 +61,12 @@
 
 /* Begin PBXFileReference section */
 		F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
+		F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionUITableViewController + UIAcivityIndicator.swift"; sourceTree = "<group>"; };
+		F77BBF3828F8304700C8CE47 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F77BBF3A28F838C800C8CE47 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
+		F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
 		F794C32728ED6107003E49A3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F794C32928ED6689003E49A3 /* SceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDIContainer.swift; sourceTree = "<group>"; };
 		F794C32B28ED6C9E003E49A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +81,6 @@
 		F794C34528EEB263003E49A3 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		F794C34728EEB27E003E49A3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		F794C34A28EEB938003E49A3 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		F794C34C28EEB94D003E49A3 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListReposioryProtocol.swift; sourceTree = "<group>"; };
 		F794C35328EEBDFB003E49A3 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		F794C35628EEC536003E49A3 /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
@@ -147,6 +157,9 @@
 			children = (
 				F794C34228EDC268003E49A3 /* Observable.swift */,
 				F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */,
+				F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */,
+				F77BBF3828F8304700C8CE47 /* LoadingView.swift */,
+				F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -165,7 +178,6 @@
 		F794C34928EEB916003E49A3 /* ListView */ = {
 			isa = PBXGroup;
 			children = (
-				F794C34C28EEB94D003E49A3 /* ListViewModel.swift */,
 				F794C34A28EEB938003E49A3 /* ListViewController.swift */,
 				F794C33928ED6F00003E49A3 /* MainCellViewModel.swift */,
 				F794C33B28ED7B93003E49A3 /* MainTableViewCell.swift */,
@@ -242,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				F794C36B28EED797003E49A3 /* Cancellable.swift */,
+				F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */,
+				F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -311,6 +325,7 @@
 				F794C35A28EECB3F003E49A3 /* Infracrtucture */,
 				F794C36A28EED780003E49A3 /* Common */,
 				F7FAE2D428EC7406008F811D /* Assets.xcassets */,
+				F77BBF3A28F838C800C8CE47 /* Localizable.strings */,
 				F7FAE2D628EC7406008F811D /* LaunchScreen.storyboard */,
 				F7FAE2D928EC7406008F811D /* Info.plist */,
 			);
@@ -435,6 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7FAE2D828EC7406008F811D /* LaunchScreen.storyboard in Resources */,
+				F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */,
 				F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,14 +467,15 @@
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
 				F794C37428EEF473003E49A3 /* ResponseStorageProtocol.swift in Sources */,
 				F794C32A28ED6689003E49A3 /* SceneDIContainer.swift in Sources */,
+				F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */,
 				F794C37128EEDC1E003E49A3 /* ResponseStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* Coordinator.swift in Sources */,
+				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
 				F794C33A28ED6F00003E49A3 /* MainCellViewModel.swift in Sources */,
-				F794C34D28EEB94D003E49A3 /* ListViewModel.swift in Sources */,
 				F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */,
 				F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */,
 				F794C37F28EEFF39003E49A3 /* DataBaseStorage.swift in Sources */,
@@ -467,6 +484,7 @@
 				F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */,
 				F794C33C28ED7B93003E49A3 /* MainTableViewCell.swift in Sources */,
 				F794C33628ED6D93003E49A3 /* DetailViewController.swift in Sources */,
+				F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */,
 				F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */,
 				F794C35F28EECC2F003E49A3 /* Endpoins.swift in Sources */,
 				F7FAE2EE28EC7FD5008F811D /* SearchUseCase.swift in Sources */,
@@ -484,6 +502,8 @@
 				F79EBB4728F585F500C5664B /* ImagesRepositoryProtocol.swift in Sources */,
 				F79EBB4928F5862F00C5664B /* ImagesRepository.swift in Sources */,
 				F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */,
+				F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */,
+				F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,
 				F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */,
