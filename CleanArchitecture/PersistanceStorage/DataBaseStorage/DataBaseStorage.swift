@@ -22,7 +22,6 @@ final class DataBaseStorage {
                 }
             }
             let result = orderedSet.filter { $0 != "" }.map { DataRequestDTO(query: $0, offset: 0)}
-            print(result)
             return result
         } else {
             return []
@@ -33,7 +32,6 @@ final class DataBaseStorage {
         var queries = fetchDBData()
         queries.insert(newQuery, at: 0)
         let queriesString = queries.map {$0.query}
-        print(queriesString)
         defaults.set(queriesString, forKey: "query")
     }
 }

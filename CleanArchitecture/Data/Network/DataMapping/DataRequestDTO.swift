@@ -18,4 +18,6 @@ extension DataRequestDTO {
     }
 }
 
-
+struct DetailRequestDTO: Encodable {
+    let recipeId: String
+}

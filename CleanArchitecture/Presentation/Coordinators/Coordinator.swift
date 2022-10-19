@@ -11,8 +11,8 @@ import UIKit
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
     func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction) -> UIViewController
-    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController
-    func makeDetailViewController(entity: Recipe) -> UIViewController
+    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol) -> UIViewController
+    func makeDetailViewController(recipeId: Int) -> UIViewController
 }
 
 final class Coordinator {
@@ -43,12 +43,12 @@ final class Coordinator {
     }
     
     // MARK: - showListViewController()
-    func makeListViewConroller(viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) {
+    func makeListViewConroller(viewModel: MainViewModelProtocol) {
         guard let container = mainViewController?.resultsListContainer,
             let mainViewController = mainViewController,
                 listViewController == nil,
             let actions = actions else { return }
-        let vc = dependencies.makeListViewConroller(actions: actions, viewModel: viewModel, imagesRepository: imagesRepository)
+        let vc = dependencies.makeListViewConroller(actions: actions, viewModel: viewModel)
         listViewController = vc
         mainViewController.add(child: vc, container: container)
         mainViewController.resultsListContainer.isHidden = false
@@ -66,9 +66,9 @@ final class Coordinator {
     }
     
     // MARK: - showDetailViewController
-    private func showDetailViewController(entity: Recipe) { 
-        let vc = dependencies.makeDetailViewController(entity: entity)
-        navigationController?.pushViewController(vc, animated: false)
+    private func showDetailViewController(recipeId: Int) {
+        let vc = dependencies.makeDetailViewController(recipeId: recipeId)
+        navigationController?.present(vc, animated: true)
     }
     // MARK: - closeViewControllers
     private func closeHistoryViewController() {

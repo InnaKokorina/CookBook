@@ -26,6 +26,34 @@ struct ResultResponseDTO: Decodable {
     let totalResults: Int
 }
 
+struct DetailResponseDTO: Decodable {
+    let recipeId: Int
+    let title: String?
+    let imageUrl: String?
+    let extendedIngredients: [ExtendedIngredientsDTO]
+    let dishTypes: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case recipeId = "id"
+        case title
+        case imageUrl = "image"
+        case extendedIngredients
+        case dishTypes
+    }
+}
+
+struct ExtendedIngredientsDTO: Decodable {
+    let ingredientId: Int
+    let inagedientImage: String?
+    let inagedientName: String
+    
+    enum CodingKeys: String, CodingKey {
+        case ingredientId = "id"
+        case inagedientImage = "image"
+        case inagedientName = "name"
+    }
+}
+
 // MARK: - maping to Domain
 extension ResultResponseDTO {
     func toDomain() -> RecipePage {
@@ -35,6 +63,20 @@ extension ResultResponseDTO {
 
 extension DataResponseDTO {
     func toDomain() -> Recipe {
-        return .init(id: id, title: title, posterPath: imageURL)
+        return .init(id: id ?? 0, title: title, posterPath: imageURL)
     }
 }
+
+extension ExtendedIngredientsDTO {
+    func toDomain() -> ExtendedIngredients {
+        return .init(id: ingredientId, image: inagedientImage, name: inagedientName)
+    }
+}
+
+extension DetailResponseDTO {
+    func toDomain() -> DetailRecipes {
+        return .init(id: recipeId, title: title, imageUrl: imageUrl, extendedIngredients: extendedIngredients.map { $0.toDomain() }, dishTypes: dishTypes)
+    }
+}
+
+

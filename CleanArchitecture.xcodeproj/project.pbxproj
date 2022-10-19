@@ -46,6 +46,16 @@
 		F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */; };
 		F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */; };
 		F794C37F28EEFF39003E49A3 /* DataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */; };
+		F79A668B28F9522800D7D9E5 /* DetailRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */; };
+		F79A668D28F95A4700D7D9E5 /* HeaderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */; };
+		F79A668F28F95A7000D7D9E5 /* DishTypesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A668E28F95A7000D7D9E5 /* DishTypesCell.swift */; };
+		F79A669128F95AA200D7D9E5 /* IngredientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669028F95AA100D7D9E5 /* IngredientsCell.swift */; };
+		F79A669528F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */; };
+		F79A669728F95D5F00D7D9E5 /* DishTypesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */; };
+		F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */; };
+		F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */; };
+		F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */; };
+		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
 		F79EBB4728F585F500C5664B /* ImagesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */; };
 		F79EBB4928F5862F00C5664B /* ImagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79EBB4828F5862F00C5664B /* ImagesRepository.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
@@ -99,6 +109,16 @@
 		F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorage.swift; sourceTree = "<group>"; };
 		F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorageProtocol.swift; sourceTree = "<group>"; };
 		F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseStorage.swift; sourceTree = "<group>"; };
+		F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipes.swift; sourceTree = "<group>"; };
+		F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailCell.swift; sourceTree = "<group>"; };
+		F79A668E28F95A7000D7D9E5 /* DishTypesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTypesCell.swift; sourceTree = "<group>"; };
+		F79A669028F95AA100D7D9E5 /* IngredientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCell.swift; sourceTree = "<group>"; };
+		F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailCellViewModel.swift; sourceTree = "<group>"; };
+		F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTypesCellViewModel.swift; sourceTree = "<group>"; };
+		F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCellViewModel.swift; sourceTree = "<group>"; };
+		F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
+		F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailUseCase.swift; sourceTree = "<group>"; };
 		F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F79EBB4828F5862F00C5664B /* ImagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesRepository.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
@@ -146,8 +166,9 @@
 		F794C32E28ED6CE8003E49A3 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				F794C33528ED6D93003E49A3 /* DetailViewController.swift */,
 				F794C33728ED6DB0003E49A3 /* DetailViewModel.swift */,
+				F794C33528ED6D93003E49A3 /* DetailViewController.swift */,
+				F79A669228F95AB700D7D9E5 /* Cells */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -199,6 +220,7 @@
 				F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */,
 				F794C37728EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift */,
 				F79EBB4628F585F500C5664B /* ImagesRepositoryProtocol.swift */,
+				F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -209,6 +231,7 @@
 				F794C35628EEC536003E49A3 /* ListRepository.swift */,
 				F794C37528EEFA57003E49A3 /* HistoryListRepository.swift */,
 				F79EBB4828F5862F00C5664B /* ImagesRepository.swift */,
+				F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */,
 				F794C36728EED73F003E49A3 /* Utils */,
 			);
 			path = Reposiories;
@@ -296,6 +319,27 @@
 			path = HistoryListStorage;
 			sourceTree = "<group>";
 		};
+		F79A669228F95AB700D7D9E5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F79A669328F95D1900D7D9E5 /* ViewModels */,
+				F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */,
+				F79A668E28F95A7000D7D9E5 /* DishTypesCell.swift */,
+				F79A669028F95AA100D7D9E5 /* IngredientsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F79A669328F95D1900D7D9E5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */,
+				F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */,
+				F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		F7FAE2BF28EC73F8008F811D = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +412,7 @@
 			children = (
 				F7FAE2E928EC7A90008F811D /* Entity.swift */,
 				F794C35328EEBDFB003E49A3 /* Query.swift */,
+				F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -377,6 +422,7 @@
 			children = (
 				F7FAE2ED28EC7FD5008F811D /* SearchUseCase.swift */,
 				F7FAE2EB28EC7FBC008F811D /* FetchHistoryUseCase.swift */,
+				F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */,
 				F794C34F28EEBBDB003E49A3 /* Interfaces  */,
 			);
 			path = UseCases;
@@ -473,8 +519,10 @@
 				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
+				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
+				F79A668B28F9522800D7D9E5 /* DetailRecipes.swift in Sources */,
 				F794C33A28ED6F00003E49A3 /* MainCellViewModel.swift in Sources */,
 				F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */,
 				F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */,
@@ -492,22 +540,30 @@
 				F7FAE2EC28EC7FBC008F811D /* FetchHistoryUseCase.swift in Sources */,
 				F7FAE2E828EC7983008F811D /* APIRequest.swift in Sources */,
 				F794C36628EECE25003E49A3 /* DataResponseDTO + Mapping.swift in Sources */,
+				F79A669128F95AA200D7D9E5 /* IngredientsCell.swift in Sources */,
 				F794C36128EECC62003E49A3 /* NetworkConfigulable.swift in Sources */,
 				F794C35728EEC536003E49A3 /* ListRepository.swift in Sources */,
 				F794C35428EEBDFB003E49A3 /* Query.swift in Sources */,
 				F794C35928EECAB1003E49A3 /* DataRequestDTO.swift in Sources */,
 				F794C34028ED8A42003E49A3 /* AppDIContainer.swift in Sources */,
 				F7FAE2EA28EC7A90008F811D /* Entity.swift in Sources */,
+				F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */,
 				F794C36928EED75C003E49A3 /* RepositoryTask.swift in Sources */,
+				F79A669728F95D5F00D7D9E5 /* DishTypesCellViewModel.swift in Sources */,
+				F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */,
 				F79EBB4728F585F500C5664B /* ImagesRepositoryProtocol.swift in Sources */,
 				F79EBB4928F5862F00C5664B /* ImagesRepository.swift in Sources */,
 				F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */,
+				F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */,
 				F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */,
 				F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,
 				F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */,
+				F79A669528F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift in Sources */,
 				F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */,
+				F79A668F28F95A7000D7D9E5 /* DishTypesCell.swift in Sources */,
+				F79A668D28F95A4700D7D9E5 /* HeaderDetailCell.swift in Sources */,
 				F794C37828EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

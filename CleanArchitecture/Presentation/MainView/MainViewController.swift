@@ -12,15 +12,13 @@ class MainViewController: UIViewController, Alertable {
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
     let historyLisConainer = UIView()
-    private var viewModel: MainViewModel!
+    private var viewModel: MainViewModelProtocol!
     private var tableViewController: ListViewController?
-    private var imagesReposiory: ImagesRepositoryPrototcol?
 
     // MARK: - lifecycle
-    static func create(with viewModel: MainViewModel, imagesRepository: ImagesRepositoryPrototcol) -> MainViewController {
+    static func create(with viewModel: MainViewModelProtocol) -> MainViewController {
         let view = MainViewController()
         view.viewModel = viewModel
-        view.imagesReposiory = imagesRepository
         return view
     }
 
@@ -31,7 +29,7 @@ class MainViewController: UIViewController, Alertable {
     }
     
 // MARK: - private
-    private func bind(to viewModel: MainViewModel) {
+    private func bind(to viewModel: MainViewModelProtocol) {
         viewModel.query.subscribe(on: self) { [weak self] in
             self?.updateSearchQuery($0)
         }
@@ -59,17 +57,19 @@ class MainViewController: UIViewController, Alertable {
     private func updateSearchQuery(_ query: String) {
         searchBar.text = query
     }
+    
     private func updateQueriesSuggestions() {
         guard searchBar.isFirstResponder else {
             viewModel.closeQueriesSuggestions()
             return
         }
         viewModel.resetPages()
-        viewModel.showHistoryQuerieslist(with: imagesReposiory)
+        viewModel.showHistoryQuerieslist()
     }
+    
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
-        viewModel.showResultsList(query: searchText, imageRepository: imagesReposiory)
+        viewModel.showResultsList(query: searchText)
         viewModel.closeQueriesSuggestions()
     }
     
@@ -78,7 +78,7 @@ class MainViewController: UIViewController, Alertable {
         showAlert(title: viewModel.errorTitle, message: error)
     }
     
-    private func updateLoading(_ loading: MoviesListViewModelLoading?) {
+    private func updateLoading(_ loading: ListViewModelLoading?) {
         resultsListContainer.isHidden = true
         LoadingView.hide()
 
@@ -126,7 +126,6 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        tableViewController?.imagesRepository = imagesReposiory
         updateResultsList()
     }
     

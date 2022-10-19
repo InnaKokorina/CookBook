@@ -10,12 +10,14 @@ import Foundation
 struct MainCellViewModel {
     let title: String?
     let imagePath: String?
+    let id: Int
 }
 
 extension MainCellViewModel {
     init(entity: Recipe) {
         self.title = entity.title
         self.imagePath = entity.posterPath
+        self.id = entity.id
     }
 }
 
