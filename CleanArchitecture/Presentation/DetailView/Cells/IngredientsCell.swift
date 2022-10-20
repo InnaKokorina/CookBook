@@ -39,11 +39,11 @@ class IngredientsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: IngredientsViewModel, imageRepository: ImagesRepositoryPrototcol?) {
+    func configure(with viewModel: IngredientsViewModel?, imageRepository: ImagesRepositoryPrototcol?) {
         self.viewModel = viewModel
         self.imageRepository = imageRepository
         updateImage()
-        ingredientNameLabel.text = viewModel.ingredientName
+        ingredientNameLabel.text = viewModel?.ingredientName
     }
     // MARK: - private
     private func updateImage() {

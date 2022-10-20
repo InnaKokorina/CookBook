@@ -48,12 +48,12 @@ class HeaderDetailCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: HeaderDetailCellViewModel, imagesRepository: ImagesRepositoryPrototcol?) {
+    func configure(with viewModel: HeaderDetailCellViewModel?, imagesRepository: ImagesRepositoryPrototcol?) {
         stackView.frame = frame
         self.viewModel = viewModel
         self.imagesRepository = imagesRepository
         updateImage()
-        recipeNameLabel.text = viewModel.title
+        recipeNameLabel.text = viewModel?.title
     }
     
     // MARK: - private

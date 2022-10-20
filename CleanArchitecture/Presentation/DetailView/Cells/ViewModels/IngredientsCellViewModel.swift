@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct IngredientsViewModel {
+struct IngredientsViewModel: DetailCellModelProtocol {
     let ingredientImagePath: String?
     let ingredientName: String
 }

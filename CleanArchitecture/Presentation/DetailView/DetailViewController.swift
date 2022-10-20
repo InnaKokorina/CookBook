@@ -31,17 +31,7 @@ class DetailViewController: UIViewController {
 
     // MARK: - private
     private func bind(to: DetailViewModelProtocol) {
-        viewModel.detailHeaderItems.subscribe(on: self) { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.collectionView?.reloadData()
-            }
-        }
-        viewModel.dishTypesItems.subscribe(on: self) { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.collectionView?.reloadData()
-            }
-        }
-        viewModel.ingredientstems.subscribe(on: self) { [weak self] _ in
+        viewModel.dataSource.subscribe(on: self) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.collectionView?.reloadData()
             }
@@ -75,35 +65,29 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  3
+        return  viewModel.dataSource.value.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0 :
-            return viewModel.detailHeaderItems.value.count
-        case 1 :
-            return  viewModel.dishTypesItems.value.count
-        case 2 :
-            return  viewModel.ingredientstems.value.count
-        default: return 0
-        }
+        let sectionItems = viewModel.setSectionItem(sectionIndex: section)
+        return sectionItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch indexPath.section {
-        case 0 :
+        let sectionItems = viewModel.setSectionItem(sectionIndex: indexPath.section)
+      
+        switch sectionItems[indexPath.row] {
+        case is HeaderDetailCellViewModel:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderDetailCell.reuseIdentifier, for: indexPath) as? HeaderDetailCell else { return UICollectionViewCell() }
-            cell.configure(with: viewModel.detailHeaderItems.value[indexPath.item], imagesRepository: imagesRepository)
+            cell.configure(with: sectionItems[indexPath.item] as? HeaderDetailCellViewModel, imagesRepository: imagesRepository)
             return cell
-        case 1:
+        case is DishTypesCellViewModel:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishTypesCell.reuseIdentifier, for: indexPath) as? DishTypesCell else { return UICollectionViewCell() }
-            cell.configure(with: viewModel.dishTypesItems.value[indexPath.item])
+            cell.configure(with: sectionItems[indexPath.item] as? DishTypesCellViewModel)
             return cell
-        case 2:
+        case is IngredientsViewModel:
           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientsCell.reuseIdentifier, for: indexPath) as? IngredientsCell else { return UICollectionViewCell() }
-            cell.configure(with: viewModel.ingredientstems.value[indexPath.item], imageRepository: imagesRepository)
+            cell.configure(with: sectionItems[indexPath.item] as? IngredientsViewModel, imageRepository: imagesRepository)
             return cell
         default:
             return UICollectionViewCell()
@@ -115,13 +99,15 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case 0:
+        let sectionItems = viewModel.setSectionItem(sectionIndex: indexPath.section)
+        
+        switch sectionItems[indexPath.row] {
+        case is HeaderDetailCellViewModel:
             return CGSize(width: view.frame.width, height: view.frame.width/1.5)
-        case 1:
+        case is DishTypesCellViewModel:
             let width = view.frame.width - 16
             return CGSize(width: width, height: 50)
-        case 2:
+        case is IngredientsViewModel:
             return CGSize(width: view.frame.width/2, height: view.frame.width/2)
         default:
             return CGSize(width: view.frame.width, height: view.frame.height)

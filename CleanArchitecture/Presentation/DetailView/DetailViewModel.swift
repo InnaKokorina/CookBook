@@ -7,29 +7,34 @@
 
 import Foundation
 
-protocol DetailViewModelInput { }
+protocol DetailCellModelProtocol {}
+
+protocol DetailViewModelInput {
+    func setSectionItem(sectionIndex: Int) -> [DetailCellModelProtocol]
+}
 
 protocol DetailViewModelOutput {
     var loading: Observable<ListViewModelLoading?> { get }
-    var detailHeaderItems: Observable<[HeaderDetailCellViewModel]> { get }
-    var dishTypesItems: Observable<[DishTypesCellViewModel]> { get }
-    var ingredientstems: Observable<[IngredientsViewModel]> { get }
+    var dataSource: Observable<[DetailSection: [DetailCellModelProtocol]]> { get }
     var error: Observable<String> { get }
 }
 
 protocol DetailViewModelProtocol: DetailViewModelInput, DetailViewModelOutput {}
 
+enum DetailSection: Int, CaseIterable {
+    case header
+    case types
+    case ingredients
+}
+
 final class DetailViewModel: DetailViewModelProtocol {
     private var recipeId: Int
     private let detailUseCase: FetchDetailUseCaseProtocol
-    private var imageRepository: ImagesRepositoryPrototcol?
     private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
-    
+   
    // MARK: - output
     let loading: Observable<ListViewModelLoading?> = Observable(value: .none)
-    var detailHeaderItems: Observable<[HeaderDetailCellViewModel]> = Observable(value: [])
-    var dishTypesItems: Observable<[DishTypesCellViewModel]> = Observable(value: [])
-    var ingredientstems: Observable<[IngredientsViewModel]> = Observable(value: [])
+    var dataSource: Observable<[DetailSection: [DetailCellModelProtocol]]> = Observable(value: [:])
     var error: Observable<String> = Observable(value: "")
   
     init(detailUseCase: FetchDetailUseCaseProtocol, recipeId: Int ) {
@@ -37,7 +42,13 @@ final class DetailViewModel: DetailViewModelProtocol {
         self.recipeId = recipeId
         load(request: recipeId, loading: .fullScreen)
     }
-
+    // MARK: - input
+    func setSectionItem(sectionIndex: Int) -> [DetailCellModelProtocol] {
+        guard let caseSection = DetailSection(rawValue: sectionIndex),
+              let sectionItem = dataSource.value[caseSection] else { return [] }
+        return sectionItem
+    }
+    
    // MARK: - private
     private func load(request: Int, loading: ListViewModelLoading) {
         self.loading.value = loading
@@ -58,8 +69,8 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     private func setSections(results: DetailRecipes) {
-        detailHeaderItems.value = [HeaderDetailCellViewModel(title: results.title, imagePath: results.imageUrl)]
-        dishTypesItems.value = [DishTypesCellViewModel(types: results.dishTypes)]
-        ingredientstems.value = results.extendedIngredients.map { IngredientsViewModel(ingredients: $0) }
+        dataSource.value[.header] = [HeaderDetailCellViewModel(title: results.title, imagePath: results.imageUrl)]
+        dataSource.value[.types] = [DishTypesCellViewModel(types: results.dishTypes)]
+        dataSource.value[.ingredients] = results.extendedIngredients.map { IngredientsViewModel(ingredients: $0) }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HeaderDetailCellViewModel {
+struct HeaderDetailCellViewModel: DetailCellModelProtocol {
     let title: String?
     let imagePath: String?
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DishTypesCellViewModel {
+struct DishTypesCellViewModel: DetailCellModelProtocol {
     let types: [String]?
 }
 
