@@ -67,7 +67,7 @@ class MainTableViewCell: UITableViewCell {
     
     private func updatePosterImage() {
         recipeImage.image = nil
-        guard let posterImagePath = viewModel.imagePath?.deletingPrefix("Network.imageURL".localized()) else { return }
+        guard let posterImagePath = viewModel.imagePath?.deletingPrefix(Constants.imageURL ?? "") else { return }
 
         imageLoadTask = imagesRepository?.fetchImage(with: posterImagePath) { [weak self] result in
             guard let self = self else { return }

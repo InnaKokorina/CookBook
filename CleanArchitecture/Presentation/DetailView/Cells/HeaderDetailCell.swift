@@ -59,7 +59,7 @@ class HeaderDetailCell: UICollectionViewCell {
     // MARK: - private
     private func updateImage() {
         recipeImage.image = nil
-        guard let posterImagePath = viewModel.imagePath?.deletingPrefix("Network.imageURL".localized()) else { return }
+        guard let posterImagePath = viewModel.imagePath?.deletingPrefix(Constants.imageURL ?? "") else { return }
         imageLoadTask = imagesRepository?.fetchImage(with: posterImagePath) { [weak self] result in
             guard let self = self else { return }
             if case let .success(data) = result {

@@ -8,11 +8,7 @@
 "SearchBar.text" = "Введите ингредиент";
 
 // MARK: - networking
-"Network.ApiKey" = "apiKey";
-"Network.ApiKeyNumber" = "aa3344048a3f4311a314f4720ef4750b";
-"Network.baseURL" = "https://api.spoonacular.com";
-"Network.imageURL" = "https://spoonacular.com";
-"Network.path" = "recipes/complexSearch?";
+
 "No internet" = "No internet connection";
 "Failed loading" = "Failed loading recipes";
 "Error" = "Error!";
