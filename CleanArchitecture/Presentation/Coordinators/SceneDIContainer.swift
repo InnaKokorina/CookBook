@@ -32,6 +32,10 @@ final class SceneDIContainer: CoorinatorDependencies {
     private func makeFetchHisoryUseCase() -> FetchHisoryUseCaseExecute {
         return FetchHistoryUseCase(historyRepository: makeHistoryLisReposiory())
     }
+    
+    func makeDetailUseCase() -> FetchDetailUseCaseProtocol {
+        return FetchDetailUseCase(fetchDetailRepository: makeDetailRepository())
+    }
     // MARK: - make Reposiories
     
     func makeListReposiories() -> ListReposioryProtocol {
@@ -45,21 +49,24 @@ final class SceneDIContainer: CoorinatorDependencies {
         return ImagesRepository(dataTransferService: dependencies.imageDataTransferService)
     }
     
+    func makeDetailRepository() -> FetchDetailRepositoryProtocol {
+        return DetailRepository(dataTransferService: dependencies.dataTransferService)
+    }
     
    // MARK: - make MainViewController and ViewModel
     
-    func makeMainViewModel(actions: MainViewModelActions) -> MainViewModel {
+    func makeMainViewModel(actions: MainViewModelActions) -> MainViewModelProtocol {
         return MainViewModel(searchUseCase: makeSearchUseCase(), actions: actions)
     }
  
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController {
-        return MainViewController.create(with: makeMainViewModel(actions: actions), imagesRepository: makeImagesRepository())
+        return MainViewController.create(with: makeMainViewModel(actions: actions))
     }
     
     // MARK: - make ListViewConrtoller
 
-    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> UIViewController {
-        return ListViewController.create(with: viewModel, imagesRepository: imagesRepository)
+    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol) -> UIViewController {
+        return ListViewController.create(with: viewModel, imagesRepository: makeImagesRepository())
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     
@@ -74,12 +81,12 @@ final class SceneDIContainer: CoorinatorDependencies {
     
     // MARK: - make DetailViewConroller and ViewModel
     
-    func makeDetailViewModel(entity: Recipe) -> DetailViewModel {
-        return DetailViewModel(entity: entity)
+    func makeDetailViewModel(recipeId: Int) -> DetailViewModelProtocol {
+        return DetailViewModel(detailUseCase: makeDetailUseCase(), recipeId: recipeId)
     }
     
-    func makeDetailViewController(entity: Recipe) -> UIViewController {
-        return DetailViewController.create(with: makeDetailViewModel(entity: entity))
+    func makeDetailViewController(recipeId: Int) -> UIViewController {
+        return DetailViewController.create(with: makeDetailViewModel(recipeId: recipeId), imagesRepository: makeImagesRepository())
     }
     
     // MARK: - make Coordinator

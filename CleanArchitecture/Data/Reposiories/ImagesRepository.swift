@@ -17,12 +17,21 @@ final class ImagesRepository {
 }
 
 extension ImagesRepository: ImagesRepositoryPrototcol {
-    func fetchImage(with imagePath: String, width: Int, completion: @escaping (Result<Data, Error>) -> Void) -> Cancellable? {
-        
+    func fetchImage(with imagePath: String, completion: @escaping (Result<Data, Error>) -> Void) -> Cancellable? {
         let endpoint = ApiRequest.getImages(path: imagePath)
         let task = RepositoryTask()
+        
         task.networkTask = dataTransferService.request(with: endpoint) { (result: Result<Data, DataTransferError>) in
-
+            let result = result.mapError { $0 as Error }
+            DispatchQueue.main.async { completion(result) }
+        }
+        return task
+    }
+    func fetchIngredientImage(with imagePath: String, completion: @escaping (Result<Data, Error>) -> Void) -> Cancellable? {
+        let endpoint = ApiRequest.getIngredientsImages(with: imagePath)
+        let task = RepositoryTask()
+        
+        task.networkTask = dataTransferService.request(with: endpoint) { (result: Result<Data, DataTransferError>) in
             let result = result.mapError { $0 as Error }
             DispatchQueue.main.async { completion(result) }
         }

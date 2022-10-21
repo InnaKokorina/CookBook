@@ -8,28 +8,31 @@
 import Foundation
 
 struct MainViewModelActions {
-    let showResultsList: (_ viewModel: MainViewModelProtocol, _ imagesRepository: ImagesRepositoryPrototcol?) -> Void
+    let showResultsList: (_ viewModel: MainViewModelProtocol) -> Void
     let showHistoryList: (_ didSelect: @escaping (RecipeQuery) -> Void) -> Void
     let closeHistoryList: () -> Void
     let closeListViewConroller: () -> ()
-    let showDetails: (Recipe) -> Void
+    let showDetails: (_ recipeId: Int) -> Void
 }
 
-enum MoviesListViewModelLoading {
+enum ListViewModelLoading {
     case fullScreen
     case nextPage
 }
 
 protocol MainViewModelInput {
-    func showHistoryQuerieslist(with imagesRepository: ImagesRepositoryPrototcol?)
+    func showResultsList(query: String)
+    func showHistoryQuerieslist()
     func closeQueriesSuggestions()
     func didSelectItem(at index: Int)
     func didLoadNextPage()
     func didCancelSearch()
+    func resetPages()
+    
 }
 
 protocol MainViewModelOutput {
-    var loading: Observable<MoviesListViewModelLoading?> { get }
+    var loading: Observable<ListViewModelLoading?> { get }
     var entity: [Recipe] { get }
     var query: Observable<String> { get }
     var error: Observable<String> { get }
@@ -47,7 +50,7 @@ final class MainViewModel: MainViewModelProtocol {
     private let searchUseCase: SearchUseCaseExecute
     private var imageRepository: ImagesRepositoryPrototcol?
     private var pages: [RecipePage] = []
-    private var moviesLoadTask: Cancellable? { willSet { moviesLoadTask?.cancel() } }
+    private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
     
     var currentOffset: Int = 0
     var totalCount: Int = 1
@@ -61,7 +64,7 @@ final class MainViewModel: MainViewModelProtocol {
    
     // MARK: - output
     var query: Observable<String> = Observable(value: "")
-    let loading: Observable<MoviesListViewModelLoading?> = Observable(value: .none)
+    let loading: Observable<ListViewModelLoading?> = Observable(value: .none)
     var error: Observable<String> = Observable(value: "")
     var items: Observable<[MainCellViewModel]> = Observable(value: [])
     var entity = [Recipe]()
@@ -69,10 +72,10 @@ final class MainViewModel: MainViewModelProtocol {
     let errorTitle = "Error".localized()
     
     // MARK: - private
-    private func load(request: RecipeQuery, loading: MoviesListViewModelLoading, completion: @escaping () -> ()) {
+    private func load(request: RecipeQuery, loading: ListViewModelLoading, completion: @escaping () -> ()) {
         self.loading.value = loading
         query.value = request.query
-        moviesLoadTask = searchUseCase.execute(request: .init(query: request), offset: nextOffset) { [weak self] result in
+        loadTask = searchUseCase.execute(request: .init(query: request), offset: nextOffset) { [weak self] result in
             switch result {
             case .success(let results):
                 self?.transferToList(results)
@@ -88,6 +91,7 @@ final class MainViewModel: MainViewModelProtocol {
         entity = results.recipes
         appendNewOffset(results)
     }
+    
     private func appendNewOffset(_ recipePage: RecipePage) {
         
         currentOffset = recipePage.offset
@@ -102,12 +106,41 @@ final class MainViewModel: MainViewModelProtocol {
     private func update(query: RecipeQuery) {
         resetPages()
         load(request: query, loading: .fullScreen) {
-            self.actions?.showResultsList(self, self.imageRepository)
+           
         }
+        self.actions?.showResultsList(self)
     }
     
     private func handle(error: Error) {
         self.error.value = error.isInternetConnectionError ? "No internet connection".localized() : "Failed loading".localized()
+    }
+
+    // MARK: - input
+    func showResultsList(query: String) {
+        guard !query.isEmpty else { return }
+        update(query: RecipeQuery(query: query, offset: nextOffset))
+    }
+
+    func showHistoryQuerieslist() {
+        actions?.showHistoryList(update(query: ))
+    }
+    
+    func closeQueriesSuggestions() {
+        actions?.closeHistoryList()
+    }
+    
+    func didSelectItem(at index: Int) {
+        actions?.showDetails(items.value[index].id)
+    }
+    
+    func didLoadNextPage() {
+        guard hasMorePages else { return }
+        load(request: .init(query: query.value, offset: nextOffset), loading: .nextPage) {
+        }
+    }
+    
+    func didCancelSearch() {
+        loadTask?.cancel()
     }
     
     func resetPages() {
@@ -115,34 +148,6 @@ final class MainViewModel: MainViewModelProtocol {
         totalCount = 1
         pages.removeAll()
         items.value.removeAll()
-    }
-    
-    // MARK: - input
-    func showResultsList(query: String, imageRepository: ImagesRepositoryPrototcol?) {
-        guard !query.isEmpty else { return }
-        self.imageRepository = imageRepository
-        update(query: RecipeQuery(query: query, offset: nextOffset))
-    }
-    func closeResultsList() {
-        actions?.closeListViewConroller()
-    }
-    func showHistoryQuerieslist(with imagesRepository: ImagesRepositoryPrototcol?) {
-        self.imageRepository = imagesRepository
-        actions?.showHistoryList(update(query: ))
-    }
-    func closeQueriesSuggestions() {
-        actions?.closeHistoryList()
-    }
-    func didSelectItem(at index: Int) {
-        actions?.showDetails(entity[index])
-    }
-    func didLoadNextPage() {
-        guard hasMorePages else { return }
-        load(request: .init(query: query.value, offset: nextOffset), loading: .nextPage) {
-        }
-    }
-    func didCancelSearch() {
-        moviesLoadTask?.cancel()
     }
 }
 // MARK: - extension

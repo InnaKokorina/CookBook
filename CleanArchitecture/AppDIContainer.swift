@@ -11,14 +11,14 @@ final class AppDIContainer {
     
     // MARK: - network
     lazy var apiDataTransferService: DataTransferService = {
-        let config = ApiDataNetworkConfig(baseURL: URL(string: "Network.baseURL".localized())!,
-                                          queryParameters: ["Network.ApiKey".localized(): "Network.ApiKeyNumber".localized()])
+        let config = ApiDataNetworkConfig(baseURL: URL(string: Constants.baseURL ?? "")!,
+                                          queryParameters: [Constants.apiKey ?? "": Constants.apiKeyNumber ?? ""])
         let apiDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: apiDataNetwork)
     }()
     
     lazy var imageDataTransferService: DataTransferService = {
-        let config = ApiDataNetworkConfig(baseURL: URL(string: "Network.imageURL".localized())!)
+        let config = ApiDataNetworkConfig(baseURL: URL(string: Constants.imageURL ?? "")!)
         let imagesDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: imagesDataNetwork)
     }()

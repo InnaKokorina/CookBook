@@ -8,7 +8,7 @@
 import Foundation
 
 struct Recipe: Equatable {
-    let id: Int?
+    let id: Int
     let title: String?
     let posterPath: String?
 }
