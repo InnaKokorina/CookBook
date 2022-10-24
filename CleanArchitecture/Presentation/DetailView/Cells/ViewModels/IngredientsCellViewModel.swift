@@ -10,6 +10,14 @@ import Foundation
 struct IngredientsViewModel: DetailCellModelProtocol {
     let ingredientImagePath: String?
     let ingredientName: String
+    
+    func setFullUrlString() -> String? {
+        guard let imagePath = ingredientImagePath else { return nil }
+        let path = "cdn/ingredients_250x250/\(imagePath)"
+        let baseURL = Constants.imageURL ?? ""
+        let urlString = baseURL + "/" + path
+       return urlString
+    }
 }
 
 extension IngredientsViewModel {

@@ -11,6 +11,13 @@ struct MainCellViewModel {
     let title: String?
     let imagePath: String?
     let id: Int
+    
+    func setFullUrlString() -> String? {
+        guard let path = imagePath?.deletingPrefix(Constants.imageURL ?? "") else  { return nil}
+        let baseURL = Constants.imageURL ?? ""
+        let urlString = baseURL + "/" + path
+       return urlString
+    }
 }
 
 extension MainCellViewModel {

@@ -1,0 +1,9 @@
+//create Staging.xcconfig file with following information:
+
+ACCESS_KEY = your APIKey
+API_KEY = apiKey
+SIMPLE_SLASH = /
+PATH = recipes/complexSearch?
+BASE_URL = https:$(SIMPLE_SLASH)/api.spoonacular.com
+IMAGE_URL = https:$(SIMPLE_SLASH)/spoonacular.com
+
