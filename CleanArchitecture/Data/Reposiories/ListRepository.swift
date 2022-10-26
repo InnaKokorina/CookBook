@@ -9,8 +9,8 @@ import Foundation
 
 final class ListRepository: ListReposioryProtocol {
    
-    private let dataTransferService: DataTransferService
-    private let cache: ResponseStorageProtocol
+    var dataTransferService: DataTransferService?
+    var cache: ResponseStorageProtocol? 
     
     init(dataTransferService: DataTransferService, cache: ResponseStorageProtocol) {
         self.dataTransferService = dataTransferService
@@ -26,12 +26,12 @@ final class ListRepository: ListReposioryProtocol {
             // Just fetch from Network
         
             let endpoint = ApiRequest.getData(with: requestDTO)
-            task.networkTask = self.dataTransferService.request(with: endpoint) {[weak self] result in
+            task.networkTask = self.dataTransferService?.request(with: endpoint) {[weak self] result in
                 
                 switch result {
                 case .success(let responseDTO):
                     // save to DB
-                    self?.cache.save(response: responseDTO.results, for: requestDTO)
+                    self?.cache?.save(response: responseDTO.results, for: requestDTO)
                     completion(.success(responseDTO.toDomain()))
                 case .failure(let error):
                     completion(.failure(error))

@@ -12,15 +12,10 @@ class MainViewController: UIViewController, Alertable {
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
     let historyLisConainer = UIView()
-    private var viewModel: MainViewModelProtocol!
+    var viewModel: MainViewModelProtocol!
     private var tableViewController: ListViewController?
 
     // MARK: - lifecycle
-    static func create(with viewModel: MainViewModelProtocol) -> MainViewController {
-        let view = MainViewController()
-        view.viewModel = viewModel
-        return view
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

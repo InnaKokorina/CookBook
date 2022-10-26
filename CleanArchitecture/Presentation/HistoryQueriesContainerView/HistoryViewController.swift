@@ -7,15 +7,10 @@
 
 import UIKit
 
-class HisoryViewController: UITableViewController {
+class HistoryViewController: UITableViewController {
     
     var viewModel: HistoryViewModelProtocol!
-    
-    static func create(with viewModel: HistoryViewModelProtocol) -> HisoryViewController {
-        let view = HisoryViewController()
-        view.viewModel = viewModel
-        return view
-    }
+
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +32,7 @@ class HisoryViewController: UITableViewController {
     
 }
 // MARK: - TableViewDaaSource and Delegate
-extension HisoryViewController {
+extension HistoryViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }
@@ -52,11 +47,9 @@ extension HisoryViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // detail
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { 
         tableView.deselectRow(at: indexPath, animated: false)
-        viewModel.didSelect(query: viewModel.historyItems.value[indexPath.row])
+        viewModel.didSelectTap(query: viewModel.historyItems.value[indexPath.row])
     }
 }
 

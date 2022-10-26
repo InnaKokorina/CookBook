@@ -9,15 +9,9 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    private var viewModel: DetailViewModelProtocol!
+    var viewModel: DetailViewModelProtocol!
     private var collectionView: UICollectionView?
-    
-    static func create(with viewModel: DetailViewModelProtocol) -> DetailViewController {
-        let view = DetailViewController()
-        view.viewModel = viewModel
-        return view
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(to: viewModel)

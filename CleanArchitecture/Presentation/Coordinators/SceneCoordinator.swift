@@ -1,5 +1,5 @@
 //
-//  Coordinator.swift
+//  SceneCoordinator.swift
 //  CleanArchitecture
 //
 //  Created by Inna Kokorina on 05.10.2022.
@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Swinject
 
 protocol CoorinatorDependencies {
     func makeMainViewController(actions: MainViewModelActions) -> MainViewController
@@ -15,18 +16,19 @@ protocol CoorinatorDependencies {
     func makeDetailViewController(recipeId: Int) -> UIViewController
 }
 
-final class Coordinator {
+final class SceneCoordinator {
     
     private weak var navigationController: UINavigationController?
-    private let dependencies: CoorinatorDependencies
+    // private let dependencies: CoorinatorDependencies
     private weak var historyListVC: UIViewController?
     private var mainViewController: MainViewController?
     private weak var listViewController: UIViewController?
     private var actions: MainViewModelActions?
+    let container: Container
     
-    init(navigationController: UINavigationController, dependencies: CoorinatorDependencies) {
+    init(navigationController: UINavigationController, container: Container) {
         self.navigationController = navigationController
-        self.dependencies = dependencies
+        self.container = container
     }
     
     // MARK: - showMainViewController
@@ -36,38 +38,45 @@ final class Coordinator {
                                            closeHistoryList: closeHistoryViewController,
                                            closeListViewConroller: closeListViewConroller,
                                            showDetails: showDetailViewController)
-        guard let actions = actions else { return }
-        let vc = dependencies.makeMainViewController(actions: actions)
+        
+        
+        guard let actions = actions,
+              let vc = container.resolve(MainViewController.self)
+               else { return }
+        vc.viewModel.actions = actions
         mainViewController = vc
         navigationController?.pushViewController(vc, animated: false)
     }
     
     // MARK: - showListViewController()
     func makeListViewConroller(viewModel: MainViewModelProtocol) {
-        guard let container = mainViewController?.resultsListContainer,
-            let mainViewController = mainViewController,
-                listViewController == nil,
-            let actions = actions else { return }
-        let vc = dependencies.makeListViewConroller(actions: actions, viewModel: viewModel)
+        guard let uiContainer = mainViewController?.resultsListContainer,
+              let mainViewController = mainViewController,
+              listViewController == nil,
+              let vc = container.resolve(ListViewController.self) else { return }
+      //  vc.viewModel.actions = actions
         listViewController = vc
-        mainViewController.add(child: vc, container: container)
+        mainViewController.add(child: vc, container: uiContainer)
         mainViewController.resultsListContainer.isHidden = false
     }
     
     // MARK: - showHistoryViewConroller
     func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void ) {
-        guard let container = mainViewController?.historyLisConainer,
+        guard let uiContainer = mainViewController?.historyLisConainer,
               let mainViewController = mainViewController,
-              historyListVC == nil else { return }
-        let vc = dependencies.makeHistoryViewController(didSelect: didSelect, actions: HistoryViewModelAction(closeHistoryList: closeHistoryViewController))
+              historyListVC == nil,
+              let vc = container.resolve(HistoryViewController.self) else { return }
+        vc.viewModel.didSelect = didSelect
+        vc.viewModel.actions = HistoryViewModelAction(closeHistoryList: closeHistoryViewController)
         historyListVC = vc
-        mainViewController.add(child: vc, container: container)
+        mainViewController.add(child: vc, container: uiContainer)
         mainViewController.historyLisConainer.isHidden = false
     }
     
     // MARK: - showDetailViewController
-    private func showDetailViewController(recipeId: Int) {
-        let vc = dependencies.makeDetailViewController(recipeId: recipeId)
+    private func showDetailViewController(recipeId: Int?) {
+        guard let vc = container.resolve(DetailViewController.self) else { return }
+        vc.viewModel.recipeId = recipeId
         navigationController?.present(vc, animated: true)
     }
     // MARK: - closeViewControllers
