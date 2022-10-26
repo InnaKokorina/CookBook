@@ -7,21 +7,21 @@
 
 import Foundation
 import UIKit
+import Swinject
 
 final class AppCoordinator {
     
     private let navigationController: UINavigationController
-    private let appDIContainer: AppDIContainer 
+    private let container: Container
     
-    init(navigationController: UINavigationController, appDIContainer: AppDIContainer) {
+    init(navigationController: UINavigationController, container: Container) {
         self.navigationController = navigationController
-        self.appDIContainer = appDIContainer
+        self.container = container
     }
     
     // MARK: - start with mainViewController
     func start() {
-        let container = appDIContainer.makeSceneDIContainer()
-        let flow = container.makeCoordinator(navigationController: navigationController)
-        flow.showMainViewController()
+        let coordinator = SceneCoordinator(navigationController: navigationController, container: container)
+        coordinator.showMainViewController()
     }
 }

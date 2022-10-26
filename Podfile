@@ -7,4 +7,6 @@ target 'CleanArchitecture' do
 
   # Pods for CleanArchitecture
 pod 'Kingfisher', '7.1.1'
+pod 'Swinject'
+
 end

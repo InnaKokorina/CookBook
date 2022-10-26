@@ -15,9 +15,9 @@
 		F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */; };
 		F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */; };
 		F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */; };
+		F78BA92E2907ECCF006260D7 /* SwinjectDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */; };
 		F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */; };
-		F794C32828ED6107003E49A3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* Coordinator.swift */; };
-		F794C32A28ED6689003E49A3 /* SceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32928ED6689003E49A3 /* SceneDIContainer.swift */; };
+		F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* SceneCoordinator.swift */; };
 		F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32B28ED6C9E003E49A3 /* MainViewController.swift */; };
 		F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33128ED6D56003E49A3 /* MainViewModel.swift */; };
 		F794C33628ED6D93003E49A3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33528ED6D93003E49A3 /* DetailViewController.swift */; };
@@ -82,9 +82,9 @@
 		F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
+		F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectDiContainer.swift; sourceTree = "<group>"; };
 		F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
-		F794C32728ED6107003E49A3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		F794C32928ED6689003E49A3 /* SceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDIContainer.swift; sourceTree = "<group>"; };
+		F794C32728ED6107003E49A3 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		F794C32B28ED6C9E003E49A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F794C33128ED6D56003E49A3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F794C33528ED6D93003E49A3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 		F794C32628ED60B6003E49A3 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				F794C32728ED6107003E49A3 /* Coordinator.swift */,
-				F794C32928ED6689003E49A3 /* SceneDIContainer.swift */,
+				F794C32728ED6107003E49A3 /* SceneCoordinator.swift */,
+				F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -600,11 +600,10 @@
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
 				F794C37428EEF473003E49A3 /* ResponseStorageProtocol.swift in Sources */,
-				F794C32A28ED6689003E49A3 /* SceneDIContainer.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */,
 				F794C37128EEDC1E003E49A3 /* ResponseStorage.swift in Sources */,
-				F794C32828ED6107003E49A3 /* Coordinator.swift in Sources */,
+				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
 				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
@@ -652,6 +651,7 @@
 				F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */,
 				F79A668F28F95A7000D7D9E5 /* DishTypesCell.swift in Sources */,
 				F79A668D28F95A4700D7D9E5 /* HeaderDetailCell.swift in Sources */,
+				F78BA92E2907ECCF006260D7 /* SwinjectDiContainer.swift in Sources */,
 				F794C37828EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
