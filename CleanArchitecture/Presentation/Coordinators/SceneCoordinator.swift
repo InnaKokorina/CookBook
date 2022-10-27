@@ -9,17 +9,9 @@ import Foundation
 import UIKit
 import Swinject
 
-protocol CoorinatorDependencies {
-    func makeMainViewController(actions: MainViewModelActions) -> MainViewController
-    func makeHistoryViewController(didSelect: @escaping (RecipeQuery) -> Void, actions: HistoryViewModelAction) -> UIViewController
-    func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol) -> UIViewController
-    func makeDetailViewController(recipeId: Int) -> UIViewController
-}
-
 final class SceneCoordinator {
     
     private weak var navigationController: UINavigationController?
-    // private let dependencies: CoorinatorDependencies
     private weak var historyListVC: UIViewController?
     private var mainViewController: MainViewController?
     private weak var listViewController: UIViewController?
@@ -54,7 +46,6 @@ final class SceneCoordinator {
               let mainViewController = mainViewController,
               listViewController == nil,
               let vc = container.resolve(ListViewController.self) else { return }
-      //  vc.viewModel.actions = actions
         listViewController = vc
         mainViewController.add(child: vc, container: uiContainer)
         mainViewController.resultsListContainer.isHidden = false
