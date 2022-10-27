@@ -10,7 +10,14 @@ import Foundation
 struct Recipe: Equatable {
     let id: Int
     let title: String?
-    let posterPath: String?
+    let imagePath: String?
+    
+    var imageURL: URL? {
+        guard let imagePath = imagePath,
+              let pathURL = URL(string: imagePath)
+        else { return nil }
+        return pathURL
+    }
 }
 
 struct RecipePage: Equatable {

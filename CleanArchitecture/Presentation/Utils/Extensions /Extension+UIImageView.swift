@@ -10,8 +10,8 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-    public func updateImage(urlString: String?) {
-        let url = URL(string: urlString ?? "")
+    public func updateImage(url: URL) {
+        let urlString = try? String(contentsOf: url)
         let processor = RoundCornerImageProcessor(cornerRadius: 15)
         let cache = ImageCache(name: urlString ?? "cachekey")
         cache.diskStorage.config.sizeLimit = 30 * 1024 * 1024
@@ -20,7 +20,7 @@ extension UIImageView {
         cache.diskStorage.config.expiration = .seconds(300)
         self.kf.indicatorType = .activity
         KF.url(url)
-            .placeholder(UIImage(named: "cooking")!)
+            .placeholder(UIImage(named: Constants.placeholderImage)!)
             .setProcessor(processor)
             .targetCache(cache)
             .scaleFactor(UIScreen.main.scale)

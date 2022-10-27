@@ -39,7 +39,11 @@ class IngredientsCell: UICollectionViewCell {
     func configure(with viewModel: IngredientsViewModel?) {
         self.viewModel = viewModel
         ingredientNameLabel.text = viewModel?.ingredientName
-        ingredientImage.updateImage(urlString: viewModel?.setFullUrlString())
+        if let imageURL = viewModel?.ingredientImagePath {
+            ingredientImage.updateImage(url: imageURL)
+        } else {
+            ingredientImage.image = UIImage(named: Constants.placeholderImage)
+        }
     }
     // MARK: - private
 

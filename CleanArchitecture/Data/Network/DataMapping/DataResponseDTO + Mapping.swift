@@ -63,7 +63,7 @@ extension ResultResponseDTO {
 
 extension DataResponseDTO {
     func toDomain() -> Recipe {
-        return .init(id: id ?? 0, title: title, posterPath: imageURL)
+        return .init(id: id ?? 0, title: title, imagePath: imageURL)
     }
 }
 
@@ -75,7 +75,7 @@ extension ExtendedIngredientsDTO {
 
 extension DetailResponseDTO {
     func toDomain() -> DetailRecipes {
-        return .init(id: recipeId, title: title, imageUrl: imageUrl, extendedIngredients: extendedIngredients.map { $0.toDomain() }, dishTypes: dishTypes)
+        return .init(id: recipeId, title: title, imageUrlString: imageUrl, extendedIngredients: extendedIngredients.map { $0.toDomain() }, dishTypes: dishTypes)
     }
 }
 

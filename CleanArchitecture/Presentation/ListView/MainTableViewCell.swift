@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftUI
 
 class MainTableViewCell: UITableViewCell {
     static var cellId = "TableViewCell"
@@ -45,7 +46,11 @@ class MainTableViewCell: UITableViewCell {
     func configure(with viewModel: MainCellViewModel) {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title ?? ""
-        recipeImage.updateImage(urlString: viewModel.setFullUrlString())
+        if let imageURL = viewModel.imageURL {
+        recipeImage.updateImage(url: imageURL)
+        } else {
+            recipeImage.image = UIImage(named: Constants.placeholderImage)
+        }
     }
     
     override func prepareForReuse() {
