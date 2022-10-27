@@ -13,4 +13,6 @@ struct Constants {
     static let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String
     static let imageURL = Bundle.main.infoDictionary?["IMAGE_URL"] as? String
     static let path = Bundle.main.infoDictionary?["PATH"] as? String
+    static let ingredientPath = Bundle.main.infoDictionary?["INGREDIENT_PATH"] as? String
+    static let placeholderImage = "cooking"
 }

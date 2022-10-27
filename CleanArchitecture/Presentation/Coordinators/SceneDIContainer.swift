@@ -15,7 +15,6 @@ final class SceneDIContainer: CoorinatorDependencies {
     
     struct Dependencies {
         let dataTransferService: DataTransferService
-        let imageDataTransferService: DataTransferService
     }
     let dependencies: Dependencies
     
@@ -45,9 +44,6 @@ final class SceneDIContainer: CoorinatorDependencies {
     func makeHistoryLisReposiory() -> HistoryListReposioryProtocol {
         return HistoryListRepository(historyStorage: historyStorage)
     }
-    func makeImagesRepository() -> ImagesRepositoryPrototcol {
-        return ImagesRepository(dataTransferService: dependencies.imageDataTransferService)
-    }
     
     func makeDetailRepository() -> FetchDetailRepositoryProtocol {
         return DetailRepository(dataTransferService: dependencies.dataTransferService)
@@ -66,7 +62,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     // MARK: - make ListViewConrtoller
 
     func makeListViewConroller(actions: MainViewModelActions, viewModel: MainViewModelProtocol) -> UIViewController {
-        return ListViewController.create(with: viewModel, imagesRepository: makeImagesRepository())
+        return ListViewController.create(with: viewModel)
     }
     // MARK: - makeHistoryQueriesConroller and ViewModel
     
@@ -86,7 +82,7 @@ final class SceneDIContainer: CoorinatorDependencies {
     }
     
     func makeDetailViewController(recipeId: Int) -> UIViewController {
-        return DetailViewController.create(with: makeDetailViewModel(recipeId: recipeId), imagesRepository: makeImagesRepository())
+        return DetailViewController.create(with: makeDetailViewModel(recipeId: recipeId))
     }
     
     // MARK: - make Coordinator

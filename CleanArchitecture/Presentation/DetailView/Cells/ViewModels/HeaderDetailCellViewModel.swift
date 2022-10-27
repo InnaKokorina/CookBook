@@ -9,11 +9,11 @@ import Foundation
 
 struct HeaderDetailCellViewModel: DetailCellModelProtocol {
     let title: String?
-    let imagePath: String?
+    let imageURL: URL?
 }
 extension HeaderDetailCellViewModel {
     init(entity: DetailRecipes) {
         self.title = entity.title
-        self.imagePath = entity.imageUrl
+        self.imageURL = entity.imageURL
     }
 }

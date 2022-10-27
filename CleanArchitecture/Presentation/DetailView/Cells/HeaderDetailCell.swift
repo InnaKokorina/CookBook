@@ -10,7 +10,6 @@ import UIKit
 class HeaderDetailCell: UICollectionViewCell {
     static let reuseIdentifier = "HeaderDetailCell"
     private var viewModel: HeaderDetailCellViewModel!
-    private var imagesRepository: ImagesRepositoryPrototcol?
     private var imageLoadTask: Cancellable? { willSet { imageLoadTask?.cancel() } }
     
     private let recipeNameLabel: UILabel  = {
@@ -22,16 +21,15 @@ class HeaderDetailCell: UICollectionViewCell {
     }()
     private let recipeImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFill
-        image.layer.masksToBounds = false
+        image.contentMode = .scaleToFill
+        image.layer.masksToBounds = true
         image.clipsToBounds = true
-        image.layer.cornerRadius = 15
         return image
     }()
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 4
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         return stackView
     }()
@@ -48,27 +46,14 @@ class HeaderDetailCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: HeaderDetailCellViewModel?, imagesRepository: ImagesRepositoryPrototcol?) {
-        stackView.frame = frame
+    func configure(with viewModel: HeaderDetailCellViewModel?) {
+        stackView.frame = self.frame
         self.viewModel = viewModel
-        self.imagesRepository = imagesRepository
-        updateImage()
         recipeNameLabel.text = viewModel?.title
+        recipeImage.updateImage(url: viewModel?.imageURL)
     }
     
     // MARK: - private
-    private func updateImage() {
-        recipeImage.image = nil
-        guard let posterImagePath = viewModel.imagePath?.deletingPrefix(Constants.imageURL ?? "") else { return }
-        imageLoadTask = imagesRepository?.fetchImage(with: posterImagePath) { [weak self] result in
-            guard let self = self else { return }
-            if case let .success(data) = result {
-                self.recipeImage.image = UIImage(data: data)
-            }
-            self.imageLoadTask = nil
-        }
-    }
-    
     private func setConstraints() {
         recipeImage.translatesAutoresizingMaskIntoConstraints = false
         recipeNameLabel.translatesAutoresizingMaskIntoConstraints = false

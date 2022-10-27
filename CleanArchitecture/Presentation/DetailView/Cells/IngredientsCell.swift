@@ -10,15 +10,12 @@ import UIKit
 class IngredientsCell: UICollectionViewCell {
     static let reuseIdentifier = "IngredientsCell"
     private var viewModel: IngredientsViewModel!
-    private var imageRepository: ImagesRepositoryPrototcol?
-    private var imageLoadTask: Cancellable? { willSet { imageLoadTask?.cancel() } }
-    
+   
     private let ingredientImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.layer.masksToBounds = false
+        image.layer.masksToBounds = true
         image.clipsToBounds = true
-        image.layer.cornerRadius = 15
         return image
     }()
     private let ingredientNameLabel: UILabel  = {
@@ -39,25 +36,13 @@ class IngredientsCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: IngredientsViewModel?, imageRepository: ImagesRepositoryPrototcol?) {
+    func configure(with viewModel: IngredientsViewModel?) {
         self.viewModel = viewModel
-        self.imageRepository = imageRepository
-        updateImage()
         ingredientNameLabel.text = viewModel?.ingredientName
+        ingredientImage.updateImage(url: viewModel?.ingredientImagePath)
     }
     // MARK: - private
-    private func updateImage() {
-        ingredientImage.image = nil
-        guard let imagePath = viewModel.ingredientImagePath else { return }
-        imageLoadTask = imageRepository?.fetchIngredientImage(with: imagePath) { [weak self] result in
-            guard let self = self else { return }
-            if case let .success(data) = result {
-                self.ingredientImage.image = UIImage(data: data)
-            }
-            self.imageLoadTask = nil
-        }
-    }
-    
+
     private func setConstraints() {
         ingredientImage.translatesAutoresizingMaskIntoConstraints = false
         ingredientNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +51,8 @@ class IngredientsCell: UICollectionViewCell {
             ingredientImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
             ingredientImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
             contentView.trailingAnchor.constraint(equalTo: ingredientImage.trailingAnchor, constant: 4),
-            ingredientImage.widthAnchor.constraint(equalToConstant: self.frame.width * 0.9)
+            ingredientImage.widthAnchor.constraint(equalToConstant: self.frame.width * 0.9),
+            ingredientImage.heightAnchor.constraint(equalToConstant: self.frame.width * 0.9)
         ])
         NSLayoutConstraint.activate([
             ingredientNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),

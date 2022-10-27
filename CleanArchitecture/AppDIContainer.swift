@@ -25,7 +25,7 @@ final class AppDIContainer {
     
     // MARK: - Scenes
     func makeSceneDIContainer() -> SceneDIContainer {
-        let dependenciens = SceneDIContainer.Dependencies(dataTransferService: apiDataTransferService, imageDataTransferService: imageDataTransferService)
+        let dependenciens = SceneDIContainer.Dependencies(dataTransferService: apiDataTransferService)
         return SceneDIContainer(dependencies: dependenciens)
     }
 }

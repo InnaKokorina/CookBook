@@ -8,13 +8,13 @@
 import Foundation
 
 struct IngredientsViewModel: DetailCellModelProtocol {
-    let ingredientImagePath: String?
+    let ingredientImagePath: URL?
     let ingredientName: String
 }
 
 extension IngredientsViewModel {
     init(ingredients: ExtendedIngredients) {
         self.ingredientName = ingredients.name
-        self.ingredientImagePath = ingredients.image
+        self.ingredientImagePath = ingredients.ingredientsImageURL
     }
 }

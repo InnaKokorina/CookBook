@@ -6,20 +6,19 @@
 //
 
 import UIKit
+import Kingfisher
+import SwiftUI
 
 class MainTableViewCell: UITableViewCell {
     static var cellId = "TableViewCell"
     
     private var viewModel: MainCellViewModel!
-    private var imagesRepository: ImagesRepositoryPrototcol?
-    private var imageLoadTask: Cancellable? { willSet { imageLoadTask?.cancel() } }
     
-    private let recipeImage: UIImageView = {
+    private var recipeImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.layer.masksToBounds = false
         image.clipsToBounds = true
-        image.layer.cornerRadius = 15
         return image
     }()
     
@@ -44,11 +43,10 @@ class MainTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: MainCellViewModel, imagesRepository: ImagesRepositoryPrototcol?) {
+    func configure(with viewModel: MainCellViewModel) {
         self.viewModel = viewModel
-        self.imagesRepository = imagesRepository
         titleLabel.text = viewModel.title ?? ""
-        updatePosterImage()
+        recipeImage.updateImage(url: viewModel.imageURL)
     }
     
     override func prepareForReuse() {
@@ -64,20 +62,7 @@ class MainTableViewCell: UITableViewCell {
         stackView.spacing = 8
         stackView.distribution = .equalCentering
     }
-    
-    private func updatePosterImage() {
-        recipeImage.image = nil
-        guard let posterImagePath = viewModel.imagePath?.deletingPrefix(Constants.imageURL ?? "") else { return }
 
-        imageLoadTask = imagesRepository?.fetchImage(with: posterImagePath) { [weak self] result in
-            guard let self = self else { return }
-            if case let .success(data) = result {
-                self.recipeImage.image = UIImage(data: data)
-            }
-            self.imageLoadTask = nil
-        }
-    }
-    
     private func setConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

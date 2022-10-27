@@ -11,12 +11,10 @@ class DetailViewController: UIViewController {
 
     private var viewModel: DetailViewModelProtocol!
     private var collectionView: UICollectionView?
-    var imagesRepository: ImagesRepositoryPrototcol?
     
-    static func create(with viewModel: DetailViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> DetailViewController {
+    static func create(with viewModel: DetailViewModelProtocol) -> DetailViewController {
         let view = DetailViewController()
         view.viewModel = viewModel
-        view.imagesRepository = imagesRepository
         return view
     }
     
@@ -79,7 +77,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         switch sectionItems[indexPath.row] {
         case is HeaderDetailCellViewModel:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderDetailCell.reuseIdentifier, for: indexPath) as? HeaderDetailCell else { return UICollectionViewCell() }
-            cell.configure(with: sectionItems[indexPath.item] as? HeaderDetailCellViewModel, imagesRepository: imagesRepository)
+            cell.configure(with: sectionItems[indexPath.item] as? HeaderDetailCellViewModel)
             return cell
         case is DishTypesCellViewModel:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishTypesCell.reuseIdentifier, for: indexPath) as? DishTypesCell else { return UICollectionViewCell() }
@@ -87,7 +85,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return cell
         case is IngredientsViewModel:
           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientsCell.reuseIdentifier, for: indexPath) as? IngredientsCell else { return UICollectionViewCell() }
-            cell.configure(with: sectionItems[indexPath.item] as? IngredientsViewModel, imageRepository: imagesRepository)
+            cell.configure(with: sectionItems[indexPath.item] as? IngredientsViewModel)
             return cell
         default:
             return UICollectionViewCell()

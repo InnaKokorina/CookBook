@@ -9,14 +9,12 @@ import UIKit
 
 class ListViewController: UITableViewController  {
     var viewModel: MainViewModelProtocol!
-    var imagesRepository: ImagesRepositoryPrototcol?
     
     var activityIndicator: UIActivityIndicatorView?
     
-    static func create(with viewModel: MainViewModelProtocol, imagesRepository: ImagesRepositoryPrototcol?) -> ListViewController {
+    static func create(with viewModel: MainViewModelProtocol) -> ListViewController {
         let view = ListViewController()
         view.viewModel = viewModel
-        view.imagesRepository = imagesRepository
         return view
     }
     
@@ -66,7 +64,7 @@ extension ListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
-        cell.configure(with: viewModel.items.value[indexPath.row], imagesRepository: imagesRepository)
+        cell.configure(with: viewModel.items.value[indexPath.row])
         if indexPath.row == viewModel.items.value.count - 1 {
             viewModel.didLoadNextPage()
         }

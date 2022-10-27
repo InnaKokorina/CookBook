@@ -48,7 +48,6 @@ final class MainViewModel: MainViewModelProtocol {
     
     private let actions: MainViewModelActions?
     private let searchUseCase: SearchUseCaseExecute
-    private var imageRepository: ImagesRepositoryPrototcol?
     private var pages: [RecipePage] = []
     private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
     

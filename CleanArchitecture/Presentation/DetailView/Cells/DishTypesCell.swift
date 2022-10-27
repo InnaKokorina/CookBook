@@ -84,7 +84,7 @@ class DishTypesCell: UICollectionViewCell {
             
         ])
         self.layoutIfNeeded()
-        if stackView.frame.width <= self.frame.width {
+        if stackView.frame.width <= self.frame.width - 32 {
             stackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         }
     }
