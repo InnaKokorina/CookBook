@@ -73,7 +73,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
     private func setSections(results: DetailRecipes) {
-        dataSource.value[.header] = [HeaderDetailCellViewModel(title: results.title, imagePath: results.imageUrl)]
+        dataSource.value[.header] = [HeaderDetailCellViewModel(title: results.title, imageURL: results.imageURL)]
         dataSource.value[.types] = [DishTypesCellViewModel(types: results.dishTypes)]
         dataSource.value[.ingredients] = results.extendedIngredients.map { IngredientsViewModel(ingredients: $0) }
     }
