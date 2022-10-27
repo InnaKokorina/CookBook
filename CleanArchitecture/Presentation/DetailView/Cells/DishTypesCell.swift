@@ -67,6 +67,10 @@ class DishTypesCell: UICollectionViewCell {
         setConstraints()
     }
     
+    override func prepareForReuse() {
+        stackView.removeFromSuperview()
+    }
+    
     private func setConstraints() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
