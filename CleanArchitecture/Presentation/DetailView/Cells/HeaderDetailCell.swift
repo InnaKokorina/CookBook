@@ -50,12 +50,7 @@ class HeaderDetailCell: UICollectionViewCell {
         stackView.frame = self.frame
         self.viewModel = viewModel
         recipeNameLabel.text = viewModel?.title
-        if let imageURL = viewModel?.imageURL {
-            recipeImage.updateImage(url: imageURL)
-        } else {
-            recipeImage.image = UIImage(named: Constants.placeholderImage)
-        }
-        
+        recipeImage.updateImage(url: viewModel?.imageURL)
     }
     
     // MARK: - private

@@ -46,11 +46,7 @@ class MainTableViewCell: UITableViewCell {
     func configure(with viewModel: MainCellViewModel) {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title ?? ""
-        if let imageURL = viewModel.imageURL {
-        recipeImage.updateImage(url: imageURL)
-        } else {
-            recipeImage.image = UIImage(named: Constants.placeholderImage)
-        }
+        recipeImage.updateImage(url: viewModel.imageURL)
     }
     
     override func prepareForReuse() {

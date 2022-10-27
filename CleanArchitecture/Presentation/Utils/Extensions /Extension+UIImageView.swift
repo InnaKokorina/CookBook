@@ -10,10 +10,10 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
-    public func updateImage(url: URL) {
-        let urlString = try? String(contentsOf: url)
+    public func updateImage(url: URL?) {
+        let cacheKey = url?.absoluteString ?? "cacheKey"
         let processor = RoundCornerImageProcessor(cornerRadius: 15)
-        let cache = ImageCache(name: urlString ?? "cachekey")
+        let cache = ImageCache(name: cacheKey)
         cache.diskStorage.config.sizeLimit = 30 * 1024 * 1024
         cache.memoryStorage.config.totalCostLimit = 30 * 1024 * 1024
         cache.memoryStorage.config.expiration = .seconds(300)
