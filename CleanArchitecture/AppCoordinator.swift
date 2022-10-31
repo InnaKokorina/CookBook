@@ -11,17 +11,17 @@ import Swinject
 
 final class AppCoordinator {
     
-    private let navigationController: UINavigationController
+    private let window: UIWindow?
     private let container: Container
     
-    init(navigationController: UINavigationController, container: Container) {
-        self.navigationController = navigationController
+    init(window: UIWindow?, container: Container) {
+        self.window = window
         self.container = container
     }
     
     // MARK: - start with mainViewController
     func start() {
-        let coordinator = SceneCoordinator(navigationController: navigationController, container: container)
-        coordinator.showMainViewController()
+        let coordinator = TabBarCoordinator(window: window, container: container)
+        coordinator.start()
     }
 }

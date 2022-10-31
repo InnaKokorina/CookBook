@@ -15,7 +15,7 @@ class DishTypesCell: UICollectionViewCell {
         scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
-    private let stackView: UIStackView = {
+    private var stackView: UIStackView? = {
         let stackView = UIStackView()
         stackView.axis  = .horizontal
         stackView.distribution  = .fillProportionally
@@ -39,7 +39,9 @@ class DishTypesCell: UICollectionViewCell {
     // MARK: - private
     private func setupViews() {
         contentView.addSubview(scrollView)
-        scrollView.addSubview(stackView)
+        if let stackView = stackView {
+            scrollView.addSubview(stackView)
+        }  
     }
     
     private func setupStackView(with viewModel: DishTypesCellViewModel?) {
@@ -61,17 +63,18 @@ class DishTypesCell: UICollectionViewCell {
             }()
             dishTypeLabel.text = dishtype
             grayView.addSubview(dishTypeLabel)
-            stackView.addArrangedSubview(grayView)
+            stackView?.addArrangedSubview(grayView)
             setLabelConstraint(view: grayView, label: dishTypeLabel)
         }
         setConstraints()
     }
     
     override func prepareForReuse() {
-        stackView.removeFromSuperview()
+        stackView = nil
     }
     
     private func setConstraints() {
+        guard let stackView = stackView else { return }
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

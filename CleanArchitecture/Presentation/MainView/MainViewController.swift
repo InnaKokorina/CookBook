@@ -7,8 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, Alertable {
-    
+class MainViewController: UIViewController, Alertable { 
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
     let historyListContainer = UIView()
@@ -16,13 +15,12 @@ class MainViewController: UIViewController, Alertable {
     private var tableViewController: ListViewController?
 
     // MARK: - lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         bind(to: viewModel)
     }
-    
+
 // MARK: - private
     private func bind(to viewModel: MainViewModelProtocol) {
         viewModel.query.subscribe(on: self) { [weak self] in
@@ -47,6 +45,7 @@ class MainViewController: UIViewController, Alertable {
         resultsListContainer.isHidden = true
         historyListContainer.isHidden = true
         setupconstraints()
+        self.title = "Search"
     }
     
     private func updateSearchQuery(_ query: String) {
@@ -54,7 +53,8 @@ class MainViewController: UIViewController, Alertable {
     }
     
     private func updateQueriesSuggestions() {
-        guard searchBar.isFirstResponder else {
+        guard searchBar.isFirstResponder,
+              searchBar.text?.count == 0  else {
             viewModel.closeQueriesSuggestions()
             return
         }
@@ -95,7 +95,7 @@ class MainViewController: UIViewController, Alertable {
         
         NSLayoutConstraint.activate([
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-            searchBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 72),
+            searchBar.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
             view.trailingAnchor.constraint(equalTo: searchBar.trailingAnchor, constant: 12),
             searchBar.heightAnchor.constraint(equalToConstant: 72)
         ])
@@ -132,8 +132,7 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        if searchText.count == 0
-        {
+        if searchText.count == 0  {
             viewModel.didCancelSearch()
             updateQueriesSuggestions()
         }
