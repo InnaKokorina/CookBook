@@ -26,8 +26,8 @@ final class TabBarViewModel: TabBarViewModelProtocol {
     
     func tabConfigure(tabBarItems: [UITabBarItem]?) {
         guard let items = tabBarItems else { return }
-        let images = ["house", "star"]
-        let title = ["Home", "Favorite"]
+        let images = [Constants.tabBarFirstImage, Constants.tabBarSecondImage]
+        let title = [Constants.tabBarFirstTitle, Constants.tabBarSecondTitle]
         for index in 0..<items.count {
             items[index].image = UIImage(systemName: images[index])
             items[index].title = title[index]

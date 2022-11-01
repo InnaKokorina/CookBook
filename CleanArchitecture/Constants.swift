@@ -15,4 +15,8 @@ struct Constants {
     static let path = Bundle.main.infoDictionary?["PATH"] as? String
     static let ingredientPath = Bundle.main.infoDictionary?["INGREDIENT_PATH"] as? String
     static let placeholderImage = "cooking"
+    static let tabBarFirstImage = "house"
+    static let tabBarSecondImage = "star"
+    static let tabBarFirstTitle = "Search"
+    static let tabBarSecondTitle = "Favorite"
 }
