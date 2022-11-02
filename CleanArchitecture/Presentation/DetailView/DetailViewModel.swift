@@ -54,7 +54,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     }
     
    // MARK: - private
-    func load(request: Int, loading: ListViewModelLoading) {
+    private func load(request: Int, loading: ListViewModelLoading) {
         self.loading.value = loading
         let requestString = String(request)
         loadTask = detailUseCase.fetchDetail(requestId: requestString) { [weak self] result in

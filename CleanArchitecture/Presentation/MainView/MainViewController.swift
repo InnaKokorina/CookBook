@@ -11,7 +11,7 @@ class MainViewController: UIViewController, Alertable {
     
     let searchBar = UISearchBar()
     let resultsListContainer = UIView()
-    let historyLisConainer = UIView()
+    let historyListContainer = UIView()
     var viewModel: MainViewModelProtocol!
     private var tableViewController: ListViewController?
 
@@ -39,13 +39,13 @@ class MainViewController: UIViewController, Alertable {
     private func setupViews() {
         view.addSubview(searchBar)
         view.addSubview(resultsListContainer)
-        view.addSubview(historyLisConainer)
+        view.addSubview(historyListContainer)
         view.backgroundColor = .systemGray5
         searchBar.placeholder = "SearchBar.text".localized()
         searchBar.delegate = self
         searchBar.returnKeyType = .done
         resultsListContainer.isHidden = true
-        historyLisConainer.isHidden = true
+        historyListContainer.isHidden = true
         setupconstraints()
     }
     
@@ -58,12 +58,14 @@ class MainViewController: UIViewController, Alertable {
             viewModel.closeQueriesSuggestions()
             return
         }
+        historyListContainer.isHidden = false
         viewModel.resetPages()
         viewModel.showHistoryQuerieslist()
     }
     
     private func updateResultsList() {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+        resultsListContainer.isHidden = false
         viewModel.showResultsList(query: searchText)
         viewModel.closeQueriesSuggestions()
     }
@@ -89,7 +91,7 @@ class MainViewController: UIViewController, Alertable {
     private func setupconstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         resultsListContainer.translatesAutoresizingMaskIntoConstraints = false
-        historyLisConainer.translatesAutoresizingMaskIntoConstraints = false
+        historyListContainer.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
@@ -106,10 +108,10 @@ class MainViewController: UIViewController, Alertable {
         ])
         
         NSLayoutConstraint.activate([
-            historyLisConainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-            historyLisConainer.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 12),
-            view.trailingAnchor.constraint(equalTo: historyLisConainer.trailingAnchor, constant: 12),
-            view.bottomAnchor.constraint(equalTo: historyLisConainer.bottomAnchor, constant: 0)
+            historyListContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            historyListContainer.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 12),
+            view.trailingAnchor.constraint(equalTo: historyListContainer.trailingAnchor, constant: 12),
+            view.bottomAnchor.constraint(equalTo: historyListContainer.bottomAnchor, constant: 0)
         ])
     }
 }

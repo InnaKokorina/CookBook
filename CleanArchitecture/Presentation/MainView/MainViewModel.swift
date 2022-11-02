@@ -11,7 +11,6 @@ struct MainViewModelActions {
     let showResultsList: (_ viewModel: MainViewModelProtocol) -> Void
     let showHistoryList: (_ didSelect: @escaping (RecipeQuery) -> Void) -> Void
     let closeHistoryList: () -> Void
-    let closeListViewConroller: () -> ()
     let showDetails: (_ recipeId: Int) -> Void
 }
 
@@ -28,7 +27,6 @@ protocol MainViewModelInput {
     func didLoadNextPage()
     func didCancelSearch()
     func resetPages()
-    
 }
 
 protocol MainViewModelOutput {

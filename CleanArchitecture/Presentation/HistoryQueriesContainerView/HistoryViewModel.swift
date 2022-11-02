@@ -17,7 +17,7 @@ protocol HistoryViewModelInput {
 }
 
 protocol HistoryViewModelOutput {
-    var didSelect: ((RecipeQuery) -> Void)? { get set }
+    var onHistoryItemChoosen: ((RecipeQuery) -> Void)? { get set }
     var actions: HistoryViewModelAction? { get set }
     var historyItems: Observable<[HistoryCellViewModel]> { get }
     var error: Observable<String> { get }
@@ -28,7 +28,7 @@ protocol HistoryViewModelProtocol: HistoryViewModelInput, HistoryViewModelOutput
 final class  HistoryViewModel: HistoryViewModelProtocol {
     var historyItems: Observable<[HistoryCellViewModel]> = Observable(value: [])
     var error: Observable<String> = Observable(value: "")
-    var didSelect: ((RecipeQuery) -> Void)?
+    var onHistoryItemChoosen: ((RecipeQuery) -> Void)?
     var actions: HistoryViewModelAction?
     
     private let fetchUseCase: FetchHisoryUseCaseProtocol
@@ -55,7 +55,7 @@ final class  HistoryViewModel: HistoryViewModelProtocol {
     }
     
     func didSelectTap(query: HistoryCellViewModel) {
-        if let didSelect = didSelect {
+        if let didSelect = onHistoryItemChoosen {
             didSelect(RecipeQuery(query: query.title ?? "" , offset: 10))
         }
         actions?.closeHistoryList()
