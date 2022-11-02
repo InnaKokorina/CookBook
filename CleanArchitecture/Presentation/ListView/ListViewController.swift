@@ -12,12 +12,6 @@ class ListViewController: UITableViewController  {
     
     var activityIndicator: UIActivityIndicatorView?
     
-    static func create(with viewModel: MainViewModelProtocol) -> ListViewController {
-        let view = ListViewController()
-        view.viewModel = viewModel
-        return view
-    }
-    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

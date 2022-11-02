@@ -11,7 +11,6 @@ struct MainViewModelActions {
     let showResultsList: (_ viewModel: MainViewModelProtocol) -> Void
     let showHistoryList: (_ didSelect: @escaping (RecipeQuery) -> Void) -> Void
     let closeHistoryList: () -> Void
-    let closeListViewConroller: () -> ()
     let showDetails: (_ recipeId: Int) -> Void
 }
 
@@ -28,7 +27,6 @@ protocol MainViewModelInput {
     func didLoadNextPage()
     func didCancelSearch()
     func resetPages()
-    
 }
 
 protocol MainViewModelOutput {
@@ -39,25 +37,24 @@ protocol MainViewModelOutput {
     var items: Observable<[MainCellViewModel]> { get }
     var isEmpty: Bool { get }
     var errorTitle: String { get }
+    var actions: MainViewModelActions? { get set }
 }
 
 protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
 
 // MARK: - MainViewModel
 final class MainViewModel: MainViewModelProtocol {
-    
-    private let actions: MainViewModelActions?
-    private let searchUseCase: SearchUseCaseExecute
+
+    private let searchUseCase: SearchUseCaseProtocol
     private var pages: [RecipePage] = []
     private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
-    
+
     var currentOffset: Int = 0
     var totalCount: Int = 1
     var hasMorePages: Bool { currentOffset < totalCount }
     var nextOffset: Int { hasMorePages ? currentOffset + 10 : currentOffset }
    
-    init(searchUseCase: SearchUseCaseExecute, actions: MainViewModelActions) {
-        self.actions = actions
+    init(searchUseCase: SearchUseCaseProtocol) {
         self.searchUseCase = searchUseCase
     }
    
@@ -69,6 +66,7 @@ final class MainViewModel: MainViewModelProtocol {
     var entity = [Recipe]()
     var isEmpty: Bool { return items.value.isEmpty }
     let errorTitle = "Error".localized()
+    var actions: MainViewModelActions?
     
     // MARK: - private
     private func load(request: RecipeQuery, loading: ListViewModelLoading, completion: @escaping () -> ()) {
@@ -129,7 +127,7 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.showDetails(items.value[index].id)
+        actions?.showDetails(items.value[index].id)  
     }
     
     func didLoadNextPage() {

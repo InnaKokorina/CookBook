@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol SearchUseCaseExecute {
+protocol SearchUseCaseProtocol {
     func execute(request: SearchUseCaseRequestValue, offset: Int , completion: @escaping (Result<RecipePage, Error>) -> Void) -> Cancellable?
 }
 
 // MARK: - searchUseCase
-final class SearchUseCase: SearchUseCaseExecute {
+final class SearchUseCase: SearchUseCaseProtocol {
     
     private let reposiories: ListReposioryProtocol
     private let historyReposiotry: HistoryListReposioryProtocol

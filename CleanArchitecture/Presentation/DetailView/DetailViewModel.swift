@@ -14,6 +14,7 @@ protocol DetailViewModelInput {
 }
 
 protocol DetailViewModelOutput {
+    var recipeId: Int? { get set }
     var loading: Observable<ListViewModelLoading?> { get }
     var dataSource: Observable<[DetailSection: [DetailCellModelProtocol]]> { get }
     var error: Observable<String> { get }
@@ -28,19 +29,22 @@ enum DetailSection: Int, CaseIterable {
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
-    private var recipeId: Int
     private let detailUseCase: FetchDetailUseCaseProtocol
     private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
    
    // MARK: - output
+    var recipeId: Int? {
+        didSet {
+            guard let recipeId = recipeId else { return }
+            load(request: recipeId, loading: .fullScreen)
+        }
+    }
     let loading: Observable<ListViewModelLoading?> = Observable(value: .none)
     var dataSource: Observable<[DetailSection: [DetailCellModelProtocol]]> = Observable(value: [:])
     var error: Observable<String> = Observable(value: "")
   
-    init(detailUseCase: FetchDetailUseCaseProtocol, recipeId: Int ) {
+    init(detailUseCase: FetchDetailUseCaseProtocol) {
         self.detailUseCase = detailUseCase
-        self.recipeId = recipeId
-        load(request: recipeId, loading: .fullScreen)
     }
     // MARK: - input
     func setSectionItem(sectionIndex: Int) -> [DetailCellModelProtocol] {

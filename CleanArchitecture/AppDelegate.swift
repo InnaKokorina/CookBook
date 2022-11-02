@@ -6,24 +6,23 @@
 //
 
 import UIKit
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    let appDIContainer = AppDIContainer()
-    var appCoordinator: AppCoordinator?
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
         
         window?.rootViewController = navigationController
-        appCoordinator = AppCoordinator(navigationController: navigationController, appDIContainer: appDIContainer)
+        
+        let appDIContainer = AppDIContainer.assembler.resolver as! Container
+        appCoordinator = AppCoordinator(navigationController: navigationController, container: appDIContainer)
         appCoordinator?.start()
         window?.makeKeyAndVisible()
-        
-        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
         return true
     }
 

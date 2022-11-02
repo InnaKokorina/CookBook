@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol FetchHisoryUseCaseExecute {
+protocol FetchHisoryUseCaseProtocol {
     func start(completion:  @escaping (Result<[RecipeQuery], Error>) -> Void) 
 }
 
-final class FetchHistoryUseCase: FetchHisoryUseCaseExecute {
+final class FetchHistoryUseCase: FetchHisoryUseCaseProtocol {
    
     private let historyRepository: HistoryListReposioryProtocol
     
