@@ -9,7 +9,7 @@ import Foundation
 import Swinject
 
 class SwinjectDIContainer: Assembly {
-    lazy var responseCache: ResponseStorageProtocol = ResponseStorage()
+    lazy var responseCache: RecipesListDataBaseStorageProtocol = RecipesListDataBaseStorage()
     lazy var historyStorage: HistoryListStorageProtocol = HistoryListStorage()
     // MARK: - network
     lazy var dataTransferService: DataTransferService = {
@@ -23,7 +23,7 @@ class SwinjectDIContainer: Assembly {
         
         // MARK: - Repositories
         container.register(ListReposioryProtocol.self) { _  in
-            let repository = ListRepository(dataTransferService: self.dataTransferService, cache: self.responseCache)
+            let repository = ListRepository(dataTransferService: self.dataTransferService)
             return repository
         }
         container.register(HistoryListReposioryProtocol.self) { resolver in
@@ -32,6 +32,10 @@ class SwinjectDIContainer: Assembly {
         }
         container.register(FetchDetailRepositoryProtocol.self) { resolver in
             let repository = DetailRepository(dataTransferService: self.dataTransferService)
+            return repository
+        }
+        container.register(FavoriteListRepositoryProtocol.self) { resolver in
+            let repository = FavoriteListRepository(cache: self.responseCache)
             return repository
         }
         
@@ -48,6 +52,10 @@ class SwinjectDIContainer: Assembly {
             let useCase = FetchDetailUseCase(fetchDetailRepository: resolver.resolve(FetchDetailRepositoryProtocol.self)!)
             return useCase
         }
+        container.register(FavoriteListUseCaseProtocol.self) { resolver in
+            let useCase = FavoriteListUseCase(repository: resolver.resolve(FavoriteListRepositoryProtocol.self)!)
+                return useCase
+        }.inObjectScope(.container)
         
         // MARK: - ViewModels
         container.register(TabBarViewModelProtocol.self) { _  in
@@ -55,7 +63,7 @@ class SwinjectDIContainer: Assembly {
             return viewModel
         }
         container.register(MainViewModelProtocol.self) { resolver  in
-            let viewModel = MainViewModel(searchUseCase: resolver.resolve(SearchUseCaseProtocol.self)!)
+            let viewModel = MainViewModel(searchUseCase: resolver.resolve(SearchUseCaseProtocol.self)!, favoriteUseCase: resolver.resolve(FavoriteListUseCaseProtocol.self)!)
             return viewModel
         }.inObjectScope(.container)
         
@@ -65,6 +73,10 @@ class SwinjectDIContainer: Assembly {
         } 
         container.register(HistoryViewModelProtocol.self) {  resolver  in
             let viewModel = HistoryViewModel(fetchUseCase: resolver.resolve(FetchHisoryUseCaseProtocol.self)!)
+            return viewModel
+        }
+        container.register(FavoriteViewModelProtocol.self) {  resolver  in
+            let viewModel = FavoriteViewModel(favoriteUseCase: resolver.resolve(FavoriteListUseCaseProtocol.self)!)
             return viewModel
         }
         
@@ -94,8 +106,9 @@ class SwinjectDIContainer: Assembly {
             vc.viewModel = resolver.resolve(DetailViewModelProtocol.self)
         return vc
         }
-        container.register(FavoriteViewController.self) { _ in
+        container.register(FavoriteViewController.self) { resolver in
             let vc = FavoriteViewController()
+            vc.viewModel = resolver.resolve(FavoriteViewModelProtocol.self)
         return vc
         }
     }

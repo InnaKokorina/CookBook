@@ -13,7 +13,7 @@ final class TabBarCoordinator {
     private let container: Container
     
     init(window: UIWindow?, container: Container) {
-       self.window = window
+        self.window = window
         self.container = container
     }
     

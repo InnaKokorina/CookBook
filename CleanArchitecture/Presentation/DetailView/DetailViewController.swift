@@ -7,9 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, Alertable {
 
     var viewModel: DetailViewModelProtocol!
+    var activityIndicator: UIActivityIndicatorView?
+    
     private var collectionView: UICollectionView?
 
     override func viewDidLoad() {
@@ -22,11 +24,19 @@ class DetailViewController: UIViewController {
     }
 
     // MARK: - private
-    private func bind(to: DetailViewModelProtocol) {
+    private func bind(to viewModel: DetailViewModelProtocol) {
         viewModel.dataSource.subscribe(on: self) { [weak self] _ in
             DispatchQueue.main.async {
                 self?.collectionView?.reloadData()
             }
+        }
+        viewModel.error.subscribe(on: self) { [weak self] error in
+            guard !error.isEmpty else { return }
+            viewModel.loading.value = .none
+            self?.showAlert(message: error)
+        }
+        viewModel.loading.subscribe(on: self) { [weak self] in
+            self?.updateLoading($0)
         }
     }
 
@@ -52,8 +62,17 @@ class DetailViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
+    
+    private func updateLoading(_ loading: ListViewModelLoading?) {
+        switch loading {
+        case .fullScreen: LoadingView.show()
+        case .nextPage: LoadingView.hide()
+        case .none:
+            LoadingView.hide()
+        }
+    }
 }
-
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

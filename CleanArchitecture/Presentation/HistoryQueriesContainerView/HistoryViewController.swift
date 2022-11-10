@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HistoryViewController: UITableViewController {
+class HistoryViewController: UITableViewController, Alertable {
     
     var viewModel: HistoryViewModelProtocol!
 
@@ -25,9 +25,16 @@ class HistoryViewController: UITableViewController {
     
     private func setupViews() {
         tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.cellId)
+        tableView?.showsVerticalScrollIndicator = false
     }
     private func bind(to: HistoryViewModelProtocol) {
-        viewModel.historyItems.subscribe(on: self) { [weak self] _ in self?.tableView.reloadData() }
+        viewModel.historyItems.subscribe(on: self) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        viewModel.error.subscribe(on: self) { [weak self] error in
+            guard !error.isEmpty else { return }
+            self?.showAlert(message: error)
+        }
     }
     
 }

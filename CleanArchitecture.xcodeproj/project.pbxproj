@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		099F029EBA93568208DE74F4 /* Pods_CleanArchitecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56C480622D9D05339B177CC /* Pods_CleanArchitecture.framework */; };
+		F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289C291A89C70037271F /* FavoriteTableViewCell.swift */; };
+		F700289F291A89EB0037271F /* FavoriteCellVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */; };
+		F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70028A0291A8AB70037271F /* FavoriteModel.swift */; };
 		F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */; };
 		F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */; };
 		F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3828F8304700C8CE47 /* LoadingView.swift */; };
@@ -41,13 +44,11 @@
 		F794C36628EECE25003E49A3 /* DataResponseDTO + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C36528EECE25003E49A3 /* DataResponseDTO + Mapping.swift */; };
 		F794C36928EED75C003E49A3 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C36828EED75C003E49A3 /* RepositoryTask.swift */; };
 		F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C36B28EED797003E49A3 /* Cancellable.swift */; };
-		F794C37128EEDC1E003E49A3 /* ResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37028EEDC1E003E49A3 /* ResponseStorage.swift */; };
-		F794C37428EEF473003E49A3 /* ResponseStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37328EEF473003E49A3 /* ResponseStorageProtocol.swift */; };
 		F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37528EEFA57003E49A3 /* HistoryListRepository.swift */; };
 		F794C37828EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37728EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift */; };
 		F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */; };
 		F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */; };
-		F794C37F28EEFF39003E49A3 /* DataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */; };
+		F794C37F28EEFF39003E49A3 /* QueryDataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C37E28EEFF39003E49A3 /* QueryDataBaseStorage.swift */; };
 		F798837A29014A6C0055EE03 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F798837929014A6C0055EE03 /* Constants.swift */; };
 		F79A668B28F9522800D7D9E5 /* DetailRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */; };
 		F79A668D28F95A4700D7D9E5 /* HeaderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */; };
@@ -64,7 +65,15 @@
 		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
+		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
+		F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */; };
+		F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */; };
 		F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */; };
+		F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE02913B67C00409092 /* CoreDataModel.xcdatamodeld */; };
+		F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */; };
+		F7B57EE62913D51E00409092 /* RecipesListDataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */; };
+		F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */; };
+		F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
 		F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D428EC7406008F811D /* Assets.xcassets */; };
 		F7FAE2D828EC7406008F811D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D628EC7406008F811D /* LaunchScreen.storyboard */; };
@@ -78,6 +87,9 @@
 		8F38ED566ADB7388F5E6449E /* Pods-CleanArchitecture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.release.xcconfig"; path = "Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.release.xcconfig"; sourceTree = "<group>"; };
 		A56C480622D9D05339B177CC /* Pods_CleanArchitecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CleanArchitecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66D075E5C89E7E493458A7D /* Pods-CleanArchitecture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanArchitecture.debug.xcconfig"; path = "Target Support Files/Pods-CleanArchitecture/Pods-CleanArchitecture.debug.xcconfig"; sourceTree = "<group>"; };
+		F700289C291A89C70037271F /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellVIewModel.swift; sourceTree = "<group>"; };
+		F70028A0291A8AB70037271F /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		F70451812906C7D8003C7B4B /* sample.xcconfig_template */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.xcconfig_template; sourceTree = "<group>"; };
 		F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
 		F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionUITableViewController + UIAcivityIndicator.swift"; sourceTree = "<group>"; };
@@ -112,13 +124,11 @@
 		F794C36528EECE25003E49A3 /* DataResponseDTO + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataResponseDTO + Mapping.swift"; sourceTree = "<group>"; };
 		F794C36828EED75C003E49A3 /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
 		F794C36B28EED797003E49A3 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		F794C37028EEDC1E003E49A3 /* ResponseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStorage.swift; sourceTree = "<group>"; };
-		F794C37328EEF473003E49A3 /* ResponseStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStorageProtocol.swift; sourceTree = "<group>"; };
 		F794C37528EEFA57003E49A3 /* HistoryListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListRepository.swift; sourceTree = "<group>"; };
 		F794C37728EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListReposioryProtocol.swift; sourceTree = "<group>"; };
 		F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorage.swift; sourceTree = "<group>"; };
 		F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorageProtocol.swift; sourceTree = "<group>"; };
-		F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseStorage.swift; sourceTree = "<group>"; };
+		F794C37E28EEFF39003E49A3 /* QueryDataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDataBaseStorage.swift; sourceTree = "<group>"; };
 		F798837929014A6C0055EE03 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipes.swift; sourceTree = "<group>"; };
 		F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailCell.swift; sourceTree = "<group>"; };
@@ -136,7 +146,15 @@
 		F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailUseCase.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
+		F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
+		F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		F7B57EE12913B67C00409092 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListDataBaseStorage.swift; sourceTree = "<group>"; };
+		F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBaseDataDTO + Mapping.swift"; sourceTree = "<group>"; };
+		F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7FAE2D428EC7406008F811D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -262,6 +280,7 @@
 				F794C35128EEBC25003E49A3 /* ListReposioryProtocol.swift */,
 				F794C37728EEFAFB003E49A3 /* HistoryListReposioryProtocol.swift */,
 				F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */,
+				F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -272,6 +291,7 @@
 				F794C35628EEC536003E49A3 /* ListRepository.swift */,
 				F794C37528EEFA57003E49A3 /* HistoryListRepository.swift */,
 				F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */,
+				F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */,
 				F794C36728EED73F003E49A3 /* Utils */,
 			);
 			path = Reposiories;
@@ -326,7 +346,7 @@
 		F794C36D28EEDB28003E49A3 /* PersistanceStorage */ = {
 			isa = PBXGroup;
 			children = (
-				F794C36F28EEDBF1003E49A3 /* ResponseStorage */,
+				F7B57EE92913D7E100409092 /* DataBaseDataMapping */,
 				F794C37928EEFCEC003E49A3 /* HistoryListStorage */,
 				F794C36E28EEDB72003E49A3 /* DataBaseStorage */,
 			);
@@ -336,18 +356,12 @@
 		F794C36E28EEDB72003E49A3 /* DataBaseStorage */ = {
 			isa = PBXGroup;
 			children = (
-				F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */,
+				F794C37E28EEFF39003E49A3 /* QueryDataBaseStorage.swift */,
+				F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */,
+				F7B57EE02913B67C00409092 /* CoreDataModel.xcdatamodeld */,
+				F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */,
 			);
 			path = DataBaseStorage;
-			sourceTree = "<group>";
-		};
-		F794C36F28EEDBF1003E49A3 /* ResponseStorage */ = {
-			isa = PBXGroup;
-			children = (
-				F794C37028EEDC1E003E49A3 /* ResponseStorage.swift */,
-				F794C37328EEF473003E49A3 /* ResponseStorageProtocol.swift */,
-			);
-			path = ResponseStorage;
 			sourceTree = "<group>";
 		};
 		F794C37928EEFCEC003E49A3 /* HistoryListStorage */ = {
@@ -393,8 +407,19 @@
 			isa = PBXGroup;
 			children = (
 				F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */,
+				F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */,
+				F700289C291A89C70037271F /* FavoriteTableViewCell.swift */,
+				F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */,
 			);
 			path = FavoriteView;
+			sourceTree = "<group>";
+		};
+		F7B57EE92913D7E100409092 /* DataBaseDataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */,
+			);
+			path = DataBaseDataMapping;
 			sourceTree = "<group>";
 		};
 		F7FAE2BF28EC73F8008F811D = {
@@ -426,7 +451,6 @@
 				F7FAE2E028EC7423008F811D /* Presentation */,
 				F7FAE2DF28EC7416008F811D /* Domain */,
 				F7FAE2E128EC7440008F811D /* Data */,
-				F794C36D28EEDB28003E49A3 /* PersistanceStorage */,
 				F794C35A28EECB3F003E49A3 /* Infracrtucture */,
 				F794C36A28EED780003E49A3 /* Common */,
 				F7FAE2D428EC7406008F811D /* Assets.xcassets */,
@@ -455,8 +479,8 @@
 				F794C34928EEB916003E49A3 /* ListView */,
 				F794C32E28ED6CE8003E49A3 /* DetailView */,
 				F7AA0110290C010500DDC925 /* FavoriteView */,
-				F794C34428EEB216003E49A3 /* HistoryQueriesContainerView */,
 				F794C32628ED60B6003E49A3 /* Coordinators */,
+				F794C34428EEB216003E49A3 /* HistoryQueriesContainerView */,
 				F794C34128EDC240003E49A3 /* Utils */,
 			);
 			path = Presentation;
@@ -467,6 +491,7 @@
 			children = (
 				F794C35528EEC504003E49A3 /* Reposiories */,
 				F7FAE2E628EC754D008F811D /* Network */,
+				F794C36D28EEDB28003E49A3 /* PersistanceStorage */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -477,6 +502,7 @@
 				F7FAE2E928EC7A90008F811D /* Entity.swift */,
 				F794C35328EEBDFB003E49A3 /* Query.swift */,
 				F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */,
+				F70028A0291A8AB70037271F /* FavoriteModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -487,6 +513,7 @@
 				F7FAE2ED28EC7FD5008F811D /* SearchUseCase.swift */,
 				F7FAE2EB28EC7FBC008F811D /* FetchHistoryUseCase.swift */,
 				F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */,
+				F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */,
 				F794C34F28EEBBDB003E49A3 /* Interfaces  */,
 			);
 			path = UseCases;
@@ -624,25 +651,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B57EE62913D51E00409092 /* RecipesListDataBaseStorage.swift in Sources */,
+				F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */,
 				F794C36328EECCC9003E49A3 /* DataTransferService.swift in Sources */,
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
-				F794C37428EEF473003E49A3 /* ResponseStorageProtocol.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
+				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
 				F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */,
-				F794C37128EEDC1E003E49A3 /* ResponseStorage.swift in Sources */,
+				F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */,
+				F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
 				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
+				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
+				F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */,
 				F79A668B28F9522800D7D9E5 /* DetailRecipes.swift in Sources */,
 				F794C33A28ED6F00003E49A3 /* MainCellViewModel.swift in Sources */,
 				F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */,
 				F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */,
-				F794C37F28EEFF39003E49A3 /* DataBaseStorage.swift in Sources */,
+				F794C37F28EEFF39003E49A3 /* QueryDataBaseStorage.swift in Sources */,
+				F700289F291A89EB0037271F /* FavoriteCellVIewModel.swift in Sources */,
 				F794C33E28ED8A2D003E49A3 /* AppCoordinator.swift in Sources */,
 				F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */,
 				F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */,
@@ -667,16 +700,19 @@
 				F794C34028ED8A42003E49A3 /* AppDIContainer.swift in Sources */,
 				F7FAE2EA28EC7A90008F811D /* Entity.swift in Sources */,
 				F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */,
+				F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */,
 				F794C36928EED75C003E49A3 /* RepositoryTask.swift in Sources */,
 				F79A669728F95D5F00D7D9E5 /* DishTypesCellViewModel.swift in Sources */,
 				F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */,
 				F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */,
 				F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */,
 				F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */,
+				F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */,
 				F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */,
 				F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */,
 				F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
+				F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,
 				F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */,
 				F79A669528F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift in Sources */,
@@ -894,6 +930,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7B57EE02913B67C00409092 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7B57EE12913B67C00409092 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = F7B57EE12913B67C00409092 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F7FAE2C028EC73F8008F811D /* Project object */;
 }

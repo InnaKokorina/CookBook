@@ -62,14 +62,11 @@ final class DetailViewModel: DetailViewModelProtocol {
             case .success(let results):
                 self?.setSections(results: results)
             case .failure(let error):
-                self?.handle(error: error)
+                print(error.localizedDescription)
+                self?.error.value = HandleError.network.errorsType
             }
             self?.loading.value = .none
         }
-    }
-    
-    private func handle(error: Error) {
-        self.error.value = error.isInternetConnectionError ? "No internet connection".localized() : "Failed loading".localized()
     }
     
     private func setSections(results: DetailRecipes) {

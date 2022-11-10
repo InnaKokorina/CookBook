@@ -27,17 +27,17 @@ protocol MainViewModelInput {
     func didLoadNextPage()
     func didCancelSearch()
     func resetPages()
+    func updateFavorite(index: Int)
 }
 
 protocol MainViewModelOutput {
     var loading: Observable<ListViewModelLoading?> { get }
-    var entity: [Recipe] { get }
     var query: Observable<String> { get }
     var error: Observable<String> { get }
     var items: Observable<[MainCellViewModel]> { get }
     var isEmpty: Bool { get }
-    var errorTitle: String { get }
     var actions: MainViewModelActions? { get set }
+    var pages: [RecipePage] { get set }
 }
 
 protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
@@ -46,7 +46,7 @@ protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
 final class MainViewModel: MainViewModelProtocol {
 
     private let searchUseCase: SearchUseCaseProtocol
-    private var pages: [RecipePage] = []
+    private let favoriteUseCase: FavoriteListUseCaseProtocol
     private var loadTask: Cancellable? { willSet { loadTask?.cancel() } }
 
     var currentOffset: Int = 0
@@ -54,19 +54,20 @@ final class MainViewModel: MainViewModelProtocol {
     var hasMorePages: Bool { currentOffset < totalCount }
     var nextOffset: Int { hasMorePages ? currentOffset + 10 : currentOffset }
    
-    init(searchUseCase: SearchUseCaseProtocol) {
-        self.searchUseCase = searchUseCase
-    }
-   
     // MARK: - output
     var query: Observable<String> = Observable(value: "")
     let loading: Observable<ListViewModelLoading?> = Observable(value: .none)
     var error: Observable<String> = Observable(value: "")
     var items: Observable<[MainCellViewModel]> = Observable(value: [])
-    var entity = [Recipe]()
     var isEmpty: Bool { return items.value.isEmpty }
-    let errorTitle = "Error".localized()
     var actions: MainViewModelActions?
+    var pages: [RecipePage] = []
+    
+    init(searchUseCase: SearchUseCaseProtocol, favoriteUseCase: FavoriteListUseCaseProtocol) {
+        self.searchUseCase = searchUseCase
+        self.favoriteUseCase = favoriteUseCase
+        NotificationCenter.default.addObserver(self, selector: #selector(updateMain), name: NSNotification.Name(rawValue: Constants.messageToMain), object: nil)
+    }
     
     // MARK: - private
     private func load(request: RecipeQuery, loading: ListViewModelLoading, completion: @escaping () -> ()) {
@@ -75,41 +76,44 @@ final class MainViewModel: MainViewModelProtocol {
         loadTask = searchUseCase.execute(request: .init(query: request), offset: nextOffset) { [weak self] result in
             switch result {
             case .success(let results):
-                self?.transferToList(results)
-                completion()
+                self?.transferToList(results) {
+                    
+                    if let recipes = self?.pages.recipes {
+                        self?.favoriteUseCase.checkFavoritesOnMain(recipes: recipes) { recipes in
+                            DispatchQueue.main.async {
+                                self?.loading.value = .none
+                                self?.items.value = recipes.map(MainCellViewModel.init)
+                                completion()
+                            }
+                        }
+                    }
+                }
             case .failure(let error):
-                self?.handle(error: error)
+                print(error.localizedDescription)
+                self?.error.value = error.isInternetConnectionError ? HandleError.network.errorsType : HandleError.server.errorsType
             }
-            self?.loading.value = .none
         }
     }
     
-    private func transferToList(_ results: RecipePage) {
-        entity = results.recipes
-        appendNewOffset(results)
+    private func transferToList(_ recipePage: RecipePage, completion: () -> ()) {
+        guard let offset = recipePage.offset,
+              let totalResult = recipePage.totalResults else { return }
+        currentOffset = offset
+        totalCount = totalResult
+        pages = pages.filter { $0.offset != recipePage.offset } + [recipePage]
+        completion()
     }
-    
-    private func appendNewOffset(_ recipePage: RecipePage) {
-        
-        currentOffset = recipePage.offset
-        totalCount = recipePage.totalResults
-
-        pages = pages
-            .filter { $0.offset != recipePage.offset }
-            + [recipePage]
-        items.value = pages.recipes.map(MainCellViewModel.init)
-    }
+   
     
     private func update(query: RecipeQuery) {
-        resetPages()
+        self.resetPages()
         load(request: query, loading: .fullScreen) {
-           
+            self.actions?.showResultsList(self)
         }
-        self.actions?.showResultsList(self)
     }
-    
-    private func handle(error: Error) {
-        self.error.value = error.isInternetConnectionError ? "No internet connection".localized() : "Failed loading".localized()
+
+    private func sendMessage() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.messageToFavorite), object: nil)
     }
 
     // MARK: - input
@@ -146,6 +150,41 @@ final class MainViewModel: MainViewModelProtocol {
         totalCount = 1
         pages.removeAll()
         items.value.removeAll()
+    }
+    
+    func updateFavorite(index: Int) {
+        items.value[index].isLiked?.toggle()
+        let id = items.value[index].id
+        for item in items.value {
+            if item.id == id {
+                guard let isLiked = item.isLiked else { return }
+                if isLiked == true {
+                    favoriteUseCase.saveToFavorite(savedRecipe: pages.recipes[index]) { [weak self] error in
+                        if let error = error {
+                            self?.error.value = HandleError.coreDataSave.errorsType
+                            print(error.localizedDescription)
+                        } else {
+                            self?.sendMessage()
+                        }
+                    }
+                } else {
+                    let recipe = pages.recipes[index]
+                    let favorite = FavoriteModel(id: recipe.id, title: recipe.title, imagePath: recipe.imagePath)
+                    favoriteUseCase.deleteFromFavorite(deletedRecipe: favorite) { [weak self] error in
+                        if let error = error {
+                            self?.error.value = HandleError.coreDataDelete.errorsType
+                            print(error.localizedDescription)
+                        } else {
+                        self?.sendMessage()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func updateMain() {
+        update(query: RecipeQuery(query: query.value, offset: nextOffset))
     }
 }
 // MARK: - extension

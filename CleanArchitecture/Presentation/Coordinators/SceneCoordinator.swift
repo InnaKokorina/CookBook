@@ -44,6 +44,7 @@ final class SceneCoordinator {
     func showFavoriteViewController() -> UINavigationController? {
         guard let vc = container.resolve(FavoriteViewController.self)
                else { return nil }
+        vc.viewModel?.actions = FavoriteViewModelActions(showDetails: showDetailViewController)
         let navigationVC = UINavigationController(rootViewController: vc)
         return navigationVC
     }
