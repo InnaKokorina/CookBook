@@ -17,7 +17,7 @@
 		F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77BBF3A28F838C800C8CE47 /* Localizable.strings */; };
 		F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */; };
 		F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */; };
-		F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */; };
+		F77BBF4128F83FA300C8CE47 /* HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* HandleError.swift */; };
 		F78BA92E2907ECCF006260D7 /* SwinjectDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */; };
 		F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */; };
 		F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* SceneCoordinator.swift */; };
@@ -97,7 +97,7 @@
 		F77BBF3A28F838C800C8CE47 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
-		F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionError.swift; sourceTree = "<group>"; };
+		F77BBF4028F83FA300C8CE47 /* HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleError.swift; sourceTree = "<group>"; };
 		F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectDiContainer.swift; sourceTree = "<group>"; };
 		F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
 		F794C32728ED6107003E49A3 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 			children = (
 				F794C36B28EED797003E49A3 /* Cancellable.swift */,
 				F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */,
-				F77BBF4028F83FA300C8CE47 /* ConnectionError.swift */,
+				F77BBF4028F83FA300C8CE47 /* HandleError.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -709,7 +709,7 @@
 				F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */,
 				F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */,
 				F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */,
-				F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */,
+				F77BBF4128F83FA300C8CE47 /* HandleError.swift in Sources */,
 				F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
 				F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */,

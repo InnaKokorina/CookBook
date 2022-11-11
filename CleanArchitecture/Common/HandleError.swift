@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum HandleError {
     case server
     case network

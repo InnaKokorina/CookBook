@@ -20,8 +20,7 @@ final class ListRepository: ListReposioryProtocol {
         let task = RepositoryTask()
     
             let endpoint = ApiRequest.getData(with: requestDTO)
-            task.networkTask = self.dataTransferService?.request(with: endpoint) {[weak self] result in
-                
+            task.networkTask = self.dataTransferService?.request(with: endpoint) { result in
                 switch result {
                 case .success(let responseDTO):
                     completion(.success(responseDTO.toDomain()))
@@ -29,7 +28,6 @@ final class ListRepository: ListReposioryProtocol {
                     completion(.failure(error))
                 }
             }
-      //  }
         return task
     }
 }

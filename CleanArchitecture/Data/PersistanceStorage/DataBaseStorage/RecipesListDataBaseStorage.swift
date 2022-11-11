@@ -23,7 +23,6 @@ final class RecipesListDataBaseStorage {
     }
 
     // MARK: - Private
-
     private func fetchRequest() -> NSFetchRequest<RecipesCoreDataModel> {
         let request: NSFetchRequest = RecipesCoreDataModel.fetchRequest()
         return request
@@ -47,7 +46,7 @@ extension RecipesListDataBaseStorage: RecipesListDataBaseStorageProtocol {
     func save(selectedData: DataBaseResponseDTO, completion: @escaping (Error?) -> ()) {
         coreDataStorage.performBackgroundTask { context in
             do {
-                let requestEntity: RecipesCoreDataModel = selectedData.toCoreDataEntity(in: context)
+                let _: RecipesCoreDataModel = selectedData.toCoreDataEntity(in: context)
                 try context.save()
                 completion(nil)
             } catch {
@@ -61,7 +60,7 @@ extension RecipesListDataBaseStorage: RecipesListDataBaseStorageProtocol {
     func delete(selectedData: DataBaseResponseDTO, completion: @escaping (Error?) -> ()) {
         coreDataStorage.performBackgroundTask { context in
             do {
-            let coreDataobject = selectedData.toCoreDataEntity(in: context)
+                _ = selectedData.toCoreDataEntity(in: context)
                 let fetchRequest = self.fetchRequest()
                 let requestEntity = try context.fetch(fetchRequest)
                 for entity in requestEntity {

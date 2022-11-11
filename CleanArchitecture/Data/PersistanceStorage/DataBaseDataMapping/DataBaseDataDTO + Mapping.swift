@@ -15,20 +15,6 @@ struct DataBaseResponseDTO {
     let isLiked: Bool?
 }
 
-//struct ResultDataBaseResponseDTO {
-//    let results: [DataBaseResponseDTO]
-//    let offset: Int?
-//    let totalResults: Int?
-//}
-// MARK: - DTO to Domain
-//extension ResultDataBaseResponseDTO {
-//    func toDomain() -> RecipePage? {
-//        return .init(offset: offset,
-//                     totalResults: totalResults,
-//                     recipes: results.map { $0.toDomain() })
-//    }
-//}
-
 extension DataBaseResponseDTO {
     func toDomain() -> FavoriteModel {
         return .init(id: id,
@@ -39,14 +25,6 @@ extension DataBaseResponseDTO {
 }
 
 // MARK: - CoreData to DTO
-//extension ResultCoreDataModel {
-//    func toDTO() -> ResultDataBaseResponseDTO {
-//        return .init(results: recipes?.allObjects.map { ($0 as! RecipesCoreDataModel).toDTO() } ?? [],
-//                     offset: Int(offset),
-//                     totalResults: Int(totalResult))
-//    }
-//}
-
 extension RecipesCoreDataModel {
     func toDTO() -> DataBaseResponseDTO {
         return .init(id: Int(id),
@@ -57,7 +35,6 @@ extension RecipesCoreDataModel {
 }
 
 // MARK: - DTO to CoreData
-
 extension DataBaseResponseDTO {
     func toCoreDataEntity(in context: NSManagedObjectContext) -> RecipesCoreDataModel {
         let coreDataEntity: RecipesCoreDataModel = .init(context: context)
