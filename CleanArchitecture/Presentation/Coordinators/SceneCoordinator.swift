@@ -16,15 +16,15 @@ final class SceneCoordinator {
     private weak var listViewController: UIViewController?
     private weak var historyListVC: UIViewController?
     private var actions: MainViewModelActions?
-    let container: Container
+    private let container: Container
+    var mainNavigationVC: UINavigationController?
     
-    init(navigationController: UINavigationController, container: Container) {
-        self.navigationController = navigationController
+    init(container: Container) {
         self.container = container
     }
     
     // MARK: - showMainViewController
-    func showMainViewController() {
+    func showMainViewController() -> UINavigationController? {
         actions = MainViewModelActions(showResultsList: makeListViewConroller,
                                            showHistoryList: makeHistoryViewController,
                                            closeHistoryList: closeHistoryViewController,
@@ -33,12 +33,21 @@ final class SceneCoordinator {
         
         guard let actions = actions,
               let vc = container.resolve(MainViewController.self)
-               else { return }
+               else { return nil }
         vc.viewModel.actions = actions
         mainViewController = vc
-        navigationController?.pushViewController(vc, animated: false)
+        mainNavigationVC = UINavigationController(rootViewController: vc)
+        return mainNavigationVC
     }
     
+    // MARK: - showFavoriteViewController
+    func showFavoriteViewController() -> UINavigationController? {
+        guard let vc = container.resolve(FavoriteViewController.self)
+               else { return nil }
+        let navigationVC = UINavigationController(rootViewController: vc)
+        return navigationVC
+    }
+ 
     // MARK: - showListViewController()
     func makeListViewConroller(viewModel: MainViewModelProtocol) {
         guard let vc = container.resolve(ListViewController.self),
@@ -63,7 +72,7 @@ final class SceneCoordinator {
     private func showDetailViewController(recipeId: Int?) {
         guard let vc = container.resolve(DetailViewController.self) else { return }
         vc.viewModel.recipeId = recipeId
-        navigationController?.present(vc, animated: true)
+        mainNavigationVC?.present(vc, animated: true)
     }
     // MARK: - closeViewControllers
     private func closeHistoryViewController() {

@@ -56,11 +56,15 @@
 		F79A669528F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */; };
 		F79A669728F95D5F00D7D9E5 /* DishTypesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */; };
 		F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */; };
+		F79AA004290AD38F00880841 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA003290AD38F00880841 /* TabBarController.swift */; };
+		F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA006290AD3C600880841 /* TabBarViewModel.swift */; };
+		F79AA009290AD68300880841 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA008290AD68300880841 /* TabBarCoordinator.swift */; };
 		F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */; };
 		F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */; };
 		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
+		F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
 		F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D428EC7406008F811D /* Assets.xcassets */; };
 		F7FAE2D828EC7406008F811D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D628EC7406008F811D /* LaunchScreen.storyboard */; };
@@ -115,7 +119,6 @@
 		F794C37A28EEFD28003E49A3 /* HistoryListStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorage.swift; sourceTree = "<group>"; };
 		F794C37C28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListStorageProtocol.swift; sourceTree = "<group>"; };
 		F794C37E28EEFF39003E49A3 /* DataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseStorage.swift; sourceTree = "<group>"; };
-		F7988378290146D80055EE03 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
 		F798837929014A6C0055EE03 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F79A668A28F9522800D7D9E5 /* DetailRecipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipes.swift; sourceTree = "<group>"; };
 		F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailCell.swift; sourceTree = "<group>"; };
@@ -124,11 +127,16 @@
 		F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDetailCellViewModel.swift; sourceTree = "<group>"; };
 		F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTypesCellViewModel.swift; sourceTree = "<group>"; };
 		F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsCellViewModel.swift; sourceTree = "<group>"; };
+		F79AA001290AD0CF00880841 /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
+		F79AA003290AD38F00880841 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F79AA006290AD3C600880841 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
+		F79AA008290AD68300880841 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailUseCase.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7FAE2D428EC7406008F811D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 		F794C32628ED60B6003E49A3 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				F79AA008290AD68300880841 /* TabBarCoordinator.swift */,
 				F794C32728ED6107003E49A3 /* SceneCoordinator.swift */,
 				F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */,
 			);
@@ -371,11 +380,28 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		F79AA002290AD32800880841 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				F79AA006290AD3C600880841 /* TabBarViewModel.swift */,
+				F79AA003290AD38F00880841 /* TabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		F7AA0110290C010500DDC925 /* FavoriteView */ = {
+			isa = PBXGroup;
+			children = (
+				F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */,
+			);
+			path = FavoriteView;
+			sourceTree = "<group>";
+		};
 		F7FAE2BF28EC73F8008F811D = {
 			isa = PBXGroup;
 			children = (
+				F79AA001290AD0CF00880841 /* Staging.xcconfig */,
 				F70451812906C7D8003C7B4B /* sample.xcconfig_template */,
-				F7988378290146D80055EE03 /* Staging.xcconfig */,
 				F7FAE2CA28EC73F8008F811D /* CleanArchitecture */,
 				F7FAE2C928EC73F8008F811D /* Products */,
 				6EA34EBA3B9F45141796148C /* Pods */,
@@ -424,9 +450,11 @@
 		F7FAE2E028EC7423008F811D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F79AA002290AD32800880841 /* MainTabBar */,
 				F794C32D28ED6CD7003E49A3 /* MainView */,
 				F794C34928EEB916003E49A3 /* ListView */,
 				F794C32E28ED6CE8003E49A3 /* DetailView */,
+				F7AA0110290C010500DDC925 /* FavoriteView */,
 				F794C34428EEB216003E49A3 /* HistoryQueriesContainerView */,
 				F794C32628ED60B6003E49A3 /* Coordinators */,
 				F794C34128EDC240003E49A3 /* Utils */,
@@ -618,7 +646,9 @@
 				F794C33E28ED8A2D003E49A3 /* AppCoordinator.swift in Sources */,
 				F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */,
 				F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */,
+				F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */,
 				F794C33C28ED7B93003E49A3 /* MainTableViewCell.swift in Sources */,
+				F79AA004290AD38F00880841 /* TabBarController.swift in Sources */,
 				F794C33628ED6D93003E49A3 /* DetailViewController.swift in Sources */,
 				F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */,
 				F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */,
@@ -632,6 +662,7 @@
 				F794C36128EECC62003E49A3 /* NetworkConfigulable.swift in Sources */,
 				F794C35728EEC536003E49A3 /* ListRepository.swift in Sources */,
 				F794C35428EEBDFB003E49A3 /* Query.swift in Sources */,
+				F79AA009290AD68300880841 /* TabBarCoordinator.swift in Sources */,
 				F794C35928EECAB1003E49A3 /* DataRequestDTO.swift in Sources */,
 				F794C34028ED8A42003E49A3 /* AppDIContainer.swift in Sources */,
 				F7FAE2EA28EC7A90008F811D /* Entity.swift in Sources */,
@@ -640,6 +671,7 @@
 				F79A669728F95D5F00D7D9E5 /* DishTypesCellViewModel.swift in Sources */,
 				F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */,
 				F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */,
+				F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */,
 				F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */,
 				F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */,
 				F77BBF4128F83FA300C8CE47 /* ConnectionError.swift in Sources */,
@@ -672,7 +704,7 @@
 /* Begin XCBuildConfiguration section */
 		F7FAE2DA28EC7406008F811D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7988378290146D80055EE03 /* Staging.xcconfig */;
+			baseConfigurationReference = F79AA001290AD0CF00880841 /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -733,7 +765,7 @@
 		};
 		F7FAE2DB28EC7406008F811D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7988378290146D80055EE03 /* Staging.xcconfig */;
+			baseConfigurationReference = F79AA001290AD0CF00880841 /* Staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

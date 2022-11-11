@@ -50,6 +50,10 @@ class SwinjectDIContainer: Assembly {
         }
         
         // MARK: - ViewModels
+        container.register(TabBarViewModelProtocol.self) { _  in
+            let viewModel = TabBarViewModel()
+            return viewModel
+        }
         container.register(MainViewModelProtocol.self) { resolver  in
             let viewModel = MainViewModel(searchUseCase: resolver.resolve(SearchUseCaseProtocol.self)!)
             return viewModel
@@ -65,6 +69,11 @@ class SwinjectDIContainer: Assembly {
         }
         
         // MARK: - ViewControllers
+        container.register(TabBarController.self) { resolver in
+            let tabBarVC = TabBarController()
+            tabBarVC.viewModel = resolver.resolve(TabBarViewModelProtocol.self)!
+            return tabBarVC
+        }
         container.register(MainViewController.self) { resolver in
             let vc = MainViewController()
             vc.viewModel = resolver.resolve(MainViewModelProtocol.self)!
@@ -83,6 +92,10 @@ class SwinjectDIContainer: Assembly {
         container.register(DetailViewController.self) { resolver in
             let vc = DetailViewController()
             vc.viewModel = resolver.resolve(DetailViewModelProtocol.self)
+        return vc
+        }
+        container.register(FavoriteViewController.self) { _ in
+            let vc = FavoriteViewController()
         return vc
         }
     }

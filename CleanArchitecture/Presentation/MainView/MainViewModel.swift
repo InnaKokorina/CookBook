@@ -119,6 +119,7 @@ final class MainViewModel: MainViewModelProtocol {
     }
 
     func showHistoryQuerieslist() {
+        resetPages()
         actions?.showHistoryList(update(query: ))
     }
     

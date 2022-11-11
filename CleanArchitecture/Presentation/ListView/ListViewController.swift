@@ -8,7 +8,7 @@
 import UIKit
 
 class ListViewController: UITableViewController  {
-    var viewModel: MainViewModelProtocol!
+    var viewModel: MainViewModelProtocol?
     
     var activityIndicator: UIActivityIndicatorView?
     
@@ -16,6 +16,10 @@ class ListViewController: UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        guard let viewModel = viewModel else {
+            return
+        }
+
         bind(to: viewModel)
     }
     
@@ -24,7 +28,7 @@ class ListViewController: UITableViewController  {
         case .nextPage:
             activityIndicator?.removeFromSuperview()
             activityIndicator = makeActivityIndicator(size: .init(width: tableView.frame.width, height: 44))
-            tableView.tableFooterView = activityIndicator
+            tableView?.tableFooterView = activityIndicator
         case .fullScreen, .none:
             tableView.tableFooterView = nil
         }
@@ -32,11 +36,11 @@ class ListViewController: UITableViewController  {
         
     // MARK: - private
     private func setupViews() {
-        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.cellId)
+        tableView?.register(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.cellId)
     }
     
     private func bind(to: MainViewModelProtocol) {
-        viewModel.items.subscribe(on: self) { [weak self] _ in
+        viewModel?.items.subscribe(on: self) { [weak self] _ in
             self?.updateItems()
         }
     }
@@ -53,20 +57,22 @@ extension ListViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.value.count
+        return viewModel?.items.value.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell,
+              let viewModel = viewModel else { return UITableViewCell() }
+        print(viewModel.items.value)
         cell.configure(with: viewModel.items.value[indexPath.row])
-        if indexPath.row == viewModel.items.value.count - 1 {
+        if indexPath.row == (viewModel.items.value.count) - 1 {
             viewModel.didLoadNextPage()
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectItem(at: indexPath.row)
+        viewModel?.didSelectItem(at: indexPath.row)
     }
 }
 

@@ -14,17 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
-        
-        window?.rootViewController = navigationController
-        
+        window = UIWindow(frame: UIScreen.main.bounds)  
         let appDIContainer = AppDIContainer.assembler.resolver as! Container
-        appCoordinator = AppCoordinator(navigationController: navigationController, container: appDIContainer)
+        appCoordinator = AppCoordinator(window: window, container: appDIContainer)
         appCoordinator?.start()
         window?.makeKeyAndVisible()
         return true
     }
-
 }
 
