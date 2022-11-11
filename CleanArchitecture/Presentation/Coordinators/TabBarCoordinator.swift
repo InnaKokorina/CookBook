@@ -24,8 +24,14 @@ final class TabBarCoordinator {
 
         guard let mainNavVC = flowCoordinator.showMainViewController(),
               let favoriteNavVC = flowCoordinator.showFavoriteViewController() else { return }
-        
-        tabBarVC.viewModel.inputData(controllers: [mainNavVC, favoriteNavVC])
-        window.rootViewController = tabBarVC
+
+        let tabBarArray: [UINavigationController] = TabBarItemType.allCases.map {
+            switch $0 {
+            case .main:  return mainNavVC
+            case .favorite:  return favoriteNavVC
+            }
+        }
+            tabBarVC.viewModel.inputData(controllers: tabBarArray)
+            window.rootViewController = tabBarVC
     }
 }
