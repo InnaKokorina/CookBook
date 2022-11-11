@@ -34,7 +34,9 @@ protocol MainViewModelOutput {
     var loading: Observable<ListViewModelLoading?> { get }
     var query: Observable<String> { get }
     var error: Observable<String> { get }
-    var items: Observable<[MainCellViewModel]> { get }
+    var items: [MainCellViewModel] { get }
+    var favoriteIsUpdated:Observable<Int?> {get}
+    var allUpdatingRequired: Observable<Void> {get}
     var isEmpty: Bool { get }
     var actions: MainViewModelActions? { get set }
     var pages: [RecipePage] { get set }
@@ -58,8 +60,10 @@ final class MainViewModel: MainViewModelProtocol {
     var query: Observable<String> = Observable(value: "")
     let loading: Observable<ListViewModelLoading?> = Observable(value: .none)
     var error: Observable<String> = Observable(value: "")
-    var items: Observable<[MainCellViewModel]> = Observable(value: [])
-    var isEmpty: Bool { return items.value.isEmpty }
+    var items: [MainCellViewModel] = []
+    var favoriteIsUpdated: Observable<Int?> = Observable(value: nil)
+    var allUpdatingRequired: Observable<Void> = Observable(value: ())
+    var isEmpty: Bool { return items.isEmpty }
     var actions: MainViewModelActions?
     var pages: [RecipePage] = []
     
@@ -82,7 +86,9 @@ final class MainViewModel: MainViewModelProtocol {
                         self?.favoriteUseCase.checkFavoritesOnMain(recipes: recipes) { recipes in
                             DispatchQueue.main.async {
                                 self?.loading.value = .none
-                                self?.items.value = recipes.map(MainCellViewModel.init)
+                                self?.allUpdatingRequired.value = ()
+                                self?.items = recipes.map(MainCellViewModel.init)
+                               
                                 completion()
                             }
                         }
@@ -132,7 +138,7 @@ final class MainViewModel: MainViewModelProtocol {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.showDetails(items.value[index].id)  
+        actions?.showDetails(items[index].id)
     }
     
     func didLoadNextPage() {
@@ -149,13 +155,15 @@ final class MainViewModel: MainViewModelProtocol {
         currentOffset = 0
         totalCount = 1
         pages.removeAll()
-        items.value.removeAll()
+        items.removeAll()
+        allUpdatingRequired.value = ()
     }
     
     func updateFavorite(index: Int) {
-        items.value[index].isLiked?.toggle()
-        let id = items.value[index].id
-        for item in items.value {
+        items[index].isLiked?.toggle()
+        favoriteIsUpdated.value = index
+        let id = items[index].id
+        for item in items {
             if item.id == id {
                 guard let isLiked = item.isLiked else { return }
                 if isLiked == true {

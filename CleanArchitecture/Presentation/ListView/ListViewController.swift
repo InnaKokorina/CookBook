@@ -39,9 +39,6 @@ class ListViewController: UITableViewController, Alertable {
     }
     
     private func bind(to viewModel: MainViewModelProtocol) {
-        viewModel.items.subscribe(on: self) { [weak self] _ in
-            self?.updateItems()
-        }
         viewModel.error.subscribe(on: self) { [weak self] error in
             guard !error.isEmpty else { return }
             viewModel.loading.value = .none
@@ -49,6 +46,15 @@ class ListViewController: UITableViewController, Alertable {
         }
         viewModel.loading.subscribe(on: self) { [weak self] in
             self?.updateLoading($0)
+        }
+        viewModel.allUpdatingRequired.subscribe(on: self) { _ in
+            self.updateItems()
+        }
+        viewModel.favoriteIsUpdated.subscribe(on: self) { index in
+            if let index = index {
+                self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+                
+            }
         }
     }
     
@@ -66,17 +72,17 @@ extension ListViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.items.value.count ?? 0
+        return viewModel?.items.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableViewCell.cellId, for: indexPath) as? MainTableViewCell,
               let viewModel = viewModel else { return UITableViewCell() }
-        cell.configure(with: viewModel.items.value[indexPath.row])
+        cell.configure(with: viewModel.items[indexPath.row])
         cell.likeSelect = {
             viewModel.updateFavorite(index: indexPath.row)
         }
-        if indexPath.row == (viewModel.items.value.count) - 1 {
+        if indexPath.row == (viewModel.items.count) - 1 {
             viewModel.didLoadNextPage()
         }
         return cell
