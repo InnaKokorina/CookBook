@@ -26,8 +26,10 @@ class MainViewController: UIViewController, Alertable {
         viewModel.query.subscribe(on: self) { [weak self] in
             self?.updateSearchQuery($0)
         }
-        viewModel.error.subscribe(on: self) { [weak self] in
-            self?.showError($0)
+        viewModel.error.subscribe(on: self) { [weak self] error in
+            guard !error.isEmpty else { return }
+            viewModel.loading.value = .none
+            self?.showAlert(message: error)
         }
         viewModel.loading.subscribe(on: self) { [weak self] in
             self?.updateLoading($0)
@@ -69,16 +71,10 @@ class MainViewController: UIViewController, Alertable {
         viewModel.showResultsList(query: searchText)
         viewModel.closeQueriesSuggestions()
     }
-    
-    private func showError(_ error: String) {
-        guard !error.isEmpty else { return }
-        showAlert(title: viewModel.errorTitle, message: error)
-    }
-    
+
     private func updateLoading(_ loading: ListViewModelLoading?) {
         resultsListContainer.isHidden = true
         LoadingView.hide()
-
         switch loading {
         case .fullScreen: LoadingView.show()
         case .nextPage: resultsListContainer.isHidden = false

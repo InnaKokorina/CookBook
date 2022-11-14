@@ -1,18 +1,18 @@
 //
-//  MainTableViewCell.swift
+//  FavoriteTableViewCell.swift
 //  CleanArchitecture
 //
-//  Created by Inna Kokorina on 05.10.2022.
+//  Created by Inna Kokorina on 08.11.2022.
 //
 
+import Foundation
 import UIKit
 import Kingfisher
 import SwiftUI
 
-class MainTableViewCell: UITableViewCell {
-    static var cellId = "TableViewCell"
-    var likeSelect: (() -> Void)?
-    private var viewModel: MainCellViewModel!
+class FavoriteTableViewCell: UITableViewCell {
+    static var cellId = "FavoriteTableViewCell"
+    private var viewModel: FavoriteCellVIewModel!
     
     private var recipeImage: UIImageView = {
         let image = UIImageView()
@@ -31,14 +31,6 @@ class MainTableViewCell: UITableViewCell {
         return label
     }()
     
-    let likeButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: Constants.likeImage), for: .normal)
-        button.clipsToBounds = true
-        button.alpha = 0.8
-        return button
-    }()
-    
     private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel,recipeImage])
    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,20 +38,16 @@ class MainTableViewCell: UITableViewCell {
         setupViews()
         setConstraints()
         selectionStyle = .none
-        likeButton.addTarget(self, action: #selector(likeButtonTap), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: MainCellViewModel) {
+    func configure(with viewModel: FavoriteCellVIewModel) {
         self.viewModel = viewModel
         titleLabel.text = viewModel.title ?? ""
         recipeImage.updateImage(url: viewModel.imageURL)
-        if let isLiked = viewModel.isLiked {
-            likeButton.tintColor = isLiked ?  .systemPink : .systemGray4
-        }
     }
     
     override func prepareForReuse() {
@@ -71,18 +59,15 @@ class MainTableViewCell: UITableViewCell {
     // MARK: - private
     private func setupViews() {
         contentView.addSubview(stackView)
-        stackView.addSubview(likeButton)
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .equalCentering
-       
     }
 
     private func setConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         recipeImage.translatesAutoresizingMaskIntoConstraints = false
-        likeButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
@@ -104,18 +89,5 @@ class MainTableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: recipeImage.trailingAnchor, constant: 2),
             recipeImage.widthAnchor.constraint(equalToConstant: 150)
         ])
-        NSLayoutConstraint.activate([
-            likeButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -4),
-            likeButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -4),
-            likeButton.widthAnchor.constraint(equalToConstant: 30),
-            likeButton.heightAnchor.constraint(equalToConstant: 30)
-        ])
-    
-        layoutIfNeeded()
-        likeButton.layer.cornerRadius = likeButton.frame.height/2
-    }
-    
-    @objc func likeButtonTap() {
-        likeSelect?()
     }
 }

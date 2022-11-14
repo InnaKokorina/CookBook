@@ -27,7 +27,7 @@ public final class Observable<Value> {
     // MARK: - subscribe/unsubscribe/notify
     public func subscribe(on observer: AnyObject, observerBlock: @escaping (Value) -> Void ) {
         observers.append(Observer(observer: observer, block: observerBlock))
-        observerBlock(self.value) // ?
+        observerBlock(self.value)
     }
     
     public func unsubscribe(observer: AnyObject) {

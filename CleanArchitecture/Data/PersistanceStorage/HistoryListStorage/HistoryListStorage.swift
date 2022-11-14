@@ -8,9 +8,9 @@
 import Foundation
 
 final class HistoryListStorage: HistoryListStorageProtocol {
-    let dataBaseStorage: DataBaseStorage
+    let dataBaseStorage: QueryDataBaseStorage
     
-    init(dataBaseStorage: DataBaseStorage = DataBaseStorage.shared) {
+    init(dataBaseStorage: QueryDataBaseStorage = QueryDataBaseStorage.shared) {
         self.dataBaseStorage = dataBaseStorage
     }
     

@@ -42,7 +42,8 @@ final class  HistoryViewModel: HistoryViewModelProtocol {
             switch result {
             case .success(let queries):
                 self?.append(queries)
-            case .failure: break
+            case .failure(let error):
+                self?.error.value = HandleError.userDefault.errorsType
             }
         }
     }

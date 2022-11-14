@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(window: window, container: appDIContainer)
         appCoordinator?.start()
         window?.makeKeyAndVisible()
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print("CoreData - \(urls[urls.count-1] as URL)")
         return true
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        CoreDataStorage.shared.saveContext()
     }
 }
 

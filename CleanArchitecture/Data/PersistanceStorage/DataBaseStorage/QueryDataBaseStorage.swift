@@ -1,5 +1,5 @@
 //
-//  DataBaseStorage.swift
+//  QueryDataBaseStorage.swift
 //  CleanArchitecture
 //
 //  Created by Inna Kokorina on 06.10.2022.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class DataBaseStorage {
-    static let shared = DataBaseStorage()
+final class QueryDataBaseStorage {
+    static let shared = QueryDataBaseStorage()
     private let defaults = UserDefaults.standard
     
     // MARK: - fetch queries from UserDefaults
