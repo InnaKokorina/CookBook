@@ -11,6 +11,9 @@
 		F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289C291A89C70037271F /* FavoriteTableViewCell.swift */; };
 		F700289F291A89EB0037271F /* FavoriteCellVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */; };
 		F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70028A0291A8AB70037271F /* FavoriteModel.swift */; };
+		F71796132922847D0091B254 /* CookingTimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71796122922847D0091B254 /* CookingTimeCellViewModel.swift */; };
+		F7179616292286100091B254 /* CookingTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7179614292286100091B254 /* CookingTimeCell.swift */; };
+		F7179617292286100091B254 /* CookingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7179615292286100091B254 /* CookingTimeCell.xib */; };
 		F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */; };
 		F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */; };
 		F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3828F8304700C8CE47 /* LoadingView.swift */; };
@@ -20,6 +23,9 @@
 		F77BBF4128F83FA300C8CE47 /* HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* HandleError.swift */; };
 		F78BA92E2907ECCF006260D7 /* SwinjectDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */; };
 		F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */; };
+		F793B1382923957600FD43FA /* ProgressViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793B1372923957600FD43FA /* ProgressViewBase.swift */; };
+		F793B13C2923A0EA00FD43FA /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F793B13B2923A0EA00FD43FA /* ProgressView.xib */; };
+		F793B13E2923A12400FD43FA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793B13D2923A12400FD43FA /* ProgressView.swift */; };
 		F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* SceneCoordinator.swift */; };
 		F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32B28ED6C9E003E49A3 /* MainViewController.swift */; };
 		F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33128ED6D56003E49A3 /* MainViewModel.swift */; };
@@ -63,6 +69,7 @@
 		F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */; };
 		F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */; };
 		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
+		F79E751E294B45E000E87246 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E751D294B45E000E87246 /* UIView.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
 		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
@@ -91,6 +98,9 @@
 		F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellVIewModel.swift; sourceTree = "<group>"; };
 		F70028A0291A8AB70037271F /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		F70451812906C7D8003C7B4B /* sample.xcconfig_template */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.xcconfig_template; sourceTree = "<group>"; };
+		F71796122922847D0091B254 /* CookingTimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimeCellViewModel.swift; sourceTree = "<group>"; };
+		F7179614292286100091B254 /* CookingTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimeCell.swift; sourceTree = "<group>"; };
+		F7179615292286100091B254 /* CookingTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookingTimeCell.xib; sourceTree = "<group>"; };
 		F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
 		F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionUITableViewController + UIAcivityIndicator.swift"; sourceTree = "<group>"; };
 		F77BBF3828F8304700C8CE47 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -100,6 +110,9 @@
 		F77BBF4028F83FA300C8CE47 /* HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleError.swift; sourceTree = "<group>"; };
 		F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectDiContainer.swift; sourceTree = "<group>"; };
 		F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
+		F793B1372923957600FD43FA /* ProgressViewBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewBase.swift; sourceTree = "<group>"; };
+		F793B13B2923A0EA00FD43FA /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
+		F793B13D2923A12400FD43FA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F794C32728ED6107003E49A3 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		F794C32B28ED6C9E003E49A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F794C33128ED6D56003E49A3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -144,6 +157,7 @@
 		F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailUseCase.swift; sourceTree = "<group>"; };
+		F79E751D294B45E000E87246 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
@@ -195,12 +209,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F717960F29227BEC0091B254 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F793B1372923957600FD43FA /* ProgressViewBase.swift */,
+				F793B13B2923A0EA00FD43FA /* ProgressView.xib */,
+				F793B13D2923A12400FD43FA /* ProgressView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		F793A70F2905DD3400E85A86 /* Extensions  */ = {
 			isa = PBXGroup;
 			children = (
 				F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */,
 				F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */,
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
+				F79E751D294B45E000E87246 /* UIView.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -376,10 +401,13 @@
 		F79A669228F95AB700D7D9E5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F717960F29227BEC0091B254 /* Subviews */,
 				F79A669328F95D1900D7D9E5 /* ViewModels */,
 				F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */,
 				F79A668E28F95A7000D7D9E5 /* DishTypesCell.swift */,
 				F79A669028F95AA100D7D9E5 /* IngredientsCell.swift */,
+				F7179614292286100091B254 /* CookingTimeCell.swift */,
+				F7179615292286100091B254 /* CookingTimeCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -390,6 +418,7 @@
 				F79A669428F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift */,
 				F79A669628F95D5F00D7D9E5 /* DishTypesCellViewModel.swift */,
 				F79A669828F95D7800D7D9E5 /* IngredientsCellViewModel.swift */,
+				F71796122922847D0091B254 /* CookingTimeCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -599,6 +628,8 @@
 				F7FAE2D828EC7406008F811D /* LaunchScreen.storyboard in Resources */,
 				F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */,
 				F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */,
+				F793B13C2923A0EA00FD43FA /* ProgressView.xib in Resources */,
+				F7179617292286100091B254 /* CookingTimeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +686,7 @@
 				F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */,
 				F794C36328EECCC9003E49A3 /* DataTransferService.swift in Sources */,
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
+				F793B1382923957600FD43FA /* ProgressViewBase.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
@@ -667,10 +699,12 @@
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
+				F793B13E2923A12400FD43FA /* ProgressView.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
 				F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */,
 				F79A668B28F9522800D7D9E5 /* DetailRecipes.swift in Sources */,
+				F71796132922847D0091B254 /* CookingTimeCellViewModel.swift in Sources */,
 				F794C33A28ED6F00003E49A3 /* MainCellViewModel.swift in Sources */,
 				F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */,
 				F794C35228EEBC25003E49A3 /* ListReposioryProtocol.swift in Sources */,
@@ -679,6 +713,7 @@
 				F794C33E28ED8A2D003E49A3 /* AppCoordinator.swift in Sources */,
 				F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */,
 				F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */,
+				F79E751E294B45E000E87246 /* UIView.swift in Sources */,
 				F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */,
 				F794C33C28ED7B93003E49A3 /* MainTableViewCell.swift in Sources */,
 				F79AA004290AD38F00880841 /* TabBarController.swift in Sources */,
@@ -715,6 +750,7 @@
 				F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,
 				F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */,
+				F7179616292286100091B254 /* CookingTimeCell.swift in Sources */,
 				F79A669528F95D4400D7D9E5 /* HeaderDetailCellViewModel.swift in Sources */,
 				F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */,
 				F79A668F28F95A7000D7D9E5 /* DishTypesCell.swift in Sources */,

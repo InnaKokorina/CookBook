@@ -48,6 +48,7 @@ class DetailViewController: UIViewController, Alertable {
         view.addSubview(collectionView!)
         collectionView?.register(HeaderDetailCell.self, forCellWithReuseIdentifier: HeaderDetailCell.reuseIdentifier)
         collectionView?.register(DishTypesCell.self, forCellWithReuseIdentifier: DishTypesCell.reuseIdentifier)
+        collectionView?.register(UINib(nibName: "CookingTimeCell", bundle: nil),forCellWithReuseIdentifier: CookingTimeCell.reuseIdentifier)
         collectionView?.register(IngredientsCell.self, forCellWithReuseIdentifier: IngredientsCell.reuseIdentifier)
         collectionView?.collectionViewLayout = layout
     }
@@ -96,6 +97,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishTypesCell.reuseIdentifier, for: indexPath) as? DishTypesCell else { return UICollectionViewCell() }
             cell.configure(with: sectionItems[indexPath.item] as? DishTypesCellViewModel)
             return cell
+        case is CookingTimeCellViewModel:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CookingTimeCell.reuseIdentifier, for: indexPath) as? CookingTimeCell else { return UICollectionViewCell() }
+            cell.configure(with: sectionItems[indexPath.item] as? CookingTimeCellViewModel)
+            return cell
         case is IngredientsViewModel:
           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientsCell.reuseIdentifier, for: indexPath) as? IngredientsCell else { return UICollectionViewCell() }
             cell.configure(with: sectionItems[indexPath.item] as? IngredientsViewModel)
@@ -118,6 +123,8 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         case is DishTypesCellViewModel:
             let width = view.frame.width - 16
             return CGSize(width: width, height: 50)
+        case is CookingTimeCellViewModel:
+            return CGSize(width: view.frame.width, height: 150)
         case is IngredientsViewModel:
             return CGSize(width: view.frame.width/2, height: view.frame.width/2)
         default:

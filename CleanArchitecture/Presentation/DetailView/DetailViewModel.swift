@@ -25,6 +25,7 @@ protocol DetailViewModelProtocol: DetailViewModelInput, DetailViewModelOutput {}
 enum DetailSection: Int, CaseIterable {
     case header
     case types
+    case cookingTime
     case ingredients
 }
 
@@ -72,6 +73,7 @@ final class DetailViewModel: DetailViewModelProtocol {
     private func setSections(results: DetailRecipes) {
         dataSource.value[.header] = [HeaderDetailCellViewModel(title: results.title, imageURL: results.imageURL)]
         dataSource.value[.types] = [DishTypesCellViewModel(types: results.dishTypes)]
+        dataSource.value[.cookingTime] = [CookingTimeCellViewModel(cookingTime: results.cookingTime)]
         dataSource.value[.ingredients] = results.extendedIngredients.map { IngredientsViewModel(ingredients: $0) }
     }
 }

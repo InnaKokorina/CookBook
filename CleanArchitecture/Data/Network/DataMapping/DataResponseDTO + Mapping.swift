@@ -32,6 +32,7 @@ struct DetailResponseDTO: Decodable {
     let imageUrl: String?
     let extendedIngredients: [ExtendedIngredientsDTO]
     let dishTypes: [String]?
+    let cookingTime: Int?
     
     enum CodingKeys: String, CodingKey {
         case recipeId = "id"
@@ -39,6 +40,7 @@ struct DetailResponseDTO: Decodable {
         case imageUrl = "image"
         case extendedIngredients
         case dishTypes
+        case cookingTime = "readyInMinutes"
     }
 }
 
@@ -75,7 +77,7 @@ extension ExtendedIngredientsDTO {
 
 extension DetailResponseDTO {
     func toDomain() -> DetailRecipes {
-        return .init(id: recipeId, title: title, imageUrlString: imageUrl, extendedIngredients: extendedIngredients.map { $0.toDomain() }, dishTypes: dishTypes)
+        return .init(id: recipeId, title: title, imageUrlString: imageUrl, extendedIngredients: extendedIngredients.map { $0.toDomain() }, dishTypes: dishTypes, cookingTime: cookingTime)
     }
 }
 
