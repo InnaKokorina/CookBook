@@ -12,22 +12,18 @@ class CookingTimeCell: UICollectionViewCell {
     private var viewModel: CookingTimeCellViewModel?
     
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timeView: UIView!
-    @IBOutlet weak var internalView: UIView!
-    @IBOutlet weak var internalLabel: UILabel!
-    
+    @IBOutlet weak var timeView: TimeProgressView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         timeView.layer.cornerRadius = timeView.bounds.height/2
-        internalView.layer.cornerRadius = internalView.bounds.height/2
-        
-    }
-    func configure(with viewModel: CookingTimeCellViewModel?) {
-        self.viewModel = viewModel
-        guard let viewModel = viewModel else { return }
-        internalLabel.text = String(viewModel.cookingTime ?? 0) + " мин"
-        print("cookingTime =\(viewModel.cookingTime)")
-        contentView.drawCircleProgressView(on: timeView, till: viewModel.setStrokeEndValue())
     }
     
+    func configure(with viewModel: CookingTimeCellViewModel?) {
+        self.viewModel = viewModel
+        guard let viewModel = viewModel,
+              let progressBarView = TimeProgressView.create() else { return }
+        timeView.addSubview(progressBarView)
+        progressBarView.configure(with: viewModel)
+    }
 }

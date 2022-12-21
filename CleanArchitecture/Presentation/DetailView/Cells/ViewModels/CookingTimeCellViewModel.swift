@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct CookingTimeCellViewModel: DetailCellModelProtocol {
     let cookingTime: Int?
 }

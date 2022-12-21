@@ -15,6 +15,8 @@
 		F7179616292286100091B254 /* CookingTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7179614292286100091B254 /* CookingTimeCell.swift */; };
 		F7179617292286100091B254 /* CookingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7179615292286100091B254 /* CookingTimeCell.xib */; };
 		F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */; };
+		F74CE2E5294C7CE300F3CF1D /* TimeProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F74CE2E4294C7CE300F3CF1D /* TimeProgressView.xib */; };
+		F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74CE2E6294C7D0D00F3CF1D /* TimeProgressView.swift */; };
 		F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */; };
 		F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3828F8304700C8CE47 /* LoadingView.swift */; };
 		F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77BBF3A28F838C800C8CE47 /* Localizable.strings */; };
@@ -23,9 +25,6 @@
 		F77BBF4128F83FA300C8CE47 /* HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF4028F83FA300C8CE47 /* HandleError.swift */; };
 		F78BA92E2907ECCF006260D7 /* SwinjectDiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */; };
 		F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */; };
-		F793B1382923957600FD43FA /* ProgressViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793B1372923957600FD43FA /* ProgressViewBase.swift */; };
-		F793B13C2923A0EA00FD43FA /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F793B13B2923A0EA00FD43FA /* ProgressView.xib */; };
-		F793B13E2923A12400FD43FA /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F793B13D2923A12400FD43FA /* ProgressView.swift */; };
 		F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32728ED6107003E49A3 /* SceneCoordinator.swift */; };
 		F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C32B28ED6C9E003E49A3 /* MainViewController.swift */; };
 		F794C33228ED6D56003E49A3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C33128ED6D56003E49A3 /* MainViewModel.swift */; };
@@ -102,6 +101,8 @@
 		F7179614292286100091B254 /* CookingTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimeCell.swift; sourceTree = "<group>"; };
 		F7179615292286100091B254 /* CookingTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookingTimeCell.xib; sourceTree = "<group>"; };
 		F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
+		F74CE2E4294C7CE300F3CF1D /* TimeProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeProgressView.xib; sourceTree = "<group>"; };
+		F74CE2E6294C7D0D00F3CF1D /* TimeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProgressView.swift; sourceTree = "<group>"; };
 		F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionUITableViewController + UIAcivityIndicator.swift"; sourceTree = "<group>"; };
 		F77BBF3828F8304700C8CE47 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F77BBF3A28F838C800C8CE47 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -110,9 +111,6 @@
 		F77BBF4028F83FA300C8CE47 /* HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleError.swift; sourceTree = "<group>"; };
 		F78BA92D2907ECCF006260D7 /* SwinjectDiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectDiContainer.swift; sourceTree = "<group>"; };
 		F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImageView.swift"; sourceTree = "<group>"; };
-		F793B1372923957600FD43FA /* ProgressViewBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewBase.swift; sourceTree = "<group>"; };
-		F793B13B2923A0EA00FD43FA /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
-		F793B13D2923A12400FD43FA /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		F794C32728ED6107003E49A3 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		F794C32B28ED6C9E003E49A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F794C33128ED6D56003E49A3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -209,14 +207,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F717960F29227BEC0091B254 /* Subviews */ = {
+		F74CE2E3294C7C7500F3CF1D /* TimeProgressView */ = {
 			isa = PBXGroup;
 			children = (
-				F793B1372923957600FD43FA /* ProgressViewBase.swift */,
-				F793B13B2923A0EA00FD43FA /* ProgressView.xib */,
-				F793B13D2923A12400FD43FA /* ProgressView.swift */,
+				F74CE2E4294C7CE300F3CF1D /* TimeProgressView.xib */,
+				F74CE2E6294C7D0D00F3CF1D /* TimeProgressView.swift */,
 			);
-			path = Subviews;
+			path = TimeProgressView;
 			sourceTree = "<group>";
 		};
 		F793A70F2905DD3400E85A86 /* Extensions  */ = {
@@ -401,7 +398,7 @@
 		F79A669228F95AB700D7D9E5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F717960F29227BEC0091B254 /* Subviews */,
+				F74CE2E3294C7C7500F3CF1D /* TimeProgressView */,
 				F79A669328F95D1900D7D9E5 /* ViewModels */,
 				F79A668C28F95A4700D7D9E5 /* HeaderDetailCell.swift */,
 				F79A668E28F95A7000D7D9E5 /* DishTypesCell.swift */,
@@ -627,8 +624,8 @@
 			files = (
 				F7FAE2D828EC7406008F811D /* LaunchScreen.storyboard in Resources */,
 				F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */,
+				F74CE2E5294C7CE300F3CF1D /* TimeProgressView.xib in Resources */,
 				F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */,
-				F793B13C2923A0EA00FD43FA /* ProgressView.xib in Resources */,
 				F7179617292286100091B254 /* CookingTimeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,7 +683,6 @@
 				F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */,
 				F794C36328EECCC9003E49A3 /* DataTransferService.swift in Sources */,
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
-				F793B1382923957600FD43FA /* ProgressViewBase.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
@@ -694,12 +690,12 @@
 				F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */,
 				F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
+				F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */,
 				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
-				F793B13E2923A12400FD43FA /* ProgressView.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
 				F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */,

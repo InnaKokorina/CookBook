@@ -9,27 +9,37 @@ import UIKit
 
 extension UIView {
     
-    func drawCircleProgressView(on view: UIView, till value: Float ) {
-        let layer = CAShapeLayer()
+    func drawCircleProgressView(on view: UIView, till value: Float, firstGradientColor: CGColor, secondGradientColor: CGColor, lineWidth: CGFloat) {
+        let shapeLayer = CAShapeLayer()
         let endAngle = Math().percentToRadians(percentComplete: CGFloat(value))
         let startAngle = (3.0 * CGFloat.pi) / 2.0
         let thickness: CGFloat = 6
-        
         let path = UIBezierPath(arcCenter: CGPoint(x: view.frame.midX, y: view.frame.midY), radius: view.frame.width/2 - thickness/2 , startAngle: CGFloat(startAngle), endAngle: CGFloat(endAngle), clockwise: true)
         
-        layer.path = path.cgPath
-        layer.strokeColor = UIColor(red: 150/255, green: 148/255, blue: 255/255, alpha: 1).cgColor
-        layer.fillColor = UIColor.clear.cgColor
-        layer.lineWidth = 6
-        layer.lineCap = .round
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.blue.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineCap = .round
+      
         let animation = CABasicAnimation()
-        
         animation.keyPath = "strokeEnd"
         animation.fromValue = 0
         animation.toValue = 1
         animation.duration = 3.0
-        layer.add(animation, forKey: nil)
-        self.layer.addSublayer(layer)
+        shapeLayer.add(animation, forKey: nil)
+        view.layer.addSublayer(shapeLayer)
+        
+        view.setGradient(maskLayer: shapeLayer, firstColor: firstGradientColor, secondColor: secondGradientColor)
+    }
+    
+    func setGradient(maskLayer: CALayer? = nil, firstColor: CGColor, secondColor: CGColor) {
+        let gradient = CAGradientLayer()
+        gradient.colors = [firstColor, secondColor]
+        gradient.frame = self.bounds
+        gradient.cornerRadius = self.layer.cornerRadius
+        gradient.mask = maskLayer
+        self.layer.insertSublayer(gradient, at: 0)
     }
     
     class Math {
@@ -39,6 +49,7 @@ extension UIView {
             return startAngle + (degrees * (CGFloat.pi/180))
         }
     }
+   
 }
 
 
