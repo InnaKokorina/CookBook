@@ -65,6 +65,8 @@
 		F79AA004290AD38F00880841 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA003290AD38F00880841 /* TabBarController.swift */; };
 		F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA006290AD3C600880841 /* TabBarViewModel.swift */; };
 		F79AA009290AD68300880841 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA008290AD68300880841 /* TabBarCoordinator.swift */; };
+		F79AD747295590F500B0CABC /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AD746295590F500B0CABC /* loader.json */; };
+		F79AD7492955A80600B0CABC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AD7482955A80600B0CABC /* UIView.swift */; };
 		F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */; };
 		F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */; };
 		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
@@ -79,6 +81,7 @@
 		F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */; };
 		F7B57EE62913D51E00409092 /* RecipesListDataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */; };
 		F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */; };
+		F7B823AB2954D586005F46DC /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B823AA2954D586005F46DC /* LoaderView.swift */; };
 		F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
 		F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D428EC7406008F811D /* Assets.xcassets */; };
@@ -152,6 +155,8 @@
 		F79AA003290AD38F00880841 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F79AA006290AD3C600880841 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		F79AA008290AD68300880841 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		F79AD746295590F500B0CABC /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
+		F79AD7482955A80600B0CABC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepository.swift; sourceTree = "<group>"; };
 		F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepositoryProtocol.swift; sourceTree = "<group>"; };
 		F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailUseCase.swift; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 		F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListDataBaseStorage.swift; sourceTree = "<group>"; };
 		F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBaseDataDTO + Mapping.swift"; sourceTree = "<group>"; };
+		F7B823AA2954D586005F46DC /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 				F794C34228EDC268003E49A3 /* Observable.swift */,
 				F77BBF3828F8304700C8CE47 /* LoadingView.swift */,
 				F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */,
+				F7B823AA2954D586005F46DC /* LoaderView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				F79AA001290AD0CF00880841 /* Staging.xcconfig */,
+				F79AD746295590F500B0CABC /* loader.json */,
 				F70451812906C7D8003C7B4B /* sample.xcconfig_template */,
 				F7FAE2CA28EC73F8008F811D /* CleanArchitecture */,
 				F7FAE2C928EC73F8008F811D /* Products */,
@@ -627,6 +635,7 @@
 				F74CE2E5294C7CE300F3CF1D /* TimeProgressView.xib in Resources */,
 				F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */,
 				F7179617292286100091B254 /* CookingTimeCell.xib in Resources */,
+				F79AD747295590F500B0CABC /* loader.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +705,7 @@
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
+				F79AD7492955A80600B0CABC /* UIView.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
 				F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */,
@@ -743,6 +753,7 @@
 				F77BBF4128F83FA300C8CE47 /* HandleError.swift in Sources */,
 				F793A7112905DD5E00E85A86 /* Extension+UIImageView.swift in Sources */,
 				F794C33828ED6DB0003E49A3 /* DetailViewModel.swift in Sources */,
+				F7B823AB2954D586005F46DC /* LoaderView.swift in Sources */,
 				F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */,
 				F794C37D28EEFD4C003E49A3 /* HistoryListStorageProtocol.swift in Sources */,
 				F794C32C28ED6C9E003E49A3 /* MainViewController.swift in Sources */,

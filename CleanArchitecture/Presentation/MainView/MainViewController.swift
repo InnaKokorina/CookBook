@@ -74,14 +74,19 @@ class MainViewController: UIViewController, Alertable {
 
     private func updateLoading(_ loading: ListViewModelLoading?) {
         resultsListContainer.isHidden = true
-        LoadingView.hide()
+    
+        LoaderView.shared.hide()
         switch loading {
-        case .fullScreen: LoadingView.show()
-        case .nextPage: resultsListContainer.isHidden = false
+        case .fullScreen: LoaderView.shared.show()
+        case .nextPage:
+            fallthrough
+//            resultsListContainer.isHidden = false
+//            tableViewController?.updateLoading(LoaderView.shared)
+//
         case .none:
             resultsListContainer.isHidden = viewModel.isEmpty
+            LoaderView.shared.hide()
         }
-        tableViewController?.updateLoading(loading)
     }
    
     private func setupconstraints() {

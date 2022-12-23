@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-    
     func drawCircleProgressView(on view: UIView, till value: Float, firstGradientColor: CGColor, secondGradientColor: CGColor, lineWidth: CGFloat) {
         let shapeLayer = CAShapeLayer()
         let endAngle = Math().percentToRadians(percentComplete: CGFloat(value))
@@ -52,4 +51,17 @@ extension UIView {
    
 }
 
+
+    func fadeIn() {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.alpha = 1.0
+        }, completion: nil)
+    }
+    
+    func fadeOut() {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.alpha = 0.0
+        }, completion: nil)
+    }
+}
 

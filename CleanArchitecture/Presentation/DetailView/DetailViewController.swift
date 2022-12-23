@@ -65,11 +65,12 @@ class DetailViewController: UIViewController, Alertable {
     }
     
     private func updateLoading(_ loading: ListViewModelLoading?) {
+        //let loaderView = LoaderView()
         switch loading {
-        case .fullScreen: LoadingView.show()
-        case .nextPage: LoadingView.hide()
+        case .fullScreen: LoaderView.shared.show()
+        case .nextPage: LoaderView.shared.hide()
         case .none:
-            LoadingView.hide()
+            LoaderView.shared.hide()
         }
     }
 }
