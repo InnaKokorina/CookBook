@@ -13,6 +13,7 @@ struct DetailRecipes: Hashable {
     let imageUrlString: String?
     let extendedIngredients: [ExtendedIngredients]
     let dishTypes: [String]?
+    let cookingTime: Int?
     
     var imageURL: URL? {
         guard let imagePath = imageUrlString,
