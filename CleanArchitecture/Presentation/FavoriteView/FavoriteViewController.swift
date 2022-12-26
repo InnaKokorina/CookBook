@@ -9,7 +9,6 @@ import UIKit
 
 class FavoriteViewController: UITableViewController, Alertable {
     var viewModel: FavoriteViewModelProtocol?
-    var activityIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

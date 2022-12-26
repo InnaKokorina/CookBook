@@ -77,12 +77,9 @@ class MainViewController: UIViewController, Alertable {
     
         LoaderView.shared.hide()
         switch loading {
-        case .fullScreen: LoaderView.shared.show()
+        case .fullScreen: LoaderView.shared.show(on: view)
         case .nextPage:
             fallthrough
-//            resultsListContainer.isHidden = false
-//            tableViewController?.updateLoading(LoaderView.shared)
-//
         case .none:
             resultsListContainer.isHidden = viewModel.isEmpty
             LoaderView.shared.hide()
@@ -105,7 +102,7 @@ class MainViewController: UIViewController, Alertable {
             resultsListContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             resultsListContainer.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 12),
             view.trailingAnchor.constraint(equalTo: resultsListContainer.trailingAnchor, constant: 12),
-            view.bottomAnchor.constraint(equalTo: resultsListContainer.bottomAnchor, constant: 0)
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: resultsListContainer.bottomAnchor, constant: 0)
         ])
         
         NSLayoutConstraint.activate([

@@ -15,24 +15,18 @@ class LoaderView {
     private var backgroundFadeView = UIView()
     private var animationView = LottieAnimationView(name:  "loader")
 
-    func show(on view: UIView? = nil) {
+    func show(on view: UIView?) {
         DispatchQueue.main.async {
+            guard let view = view else { return }
+            self.backgroundFadeView.frame = view.bounds
+            self.animationView.frame = self.backgroundFadeView.bounds
             self.animationView.contentMode = .scaleAspectFit
-            self.backgroundFadeView.frame = UIScreen.main.bounds
-            self.animationView.frame = UIScreen.main.bounds
-            
-            if let window = UIApplication.shared.keyWindow {
-                if view != nil {
-                    view?.addSubview(self.backgroundFadeView)
-                } else {
-                    window.addSubview(self.backgroundFadeView)
-                }
-                self.backgroundFadeView.addSubview(self.animationView)
-                self.backgroundFadeView.alpha = 0.0
-                self.backgroundFadeView.fadeIn()
-                self.animationView.loopMode = .loop
-                self.animationView.play()
-            }
+            view.addSubview(self.backgroundFadeView)
+            self.backgroundFadeView.addSubview(self.animationView)
+            self.backgroundFadeView.alpha = 0.0
+            self.backgroundFadeView.fadeIn()
+            self.animationView.loopMode = .loop
+            self.animationView.play()
         }
     }
 

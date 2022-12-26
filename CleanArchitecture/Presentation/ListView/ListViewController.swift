@@ -10,7 +10,11 @@ import UIKit
 class ListViewController: UITableViewController, Alertable {
     
     var viewModel: MainViewModelProtocol?
-    var activityIndicator: UIView?
+    
+    var footerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        return view
+    }()
     
     // MARK: - lifecycle
     override func viewDidLoad() {
@@ -23,14 +27,11 @@ class ListViewController: UITableViewController, Alertable {
     }
     
     func updateLoading(_ loading: ListViewModelLoading?) {
-        
         LoaderView.shared.hide()
         switch loading {
         case .nextPage:
-
-            tableView.tableFooterView = .init(frame: CGRect(x: 0, y: 0, width: Int(self.tableView.frame.width), height: 44))
+            tableView.tableFooterView = footerView
             LoaderView.shared.show(on: tableView.tableFooterView)
-
         case .fullScreen:
             tableView.tableFooterView = nil
         case .none:

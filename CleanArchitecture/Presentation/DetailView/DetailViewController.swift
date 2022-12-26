@@ -10,7 +10,6 @@ import UIKit
 class DetailViewController: UIViewController, Alertable {
 
     var viewModel: DetailViewModelProtocol!
-    var activityIndicator: UIActivityIndicatorView?
     
     private var collectionView: UICollectionView?
 
@@ -65,9 +64,8 @@ class DetailViewController: UIViewController, Alertable {
     }
     
     private func updateLoading(_ loading: ListViewModelLoading?) {
-        //let loaderView = LoaderView()
         switch loading {
-        case .fullScreen: LoaderView.shared.show()
+        case .fullScreen: LoaderView.shared.show(on: collectionView ?? view)
         case .nextPage: LoaderView.shared.hide()
         case .none:
             LoaderView.shared.hide()

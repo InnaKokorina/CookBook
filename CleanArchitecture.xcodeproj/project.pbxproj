@@ -17,8 +17,6 @@
 		F74076C528F6A36100E19736 /* HistoryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */; };
 		F74CE2E5294C7CE300F3CF1D /* TimeProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F74CE2E4294C7CE300F3CF1D /* TimeProgressView.xib */; };
 		F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74CE2E6294C7D0D00F3CF1D /* TimeProgressView.swift */; };
-		F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */; };
-		F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3828F8304700C8CE47 /* LoadingView.swift */; };
 		F77BBF3B28F838C900C8CE47 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F77BBF3A28F838C800C8CE47 /* Localizable.strings */; };
 		F77BBF3D28F83C3100C8CE47 /* Extensions+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */; };
 		F77BBF3F28F83E9A00C8CE47 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */; };
@@ -106,8 +104,6 @@
 		F74076C428F6A36100E19736 /* HistoryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellViewModel.swift; sourceTree = "<group>"; };
 		F74CE2E4294C7CE300F3CF1D /* TimeProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeProgressView.xib; sourceTree = "<group>"; };
 		F74CE2E6294C7D0D00F3CF1D /* TimeProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeProgressView.swift; sourceTree = "<group>"; };
-		F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionUITableViewController + UIAcivityIndicator.swift"; sourceTree = "<group>"; };
-		F77BBF3828F8304700C8CE47 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F77BBF3A28F838C800C8CE47 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F77BBF3C28F83C3100C8CE47 /* Extensions+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+String.swift"; sourceTree = "<group>"; };
 		F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 		F793A70F2905DD3400E85A86 /* Extensions  */ = {
 			isa = PBXGroup;
 			children = (
-				F77BBF3628F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift */,
 				F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */,
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
 				F79E751D294B45E000E87246 /* UIView.swift */,
@@ -267,7 +262,6 @@
 			children = (
 				F793A70F2905DD3400E85A86 /* Extensions  */,
 				F794C34228EDC268003E49A3 /* Observable.swift */,
-				F77BBF3828F8304700C8CE47 /* LoadingView.swift */,
 				F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */,
 				F7B823AA2954D586005F46DC /* LoaderView.swift */,
 			);
@@ -695,12 +689,10 @@
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
-				F77BBF3728F82D4500C8CE47 /* ExtensionUITableViewController + UIAcivityIndicator.swift in Sources */,
 				F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */,
 				F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
 				F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */,
-				F77BBF3928F8304700C8CE47 /* LoadingView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
@@ -905,6 +897,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TSG2FCM6P3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArchitecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -932,6 +925,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TSG2FCM6P3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArchitecture/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
