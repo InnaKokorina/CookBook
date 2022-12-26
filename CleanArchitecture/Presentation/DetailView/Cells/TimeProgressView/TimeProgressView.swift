@@ -77,7 +77,7 @@ import UIKit
               let secondColor = secondColor,
               let lineWidth = lineWidth,
               let viewModel = viewModel else { return }
-        self.drawCircleProgressView(on: self, till: viewModel.setStrokeEndValue(), firstGradientColor: firstColor, secondGradientColor: secondColor, lineWidth: lineWidth)
+        self.drawCircleProgressView(on: self, till: viewModel.cookingTimeInPercent(), firstGradientColor: firstColor, secondGradientColor: secondColor, lineWidth: lineWidth)
         internalView.setGradient(firstColor: firstColor, secondColor: secondColor)
     }
 }

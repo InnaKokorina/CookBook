@@ -16,7 +16,7 @@ extension CookingTimeCellViewModel {
         self.cookingTime = detailModel.cookingTime
     }
     
- func setStrokeEndValue() -> Float {
+ func cookingTimeInPercent() -> Float {
         let maxTime: Float = 120
         guard let cookingTime = cookingTime,
               Float(cookingTime) < maxTime  else { return 1.0 }
