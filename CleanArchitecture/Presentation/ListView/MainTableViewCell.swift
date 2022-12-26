@@ -14,14 +14,25 @@ class MainTableViewCell: UITableViewCell {
     var likeSelect: (() -> Void)?
     private var viewModel: MainCellViewModel!
     
+    private let baseView : UIView = {
+        let baseView = UIView()
+        baseView.backgroundColor = .clear
+        baseView.clipsToBounds = false
+        baseView.layer.shadowColor = UIColor.black.cgColor
+        baseView.layer.shadowOpacity = 0.5
+        baseView.layer.shadowOffset = CGSize(width: -3, height: 3)
+        baseView.layer.shadowRadius = 3
+        return baseView
+    }()
+    
     private var recipeImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.layer.masksToBounds = false
-        image.clipsToBounds = true
+        image.layer.masksToBounds = true
         image.layer.cornerRadius = 15
         return image
     }()
+    
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -39,7 +50,7 @@ class MainTableViewCell: UITableViewCell {
         return button
     }()
     
-    private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel,recipeImage])
+    private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel,baseView])
    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -72,6 +83,7 @@ class MainTableViewCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(stackView)
         stackView.addSubview(likeButton)
+        baseView.addSubview(recipeImage)
         stackView.axis = .horizontal
         stackView.spacing = 8
         stackView.distribution = .equalCentering
@@ -81,6 +93,7 @@ class MainTableViewCell: UITableViewCell {
     private func setConstraints() {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        baseView.translatesAutoresizingMaskIntoConstraints = false
         recipeImage.translatesAutoresizingMaskIntoConstraints = false
         likeButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -95,15 +108,22 @@ class MainTableViewCell: UITableViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 4),
             titleLabel.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 0),
             stackView.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
-            titleLabel.trailingAnchor.constraint(equalTo: recipeImage.leadingAnchor, constant: -4)
+            titleLabel.trailingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: -4)
         ])
         
         NSLayoutConstraint.activate([
-            recipeImage.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -16),
-            recipeImage.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: recipeImage.trailingAnchor, constant: 2),
-            recipeImage.widthAnchor.constraint(equalToConstant: 150)
+            baseView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -16),
+            baseView.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: 2),
+            baseView.widthAnchor.constraint(equalToConstant: 150)
         ])
+        NSLayoutConstraint.activate([
+            recipeImage.bottomAnchor.constraint(equalTo: baseView.bottomAnchor, constant: 0),
+            recipeImage.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 0),
+            recipeImage.trailingAnchor.constraint(equalTo: baseView.trailingAnchor, constant: 0),
+            recipeImage.leadingAnchor.constraint(equalTo: baseView.leadingAnchor, constant: 0),
+        ])
+        
         NSLayoutConstraint.activate([
             likeButton.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: -4),
             likeButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -4),
