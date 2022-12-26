@@ -64,7 +64,6 @@
 		F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA006290AD3C600880841 /* TabBarViewModel.swift */; };
 		F79AA009290AD68300880841 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AA008290AD68300880841 /* TabBarCoordinator.swift */; };
 		F79AD747295590F500B0CABC /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = F79AD746295590F500B0CABC /* loader.json */; };
-		F79AD7492955A80600B0CABC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79AD7482955A80600B0CABC /* UIView.swift */; };
 		F79C9ABD28FC7F8C00B6B8F1 /* DetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABC28FC7F8C00B6B8F1 /* DetailRepository.swift */; };
 		F79C9ABF28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79C9ABE28FC7FA300B6B8F1 /* DetailRepositoryProtocol.swift */; };
 		F79E6C5728FC3B0200C99913 /* FetchDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E6C5628FC3B0200C99913 /* FetchDetailUseCase.swift */; };
@@ -441,6 +440,14 @@
 			path = FavoriteView;
 			sourceTree = "<group>";
 		};
+		F7B4B2812959BEF900B3A04E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				F79AD7482955A80600B0CABC /* UIView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		F7B57EE92913D7E100409092 /* DataBaseDataMapping */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +466,7 @@
 				F7FAE2C928EC73F8008F811D /* Products */,
 				6EA34EBA3B9F45141796148C /* Pods */,
 				29AACA0763EFE6AF023E8C94 /* Frameworks */,
+				F7B4B2812959BEF900B3A04E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -697,7 +705,6 @@
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
-				F79AD7492955A80600B0CABC /* UIView.swift in Sources */,
 				F794C35D28EECBB4003E49A3 /* NetworkService.swift in Sources */,
 				F794C37B28EEFD28003E49A3 /* HistoryListStorage.swift in Sources */,
 				F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */,

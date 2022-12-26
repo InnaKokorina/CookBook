@@ -48,9 +48,6 @@ extension UIView {
             return startAngle + (degrees * (CGFloat.pi/180))
         }
     }
-   
-}
-
 
     func fadeIn() {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
