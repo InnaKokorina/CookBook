@@ -73,6 +73,7 @@
 		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
 		F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */; };
 		F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */; };
+		F7A86AA4295B8474000B2774 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A86AA3295B8474000B2774 /* UIButton.swift */; };
 		F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */; };
 		F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE02913B67C00409092 /* CoreDataModel.xcdatamodeld */; };
 		F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */; };
@@ -161,6 +162,7 @@
 		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
 		F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
 		F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F7A86AA3295B8474000B2774 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F7B57EE12913B67C00409092 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */,
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
 				F79E751D294B45E000E87246 /* UIView.swift */,
+				F7A86AA3295B8474000B2774 /* UIButton.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				F794C36328EECCC9003E49A3 /* DataTransferService.swift in Sources */,
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
+				F7A86AA4295B8474000B2774 /* UIButton.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
 				F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */,
