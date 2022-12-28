@@ -49,6 +49,14 @@ class MainViewController: UIViewController, Alertable {
         historyListContainer.isHidden = true
         setupconstraints()
         self.title = "Search"
+
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage(named: "scanIcon"), for: .normal)
+        button.addTarget(self, action: #selector(scanCode), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        barButton.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        barButton.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     private func updateSearchQuery(_ query: String) {
@@ -111,6 +119,9 @@ class MainViewController: UIViewController, Alertable {
             view.trailingAnchor.constraint(equalTo: historyListContainer.trailingAnchor, constant: 12),
             view.bottomAnchor.constraint(equalTo: historyListContainer.bottomAnchor, constant: 0)
         ])
+    }
+    @objc private func scanCode(sender: UIBarButtonItem) {
+        //pushViewController
     }
 }
 // MARK: - UISearchBarDelegate
