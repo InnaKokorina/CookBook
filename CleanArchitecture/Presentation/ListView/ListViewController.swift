@@ -9,6 +9,7 @@ import UIKit
 
 class ListViewController: UITableViewController, Alertable {
     
+    private let loader = LoaderView()
     var viewModel: MainViewModelProtocol?
     
     var footerView: UIView = {
@@ -27,14 +28,16 @@ class ListViewController: UITableViewController, Alertable {
     }
     
     func updateLoading(_ loading: ListViewModelLoading?) {
-        LoaderView.shared.hide()
+        
+        loader.hide()
         switch loading {
         case .nextPage:
             tableView.tableFooterView = footerView
-            LoaderView.shared.show(on: tableView.tableFooterView)
+            loader.show(on: tableView.tableFooterView)
         case .fullScreen:
             tableView.tableFooterView = nil
         case .none:
+            loader.hide()
             tableView.tableFooterView = nil
         }
     }

@@ -9,8 +9,6 @@ import UIKit
 import Lottie
 
 class LoaderView {
-
-    static var shared = LoaderView()
     
     private var backgroundFadeView = UIView()
     private var animationView = LottieAnimationView(name:  "loader")

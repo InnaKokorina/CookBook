@@ -13,7 +13,8 @@ class MainViewController: UIViewController, Alertable {
     let historyListContainer = UIView()
     var viewModel: MainViewModelProtocol!
     private var tableViewController: ListViewController?
-
+    private let loader = LoaderView()
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,15 +75,14 @@ class MainViewController: UIViewController, Alertable {
 
     private func updateLoading(_ loading: ListViewModelLoading?) {
         resultsListContainer.isHidden = true
-    
-        LoaderView.shared.hide()
+        loader.hide()
         switch loading {
-        case .fullScreen: LoaderView.shared.show(on: view)
+        case .fullScreen: loader.show(on: view)
         case .nextPage:
             fallthrough
         case .none:
             resultsListContainer.isHidden = viewModel.isEmpty
-            LoaderView.shared.hide()
+            loader.hide()
         }
     }
    
