@@ -40,6 +40,7 @@ protocol MainViewModelOutput {
     var isEmpty: Bool { get }
     var actions: MainViewModelActions? { get set }
     var pages: [RecipePage] { get set }
+    var currentOffset: Int { get }
 }
 
 protocol MainViewModelProtocol: MainViewModelInput, MainViewModelOutput {}
@@ -88,7 +89,7 @@ final class MainViewModel: MainViewModelProtocol {
                                 self?.loading.value = .none
                                 self?.allUpdatingRequired.value = ()
                                 self?.items = recipes.map(MainCellViewModel.init)
-                               
+
                                 completion()
                             }
                         }

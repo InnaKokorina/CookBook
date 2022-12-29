@@ -80,5 +80,6 @@ final class SceneCoordinator {
         historyListVC?.remove()
         historyListVC = nil
         mainViewController?.historyListContainer.isHidden = true
+        mainViewController?.searchBar.endEditing(true)
     }
 }

@@ -8,8 +8,14 @@
 import UIKit
 
 class ListViewController: UITableViewController, Alertable {
+    
+    private let loader = LoaderView()
     var viewModel: MainViewModelProtocol?
-    var activityIndicator: UIActivityIndicatorView?
+    
+    var footerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+        return view
+    }()
     
     // MARK: - lifecycle
     override func viewDidLoad() {
@@ -22,12 +28,16 @@ class ListViewController: UITableViewController, Alertable {
     }
     
     func updateLoading(_ loading: ListViewModelLoading?) {
+        
+        loader.hide()
         switch loading {
         case .nextPage:
-            activityIndicator?.removeFromSuperview()
-            activityIndicator = makeActivityIndicator(size: .init(width: tableView.frame.width, height: 44))
-            tableView?.tableFooterView = activityIndicator
-        case .fullScreen, .none:
+            tableView.tableFooterView = footerView
+            loader.show(on: tableView.tableFooterView)
+        case .fullScreen:
+            tableView.tableFooterView = nil
+        case .none:
+            loader.hide()
             tableView.tableFooterView = nil
         }
     }
@@ -82,7 +92,7 @@ extension ListViewController {
         cell.likeSelect = {
             viewModel.updateFavorite(index: indexPath.row)
         }
-        if indexPath.row == (viewModel.items.count) - 1 {
+        if indexPath.row == (viewModel.currentOffset) - 1 {
             viewModel.didLoadNextPage()
         }
         return cell

@@ -13,7 +13,8 @@ class MainViewController: UIViewController, Alertable {
     let historyListContainer = UIView()
     var viewModel: MainViewModelProtocol!
     private var tableViewController: ListViewController?
-
+    private let loader = LoaderView()
+    
     // MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,14 +75,15 @@ class MainViewController: UIViewController, Alertable {
 
     private func updateLoading(_ loading: ListViewModelLoading?) {
         resultsListContainer.isHidden = true
-        LoadingView.hide()
+        loader.hide()
         switch loading {
-        case .fullScreen: LoadingView.show()
-        case .nextPage: resultsListContainer.isHidden = false
+        case .fullScreen: loader.show(on: view)
+        case .nextPage:
+            fallthrough
         case .none:
             resultsListContainer.isHidden = viewModel.isEmpty
+            loader.hide()
         }
-        tableViewController?.updateLoading(loading)
     }
    
     private func setupconstraints() {
@@ -100,7 +102,7 @@ class MainViewController: UIViewController, Alertable {
             resultsListContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             resultsListContainer.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 12),
             view.trailingAnchor.constraint(equalTo: resultsListContainer.trailingAnchor, constant: 12),
-            view.bottomAnchor.constraint(equalTo: resultsListContainer.bottomAnchor, constant: 0)
+            view.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: resultsListContainer.bottomAnchor, constant: 0)
         ])
         
         NSLayoutConstraint.activate([
