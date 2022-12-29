@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Приложение запрашивает доступ к камере для того, чтобы отсканировать QR код.</string>
 	<key>INGREDIENT_PATH</key>
 	<string>$(INGREDIENT_PATH)</string>
 	<key>SIMPLE_SLASH</key>

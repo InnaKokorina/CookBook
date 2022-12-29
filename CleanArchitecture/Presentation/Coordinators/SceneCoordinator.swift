@@ -28,7 +28,8 @@ final class SceneCoordinator {
         actions = MainViewModelActions(showResultsList: makeListViewConroller,
                                            showHistoryList: makeHistoryViewController,
                                            closeHistoryList: closeHistoryViewController,
-                                           showDetails: showDetailViewController)
+                                           showDetails: showDetailViewController,
+                                       openScanCodeView: openScanCodeViewController)
         
         
         guard let actions = actions,
@@ -81,5 +82,10 @@ final class SceneCoordinator {
         historyListVC = nil
         mainViewController?.historyListContainer.isHidden = true
         mainViewController?.searchBar.endEditing(true)
+    }
+
+    private func openScanCodeViewController() {
+        guard let vc = container.resolve(ScanCodeViewController.self) else { return }
+        mainNavigationVC?.pushViewController(vc, animated: true)
     }
 }

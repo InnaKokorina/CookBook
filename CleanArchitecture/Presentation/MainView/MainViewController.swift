@@ -121,7 +121,7 @@ class MainViewController: UIViewController, Alertable {
         ])
     }
     @objc private func scanCode(sender: UIBarButtonItem) {
-        //pushViewController
+        viewModel?.openScanning()
     }
 }
 // MARK: - UISearchBarDelegate

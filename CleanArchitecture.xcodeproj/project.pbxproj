@@ -71,6 +71,7 @@
 		F79E751E294B45E000E87246 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E751D294B45E000E87246 /* UIView.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
+		F7A2CC05295D890800AD49A5 /* ScanCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2CC04295D890800AD49A5 /* ScanCodeViewModel.swift */; };
 		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
 		F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */; };
 		F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */; };
@@ -162,6 +163,7 @@
 		F79E751D294B45E000E87246 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		F7A2CC04295D890800AD49A5 /* ScanCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCodeViewModel.swift; sourceTree = "<group>"; };
 		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
 		F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
 		F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				F72C8659295C4B2200367DEB /* ScanCodeViewController.swift */,
+				F7A2CC04295D890800AD49A5 /* ScanCodeViewModel.swift */,
 			);
 			path = ScanCode;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
 				F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
+				F7A2CC05295D890800AD49A5 /* ScanCodeViewModel.swift in Sources */,
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,
 				F794C34B28EEB938003E49A3 /* ListViewController.swift in Sources */,
 				F79A669928F95D7800D7D9E5 /* IngredientsCellViewModel.swift in Sources */,
