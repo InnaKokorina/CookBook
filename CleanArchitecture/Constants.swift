@@ -22,6 +22,9 @@ struct Constants {
     static let tabBarSecondImage = "heart"
     static let tabBarFirstTitle = "Search"
     static let tabBarSecondTitle = "Favorite"
+    static let scanTitleLabel = "Сканировать"
+    static let scanSubTitleLabel = "Наведите камеру на QR-код"
+    static let recipeIdPlaceholder = " Ввести Id вручную"
     // MARK: - Notificatin Center
     static let messageToFavorite = "updateFavorite"
     static let messageToMain = "updateMain"

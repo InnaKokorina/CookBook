@@ -11,6 +11,7 @@
 		F700289D291A89C70037271F /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289C291A89C70037271F /* FavoriteTableViewCell.swift */; };
 		F700289F291A89EB0037271F /* FavoriteCellVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */; };
 		F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70028A0291A8AB70037271F /* FavoriteModel.swift */; };
+		F7129290295EF661001B1CCA /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712928F295EF661001B1CCA /* UINavigationController.swift */; };
 		F71796132922847D0091B254 /* CookingTimeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71796122922847D0091B254 /* CookingTimeCellViewModel.swift */; };
 		F7179616292286100091B254 /* CookingTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7179614292286100091B254 /* CookingTimeCell.swift */; };
 		F7179617292286100091B254 /* CookingTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7179615292286100091B254 /* CookingTimeCell.xib */; };
@@ -101,6 +102,7 @@
 		F700289E291A89EB0037271F /* FavoriteCellVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCellVIewModel.swift; sourceTree = "<group>"; };
 		F70028A0291A8AB70037271F /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		F70451812906C7D8003C7B4B /* sample.xcconfig_template */ = {isa = PBXFileReference; lastKnownFileType = text; path = sample.xcconfig_template; sourceTree = "<group>"; };
+		F712928F295EF661001B1CCA /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		F71796122922847D0091B254 /* CookingTimeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimeCellViewModel.swift; sourceTree = "<group>"; };
 		F7179614292286100091B254 /* CookingTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookingTimeCell.swift; sourceTree = "<group>"; };
 		F7179615292286100091B254 /* CookingTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CookingTimeCell.xib; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
 				F79E751D294B45E000E87246 /* UIView.swift */,
 				F7A86AA3295B8474000B2774 /* UIButton.swift */,
+				F712928F295EF661001B1CCA /* UINavigationController.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */,
 				F794C32828ED6107003E49A3 /* SceneCoordinator.swift in Sources */,
 				F74CE2E7294C7D0D00F3CF1D /* TimeProgressView.swift in Sources */,
+				F7129290295EF661001B1CCA /* UINavigationController.swift in Sources */,
 				F794C34828EEB27E003E49A3 /* HistoryViewModel.swift in Sources */,
 				F7A2CC05295D890800AD49A5 /* ScanCodeViewModel.swift in Sources */,
 				F70028A1291A8AB70037271F /* FavoriteModel.swift in Sources */,

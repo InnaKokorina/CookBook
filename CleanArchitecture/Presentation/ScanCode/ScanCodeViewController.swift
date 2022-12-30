@@ -7,10 +7,14 @@
 
 import UIKit
 import AVFoundation
+import InputMask
 
-class ScanCodeViewController: UIViewController {
+class ScanCodeViewController: UIViewController, MaskedTextFieldDelegateListener {
+    
     var viewModel: ScanCodeViewModelProtocol?
+    var listener: MaskedTextFieldDelegate? = MaskedTextFieldDelegate()
     private var session: AVCaptureSession?
+    private var recipeId: String?
    
     private var backgroundGrayView: UIView = {
         let view = UIView()
@@ -20,7 +24,7 @@ class ScanCodeViewController: UIViewController {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Сканировать"
+        label.text = Constants.scanTitleLabel
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 32)
         return label
@@ -28,7 +32,7 @@ class ScanCodeViewController: UIViewController {
     
     private var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Наведите камеру на QR-код"
+        label.text = Constants.scanSubTitleLabel
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
@@ -40,12 +44,14 @@ class ScanCodeViewController: UIViewController {
         return view
     }()
     
-    private var manuallyInsertButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 15
-        button.setTitle("Ввести Id вручную", for: .normal)
-        return button
+    private var recipeIdTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = Constants.recipeIdPlaceholder
+        textField.backgroundColor = .systemGray6
+        textField.layer.cornerRadius = 15
+        textField.textColor = .black
+        textField.textAlignment = .center
+        return textField
     }()
     
     private var scanView: UIView = {
@@ -62,29 +68,37 @@ class ScanCodeViewController: UIViewController {
         if requestMediaPermissions() {
             setupCaptureSession()
         }
+        listener!.affinityCalculationStrategy = .prefix
+        listener!.affineFormats = [ "[000] [000]" ]
+        listener!.listener = self
+        recipeIdTextField.delegate = listener
+        keyboardNotifications()
     }
+
     private func setupView() {
         view.addSubview(backgroundGrayView)
         backgroundGrayView.addSubview(titleLabel)
         backgroundGrayView.addSubview(subTitleLabel)
         backgroundGrayView.addSubview(lineView)
         backgroundGrayView.addSubview(titleLabel)
-        backgroundGrayView.addSubview(manuallyInsertButton)
+        backgroundGrayView.addSubview(recipeIdTextField)
         backgroundGrayView.addSubview(scanView)
         titleLabel.textAlignment = .center
+        navigationController?.setStatusBar(backgroundColor: .systemGray6)
+        navigationController?.navigationBar.backgroundColor = .systemGray6
     }
-    
+   
     private func setupConstraints() {
         backgroundGrayView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         lineView.translatesAutoresizingMaskIntoConstraints = false
-        manuallyInsertButton.translatesAutoresizingMaskIntoConstraints = false
+        recipeIdTextField.translatesAutoresizingMaskIntoConstraints = false
         scanView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             backgroundGrayView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            backgroundGrayView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            backgroundGrayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
             view.trailingAnchor.constraint(equalTo: backgroundGrayView.trailingAnchor, constant: 0),
             view.bottomAnchor.constraint(equalTo: backgroundGrayView.bottomAnchor, constant: 0)
         ])
@@ -109,13 +123,80 @@ class ScanCodeViewController: UIViewController {
             scanView.widthAnchor.constraint(equalToConstant: 252)
         ])
         NSLayoutConstraint.activate([
-            manuallyInsertButton.leadingAnchor.constraint(equalTo: backgroundGrayView.leadingAnchor, constant: 16),
-            manuallyInsertButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
-            backgroundGrayView.trailingAnchor.constraint(equalTo: manuallyInsertButton.trailingAnchor, constant: 16),
-            manuallyInsertButton.heightAnchor.constraint(equalToConstant: 52)
+            recipeIdTextField.leadingAnchor.constraint(equalTo: backgroundGrayView.leadingAnchor, constant: 16),
+            recipeIdTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32),
+            backgroundGrayView.trailingAnchor.constraint(equalTo: recipeIdTextField.trailingAnchor, constant: 16),
+            recipeIdTextField.heightAnchor.constraint(equalToConstant: 52)
         ])
         self.view.layoutIfNeeded()
     }
+}
+// MARK: - KeyBoard
+extension ScanCodeViewController {
+    
+    private func keyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+               view.frame.origin.y -= keyboardSize.height
+                lineView.isHidden = true
+           }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+            lineView.isHidden = false
+        }
+    }
+}
+    
+// MARK: - UITextFieldDelegate
+extension ScanCodeViewController: UITextFieldDelegate {
+    
+    open func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+        recipeId = value
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let recipeId = recipeId,
+              let idNumber = Int(recipeId) else {
+            textField.resignFirstResponder()
+            return
+        }
+        viewModel?.didSelectItem(at: Int(idNumber))
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+// MARK: - ScanCode
+extension ScanCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
+    
+    private func requestMediaPermissions() -> Bool {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized: return true
+        case .notDetermined:
+            var result: Bool = false
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    result = true
+                }
+            }
+            return result
+        case .denied:  return false
+        case .restricted: return false
+        default: return false
+        }
+    }
+    
     private func setupCaptureSession() {
         session = AVCaptureSession()
         
@@ -151,42 +232,13 @@ class ScanCodeViewController: UIViewController {
             session.startRunning()
         }
     }
-}
-// MARK: - ScanCode
-
-extension ScanCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
-    
-    private func requestMediaPermissions() -> Bool {
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .authorized: return true
-        case .notDetermined:
-            var result: Bool = false
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    result = true
-                }
-            }
-            return result
-        case .denied:  return false
-        case .restricted: return false
-        default: return false
-        }
-    }
-    
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         session?.stopRunning()
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
-                  var stringValue = readableObject.stringValue else { return }
-//            switch scanReason {
-//            case .loadClaimItem:
-//                self.presenter.loadClaimItem(scanDataMatrixValue: stringValue, docNumber: wayBillNumber)
-//            case .unreadabbleCode:
-//                self.presenter.checkDataMatrixCode(scanValue: stringValue)
-//            case .none:
-//                return
-//            }
+                  let stringValue = readableObject.stringValue else { return }
+            viewModel?.didSelectItem(at: Int(stringValue) ?? 0)
         }
     }
 }

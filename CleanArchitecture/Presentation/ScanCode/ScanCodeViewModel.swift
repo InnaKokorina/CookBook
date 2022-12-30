@@ -7,10 +7,26 @@
 
 import Foundation
 
-protocol ScanCodeViewModelProtocol {
+struct ScanCodeViewModelActions {
+    let showDetails: (_ recipeId: Int) -> Void
+}
+
+protocol ScanCodeViewModelOutput {
+    var actions: ScanCodeViewModelActions? { get set }
+}
+protocol ScanCodeViewModelInput {
+    func didSelectItem(at recipeId: Int)
+}
+
+protocol ScanCodeViewModelProtocol: ScanCodeViewModelOutput, ScanCodeViewModelInput {
     
 }
 
 class ScanCodeViewModel: ScanCodeViewModelProtocol {
     
+    var actions: ScanCodeViewModelActions?
+    
+    func didSelectItem(at recipeId: Int) {
+        actions?.showDetails(recipeId)
+    }
 }

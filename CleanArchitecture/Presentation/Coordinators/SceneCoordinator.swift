@@ -86,6 +86,7 @@ final class SceneCoordinator {
 
     private func openScanCodeViewController() {
         guard let vc = container.resolve(ScanCodeViewController.self) else { return }
+        vc.viewModel?.actions = ScanCodeViewModelActions(showDetails: showDetailViewController)
         mainNavigationVC?.pushViewController(vc, animated: true)
     }
 }
