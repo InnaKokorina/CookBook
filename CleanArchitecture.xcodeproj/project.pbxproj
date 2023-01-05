@@ -80,6 +80,7 @@
 		F7B57EE62913D51E00409092 /* RecipesListDataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */; };
 		F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */; };
 		F7B823AB2954D586005F46DC /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B823AA2954D586005F46DC /* LoaderView.swift */; };
+		F7BD041729672DA300E44175 /* HighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD041629672DA300E44175 /* HighlightButton.swift */; };
 		F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
 		F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D428EC7406008F811D /* Assets.xcassets */; };
@@ -169,6 +170,7 @@
 		F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListDataBaseStorage.swift; sourceTree = "<group>"; };
 		F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBaseDataDTO + Mapping.swift"; sourceTree = "<group>"; };
 		F7B823AA2954D586005F46DC /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		F7BD041629672DA300E44175 /* HighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButton.swift; sourceTree = "<group>"; };
 		F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				F794C34228EDC268003E49A3 /* Observable.swift */,
 				F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */,
 				F7B823AA2954D586005F46DC /* LoaderView.swift */,
+				F7BD041629672DA300E44175 /* HighlightButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				F7FAE2EE28EC7FD5008F811D /* SearchUseCase.swift in Sources */,
 				F794C34628EEB263003E49A3 /* HistoryViewController.swift in Sources */,
 				F7FAE2EC28EC7FBC008F811D /* FetchHistoryUseCase.swift in Sources */,
+				F7BD041729672DA300E44175 /* HighlightButton.swift in Sources */,
 				F7FAE2E828EC7983008F811D /* APIRequest.swift in Sources */,
 				F794C36628EECE25003E49A3 /* DataResponseDTO + Mapping.swift in Sources */,
 				F79A669128F95AA200D7D9E5 /* IngredientsCell.swift in Sources */,

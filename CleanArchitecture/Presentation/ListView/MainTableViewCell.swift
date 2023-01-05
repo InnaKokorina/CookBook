@@ -50,8 +50,8 @@ class MainTableViewCell: UITableViewCell {
         return label
     }()
     
-    let likeButton: UIButton = {
-        let button = UIButton()
+    let likeButton: HighlightButton = {
+        let button = HighlightButton()
         button.setImage(UIImage(systemName: Constants.likeImage), for: .normal)
         button.clipsToBounds = true
         return button
@@ -78,7 +78,6 @@ class MainTableViewCell: UITableViewCell {
         if let isLiked = viewModel.isLiked {
             likeButton.tintColor = isLiked ?  .systemPink : .systemGray4
         }
-        likeButton.setBackgroundColor(color: .systemGray5, forState: .highlighted)
     }
     
     override func prepareForReuse() {
@@ -97,6 +96,8 @@ class MainTableViewCell: UITableViewCell {
         stackView.spacing = 8
         stackView.distribution = .equalCentering
         highlightingView.isHidden = true
+        let longGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longTouchImage))
+        recipeImage.addGestureRecognizer(longGestureRecognizer)
     }
 
     private func setConstraints() {
@@ -158,21 +159,6 @@ class MainTableViewCell: UITableViewCell {
 
 extension MainTableViewCell {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        let touch: UITouch = touches.first!
-        if touch.view == recipeImage {
-            startAnimation()
-            highlightingView.isHidden = false
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        let _: UITouch = touches.first!
-        highlightingView.isHidden = true
-    }
-    
     private func startAnimation() {
         let hover = CABasicAnimation(keyPath: "position")
         hover.isAdditive = true
@@ -181,6 +167,20 @@ extension MainTableViewCell {
         hover.autoreverses = true
         hover.duration = 0.5
         recipeImage.layer.add(hover, forKey: "myHoverAnimation")
+    }
+
+    @objc func longTouchImage(sender: UILongPressGestureRecognizer) {
+        switch sender.state {
+        case .began:
+            highlightingView.isHidden = false
+            startAnimation()
+        case .changed:
+            highlightingView.isHidden = false
+        case .ended:
+            highlightingView.isHidden = true
+        default:
+            highlightingView.isHidden = true
+        }
     }
 }
 
