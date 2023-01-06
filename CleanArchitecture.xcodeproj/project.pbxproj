@@ -73,12 +73,14 @@
 		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
 		F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */; };
 		F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */; };
+		F7A86AA4295B8474000B2774 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A86AA3295B8474000B2774 /* UIButton.swift */; };
 		F7AA0112290C014C00DDC925 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */; };
 		F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE02913B67C00409092 /* CoreDataModel.xcdatamodeld */; };
 		F7B57EE42913BDCA00409092 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */; };
 		F7B57EE62913D51E00409092 /* RecipesListDataBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */; };
 		F7B57EE82913D7D900409092 /* DataBaseDataDTO + Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */; };
 		F7B823AB2954D586005F46DC /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B823AA2954D586005F46DC /* LoaderView.swift */; };
+		F7BD041729672DA300E44175 /* HighlightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BD041629672DA300E44175 /* HighlightButton.swift */; };
 		F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */; };
 		F7FAE2CC28EC73F8008F811D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */; };
 		F7FAE2D528EC7406008F811D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7FAE2D428EC7406008F811D /* Assets.xcassets */; };
@@ -161,12 +163,14 @@
 		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
 		F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
 		F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepositoryProtocol.swift; sourceTree = "<group>"; };
+		F7A86AA3295B8474000B2774 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		F7AA0111290C014C00DDC925 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		F7B57EE12913B67C00409092 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F7B57EE32913BDCA00409092 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		F7B57EE52913D51E00409092 /* RecipesListDataBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesListDataBaseStorage.swift; sourceTree = "<group>"; };
 		F7B57EE72913D7D900409092 /* DataBaseDataDTO + Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataBaseDataDTO + Mapping.swift"; sourceTree = "<group>"; };
 		F7B823AA2954D586005F46DC /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		F7BD041629672DA300E44175 /* HighlightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightButton.swift; sourceTree = "<group>"; };
 		F7D2FF9129129C0500258B2B /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		F7FAE2C828EC73F8008F811D /* CleanArchitecture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArchitecture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FAE2CB28EC73F8008F811D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */,
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
 				F79E751D294B45E000E87246 /* UIView.swift */,
+				F7A86AA3295B8474000B2774 /* UIButton.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -263,6 +268,7 @@
 				F794C34228EDC268003E49A3 /* Observable.swift */,
 				F77BBF3E28F83E9A00C8CE47 /* Alertable.swift */,
 				F7B823AA2954D586005F46DC /* LoaderView.swift */,
+				F7BD041629672DA300E44175 /* HighlightButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				F794C36328EECCC9003E49A3 /* DataTransferService.swift in Sources */,
 				F794C34328EDC268003E49A3 /* Observable.swift in Sources */,
 				F794C36C28EED797003E49A3 /* Cancellable.swift in Sources */,
+				F7A86AA4295B8474000B2774 /* UIButton.swift in Sources */,
 				F798837A29014A6C0055EE03 /* Constants.swift in Sources */,
 				F7B57EE22913B67C00409092 /* CoreDataModel.xcdatamodeld in Sources */,
 				F7D2FF9229129C0500258B2B /* FavoriteViewModel.swift in Sources */,
@@ -729,6 +736,7 @@
 				F7FAE2EE28EC7FD5008F811D /* SearchUseCase.swift in Sources */,
 				F794C34628EEB263003E49A3 /* HistoryViewController.swift in Sources */,
 				F7FAE2EC28EC7FBC008F811D /* FetchHistoryUseCase.swift in Sources */,
+				F7BD041729672DA300E44175 /* HighlightButton.swift in Sources */,
 				F7FAE2E828EC7983008F811D /* APIRequest.swift in Sources */,
 				F794C36628EECE25003E49A3 /* DataResponseDTO + Mapping.swift in Sources */,
 				F79A669128F95AA200D7D9E5 /* IngredientsCell.swift in Sources */,
