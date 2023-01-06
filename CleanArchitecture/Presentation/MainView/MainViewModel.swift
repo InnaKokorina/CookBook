@@ -12,6 +12,7 @@ struct MainViewModelActions {
     let showHistoryList: (_ didSelect: @escaping (RecipeQuery) -> Void) -> Void
     let closeHistoryList: () -> Void
     let showDetails: (_ recipeId: Int) -> Void
+    let openScanCodeView: () -> Void
 }
 
 enum ListViewModelLoading {
@@ -28,6 +29,7 @@ protocol MainViewModelInput {
     func didCancelSearch()
     func resetPages()
     func updateFavorite(index: Int)
+    func openScanning()
 }
 
 protocol MainViewModelOutput {
@@ -158,6 +160,10 @@ final class MainViewModel: MainViewModelProtocol {
         pages.removeAll()
         items.removeAll()
         allUpdatingRequired.value = ()
+    }
+    
+    func openScanning() {
+        actions?.openScanCodeView()
     }
     
     func updateFavorite(index: Int) {

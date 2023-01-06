@@ -49,6 +49,7 @@ class MainViewController: UIViewController, Alertable {
         historyListContainer.isHidden = true
         setupconstraints()
         self.title = "Search"
+        setScanButton()
     }
     
     private func updateSearchQuery(_ query: String) {
@@ -111,6 +112,24 @@ class MainViewController: UIViewController, Alertable {
             view.trailingAnchor.constraint(equalTo: historyListContainer.trailingAnchor, constant: 12),
             view.bottomAnchor.constraint(equalTo: historyListContainer.bottomAnchor, constant: 0)
         ])
+    }
+    private func setScanButton() {
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage(named: "scanIcon"), for: .normal)
+        button.addTarget(self, action: #selector(scanCode), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        barButton.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        barButton.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        button.clipsToBounds = false
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOffset = CGSize(width: -3, height: 3)
+        button.layer.shadowRadius = 3
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    @objc private func scanCode(sender: UIBarButtonItem) {
+        viewModel?.openScanning()
     }
 }
 // MARK: - UISearchBarDelegate

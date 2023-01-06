@@ -79,6 +79,10 @@ class SwinjectDIContainer: Assembly {
             let viewModel = FavoriteViewModel(favoriteUseCase: resolver.resolve(FavoriteListUseCaseProtocol.self)!)
             return viewModel
         }
+        container.register(ScanCodeViewModelProtocol.self) {  resolver  in
+            let viewModel = ScanCodeViewModel()
+            return viewModel
+        }
         
         // MARK: - ViewControllers
         container.register(TabBarController.self) { resolver in
@@ -109,6 +113,11 @@ class SwinjectDIContainer: Assembly {
         container.register(FavoriteViewController.self) { resolver in
             let vc = FavoriteViewController()
             vc.viewModel = resolver.resolve(FavoriteViewModelProtocol.self)
+        return vc
+        }
+        container.register(ScanCodeViewController.self) { resolver in
+            let vc = ScanCodeViewController()
+            vc.viewModel = resolver.resolve(ScanCodeViewModelProtocol.self)
         return vc
         }
     }
