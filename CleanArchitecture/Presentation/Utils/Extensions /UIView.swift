@@ -32,11 +32,14 @@ extension UIView {
         view.setGradient(maskLayer: shapeLayer, firstColor: firstGradientColor, secondColor: secondGradientColor)
     }
     
-    func setGradient(maskLayer: CALayer? = nil, firstColor: CGColor, secondColor: CGColor) {
+    func setGradient(maskLayer: CALayer? = nil, firstColor: CGColor, secondColor: CGColor, transform: CATransform3D? = nil) {
         let gradient = CAGradientLayer()
         gradient.colors = [firstColor, secondColor]
         gradient.frame = self.bounds
         gradient.cornerRadius = self.layer.cornerRadius
+        if let transform = transform {
+            gradient.transform = transform
+        }
         gradient.mask = maskLayer
         self.layer.insertSublayer(gradient, at: 0)
     }

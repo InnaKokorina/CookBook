@@ -30,7 +30,8 @@ class MainViewController: UIViewController, Alertable {
         viewModel.error.subscribe(on: self) { [weak self] error in
             guard !error.isEmpty else { return }
             viewModel.loading.value = .none
-            self?.showAlert(message: error)
+          //  self?.showAlert(message: error)
+            self?.presentCrossDissolve(viewController: PopUpErrorViewController())
         }
         viewModel.loading.subscribe(on: self) { [weak self] in
             self?.updateLoading($0)
@@ -85,7 +86,13 @@ class MainViewController: UIViewController, Alertable {
             loader.hide()
         }
     }
-   
+    
+    private func presentCrossDissolve(viewController: UIViewController) {
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
     private func setupconstraints() {
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         resultsListContainer.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +120,9 @@ class MainViewController: UIViewController, Alertable {
         ])
     }
 }
+
 // MARK: - UISearchBarDelegate
+
 extension MainViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

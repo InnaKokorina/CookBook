@@ -70,6 +70,8 @@
 		F79E751E294B45E000E87246 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79E751D294B45E000E87246 /* UIView.swift */; };
 		F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */; };
 		F7A0FCA928F45ADB0090BC5C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */; };
+		F7A18B61296C064F008642CB /* PopUpErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A18B60296C064F008642CB /* PopUpErrorViewController.swift */; };
+		F7A18B64296C8190008642CB /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A18B63296C8190008642CB /* UIColor.swift */; };
 		F7A2EB3E2918FE2800FA66E9 /* FavoriteListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */; };
 		F7A2EB402919002000FA66E9 /* FavoriteListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */; };
 		F7A2EB422919006400FA66E9 /* FavoriteListRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */; };
@@ -160,6 +162,8 @@
 		F79E751D294B45E000E87246 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		F7A0FCA628F453CB0090BC5C /* ExensionsUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExensionsUIViewController.swift; sourceTree = "<group>"; };
 		F7A0FCA828F45ADB0090BC5C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		F7A18B60296C064F008642CB /* PopUpErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpErrorViewController.swift; sourceTree = "<group>"; };
+		F7A18B63296C8190008642CB /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		F7A2EB3D2918FE2800FA66E9 /* FavoriteListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListUseCase.swift; sourceTree = "<group>"; };
 		F7A2EB3F2919002000FA66E9 /* FavoriteListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepository.swift; sourceTree = "<group>"; };
 		F7A2EB412919006400FA66E9 /* FavoriteListRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 				F793A7102905DD5E00E85A86 /* Extension+UIImageView.swift */,
 				F79E751D294B45E000E87246 /* UIView.swift */,
 				F7A86AA3295B8474000B2774 /* UIButton.swift */,
+				F7A18B63296C8190008642CB /* UIColor.swift */,
 			);
 			path = "Extensions ";
 			sourceTree = "<group>";
@@ -435,6 +440,14 @@
 			path = MainTabBar;
 			sourceTree = "<group>";
 		};
+		F7A18B62296C0666008642CB /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				F7A18B60296C064F008642CB /* PopUpErrorViewController.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
 		F7AA0110290C010500DDC925 /* FavoriteView */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +529,7 @@
 		F7FAE2E028EC7423008F811D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				F7A18B62296C0666008642CB /* PopUp */,
 				F79AA002290AD32800880841 /* MainTabBar */,
 				F794C32D28ED6CD7003E49A3 /* MainView */,
 				F794C34928EEB916003E49A3 /* ListView */,
@@ -725,7 +739,9 @@
 				F794C33E28ED8A2D003E49A3 /* AppCoordinator.swift in Sources */,
 				F7A0FCA728F453CB0090BC5C /* ExensionsUIViewController.swift in Sources */,
 				F794C37628EEFA57003E49A3 /* HistoryListRepository.swift in Sources */,
+				F7A18B64296C8190008642CB /* UIColor.swift in Sources */,
 				F79E751E294B45E000E87246 /* UIView.swift in Sources */,
+				F7A18B61296C064F008642CB /* PopUpErrorViewController.swift in Sources */,
 				F79AA007290AD3C600880841 /* TabBarViewModel.swift in Sources */,
 				F794C33C28ED7B93003E49A3 /* MainTableViewCell.swift in Sources */,
 				F79AA004290AD38F00880841 /* TabBarController.swift in Sources */,
